@@ -145,7 +145,7 @@
     </div>
     <div class="body">
       
-  <div class="wall wall-category--plain">
+  <div class="wall wall-category">
     <div class="wall-main">
       <div class="wall-category-title">
         <div class="title-icon"
@@ -154,13 +154,36 @@
       </div>
       <div class="wall-category-description">大模型时代应用的思想放牧之地</div>
       <div class="wall-category-tags">
-        <div id="tags-outer"></div>
+        <div id="tags-outer"><canvas width="500" height="500" id="tagCanvas"><a href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" style="font-size: 14px;">技术笔记</a><canvas></div>
       </div>
     </div>
   </div>
   <div class="post-list">
     
-      DEBUG: 该子页分类下没有文章！在指定文章头部中添加 category: AI 字段，即可将该文章添加至此页。
+      
+  
+  <div class="post-card">
+    <div class="post__head">
+      <a href="/2025/03/10/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="post-title hover-line">第一篇博客</a>
+      
+    </div>
+    <div class="post__body">
+      
+        <a href="/2025/03/10/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"
+           class="post-cover"
+           style="background-image: url(/assets/images/57-1.jpg)"></a>
+      
+      <div class="post-excerpt"></div>
+    </div>
+    <div class="post__foot">
+      <div class="post-tags">
+  <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="post-tag">#技术笔记</a>
+
+</div>
+    </div>
+  </div>
+
+
     
     
   </div>
@@ -337,6 +360,35 @@
     
     <script src="/js/copy-code.js"></script>
     
+  
+    <script type="text/javascript"
+            charset="utf-8"
+            src="/js/tagcanvas.min.js"></script>
+    <script type = "text/javascript">
+        window.onload = function() {
+            try {
+                TagCanvas.Start('tagCanvas', '', {
+                    outlineThickness: 1,
+                    maxSpeed: 0.03,
+                    // freezeActive: true,
+                    // freezeDecel: true,
+                    textColour: null,
+                    textColour: null,
+                    outlineColour: "#aaa",
+                    weight: true,
+                    padding: 4,
+                    // clickToFront: 200,
+                    fadIn: 200,
+                    // pinchZoom: true,
+                    wheelZoom: false,
+                    initial: [0.1, -0.03]
+                });
+            } catch (e) {
+                // something went wrong, hide the canvas container
+                document.getElementById('tags-outer').style.display = 'none';
+            }
+        };
+    </script>
   
 
   </body>
