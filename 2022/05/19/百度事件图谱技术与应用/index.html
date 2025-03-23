@@ -147,7 +147,7 @@
     <div class="body">
       
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner--toc">
       <div class="post-content__head">
         <div class="post-title">百度事件图谱技术与应用</div>
         <div class="post-info">
@@ -158,6 +158,12 @@
           <span class="post-date">2022-05-19</span>
         </div>
       </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%99%BE%E5%BA%A6%E4%BA%8B%E4%BB%B6%E5%9B%BE%E8%B0%B1%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="post-toc-text">百度事件图谱技术与应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%99%88%E7%8E%89%E5%85%89-%E7%99%BE%E5%BA%A6-%E8%B5%84%E6%B7%B1%E7%A0%94%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="post-toc-text">陈玉光 百度 资深研发工程师</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%9B%BE%E8%B0%B1%E6%A6%82%E8%BF%B0"><span class="post-toc-text">事件图谱概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1"><span class="post-toc-text">1、知识图谱</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%9B%BE%E8%B0%B1"><span class="post-toc-text">2、事件图谱</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A%E4%BA%8B%E4%BB%B6%E5%9B%BE%E8%B0%B1"><span class="post-toc-text">3、为什么要做事件图谱？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%9B%BE%E8%B0%B1%E6%98%AF%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%99%BA%E8%83%BD%E5%8C%96%E7%9A%84%E5%85%B3%E9%94%AE"><span class="post-toc-text">4、事件图谱是事件处理智能化的关键</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%9B%BE%E8%B0%B1%E6%8A%80%E6%9C%AF"><span class="post-toc-text">事件图谱技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%99%BE%E5%BA%A6%E4%BA%8B%E4%BB%B6%E5%9B%BE%E8%B0%B1%E6%8A%80%E6%9C%AF%E6%A6%82%E8%BF%B0"><span class="post-toc-text">1、百度事件图谱技术概述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA"><span class="post-toc-text">2、事件图谱构建</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B"><span class="post-toc-text">3、事件检测</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA"><span class="post-toc-text">4、知识表示</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96"><span class="post-toc-text">5、事件抽取</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8"><span class="post-toc-text">事件图谱应用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="post-toc-text">总结与展望</span></a></li></ol></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
       
       <div class="post-content__body">
         
@@ -182,45 +188,29 @@
 </blockquote>
 <h3 id="事件图谱概述">事件图谱概述</h3>
 <h4 id="知识图谱">1、知识图谱</h4>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1o868ynkaj21060kbju3.jpg"
-alt="image-20220427134116097" />
-<figcaption aria-hidden="true">image-20220427134116097</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1o868ynkaj21060kbju3.jpg" /></p>
 <p>知识图谱构建的目的，其实是为了把世界上纷繁复杂的、各种各样的客观事实通过图谱的方式组织起来，让机器能够通过这个图谱更好地实现理解、抽取、推理等任务，从而提升我们处理信息的效率。最基础的知识图谱包含实体、关系、属性等图谱最核心的知识，而更广义的知识图谱则包含更多的知识，如概念、标签、评论等。<strong>事件也是一种知识，一种比较复杂的知识。</strong>事件知识的复杂性在于事件并不会对应到现实世界中的某一个具体的实体，它是一系列实体，以不同的角色在一段时间内参与活动的一个抽象。</p>
 <p>百度于2017年底就开始了事件图谱方向的研究。经过了三年的发展，目前已经在多个不同的方向和领域落地。</p>
 <h4 id="事件图谱">2、事件图谱</h4>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1o8co5td6j20q50f3mys.jpg"
-alt="image-20220427134729519" />
-<figcaption aria-hidden="true">image-20220427134729519</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1o8co5td6j20q50f3mys.jpg" /></p>
 <p>事件图谱是什么？事件图谱是包含事件、事件属性、事件间关联关系的以事件为
 基本单位的知识网络。上图是以宋仲基、宋慧乔从相恋到结婚、再到离婚这么一
 系列事件及其相关内容所组成的事件图谱的示意图。每个事件都有自己的事件类
 型，不同的事件类型拥有着不同的角色。如双宋结婚事件，它在事件图谱中的内容就是，一个结婚类型的事件，这个类型的事件有两个角色，其中，丈夫角色的值是宋仲基，而妻子角色的值是宋慧乔。事件之间的关系也在事件图谱的构建围内，包括时序、因果、从属等。除了事件图谱的内容外，在上图中，我们还可
 以看到事件图谱与实体图谱是有对应关系的，事件的发生是可能会触发实体与实体间关系或属性的变化的，例如，上面的例子中，结婚事件的发生导致了双宋的关系从男女朋友关系变成丈夫与妻子的关系。</p>
 <h4 id="为什么要做事件图谱">3、为什么要做事件图谱？</h4>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1obx0f538j20qk0flq5i.jpg"
-alt="image-20220427155049972" />
-<figcaption aria-hidden="true">image-20220427155049972</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1obx0f538j20qk0flq5i.jpg" /></p>
 <p>为什么要做事件图谱？有两个方面原因：</p>
 <p>第一方面，事件其实更符合人类对客观世界的理解。例如，以桃园三结义这幅图为例。在没有知识或弱知识的时候，我们可以知道这幅图里有三个人，有酒和树。在有实体知识的时候，我们可以知道这三个人的姓名是刘备、关羽和张飞，树是桃树。直到拥有事件知识的时候，我们才可以知道具体时间在东汉末年，刘备、关羽和张飞三个人在桃园做了结义这一个事情。我们可以看到，只有到事件这个
 层次上，才能说真正对这幅画有一个比较完整的把握。</p>
 <p>另一方面，事件图谱可以对动态的客观世界进行建模。实体图谱会记录了实体的属性和关系，当实体的属性或关系更新时，图谱只会保留它最新的状态。但通过事件图谱，我们能够对属性或关系的整个变化过程进行建模，并且可以将这些事件与变化的进行一一对应。</p>
 <h4
 id="事件图谱是事件处理智能化的关键">4、事件图谱是事件处理智能化的关键</h4>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1oc5myi4qj20ql0extbv.jpg"
-alt="image-20220427155906595" />
-<figcaption aria-hidden="true">image-20220427155906595</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1oc5myi4qj20ql0extbv.jpg" /></p>
 <p>​
 我们目前正处在一个信息爆炸的时代，无论是个人消费者看新闻，还是专业从业
 者跟进行业事件消息，我们都不可避免地受到信息过载的影响。一方面存在太多
@@ -243,20 +233,12 @@ alt="image-20220427155906595" />
 <h3 id="事件图谱技术">事件图谱技术</h3>
 <p>刚刚介绍了事件图谱的概述，包括是什么是事件图谱，为什么要做事件图谱。接下来将进一步介绍事件图谱的关键技术：</p>
 <h4 id="百度事件图谱技术概述">1、百度事件图谱技术概述</h4>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1ocb3krd8j20qc0fidi0.jpg"
-alt="image-20220427160420167" />
-<figcaption aria-hidden="true">image-20220427160420167</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1ocb3krd8j20qc0fidi0.jpg" /></p>
 <p>这是百度事件图谱的技术概览图，主要分成四个层次：数据层、构建层、认知层和应用层。本次分享的重点是事件图谱的构建层技术。</p>
 <h4 id="事件图谱构建">2、事件图谱构建</h4>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1ocf3zp5dj20qh0fhwgl.jpg"
-alt="image-20220427160810466" />
-<figcaption aria-hidden="true">image-20220427160810466</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1ocf3zp5dj20qh0fhwgl.jpg" /></p>
 <blockquote>
 <p>事件图谱跟传统的知识图谱在构建上的区别：</p>
 </blockquote>
@@ -280,12 +262,8 @@ schema 定义出来，然后进行抽取与归一，最后再进行入库。而�
 能进行后续的相关操作 ( 构建表示体系、抽取等 )。这是两者非常不同的一个地
 方。</p>
 <h4 id="事件检测">3、事件检测</h4>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1ocmd9dy7j20qe0fg0vf.jpg"
-alt="image-20220427161511312" />
-<figcaption aria-hidden="true">image-20220427161511312</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1ocmd9dy7j20qe0fg0vf.jpg" /></p>
 <blockquote>
 <p>事件检测的目标是快、准、全地进行客观事件的收录，其主要挑战有三点：</p>
 </blockquote>
@@ -299,12 +277,8 @@ alt="image-20220427161511312" />
 <p>通过这个检测过程，只要一篇文档中有一部分提到了某个事件就可以进行事件收录，结合百度的高时效新闻流，上面这种流程可以实现分钟级事件收录，并且整体的准确率与覆盖率都可以到
 90+%。此外，由于上述流程中涉及多个策略模型，我们还尝试了多任务学习框架，上述所提及的多个策略模型在经过多任务学习后能得到相互增强，在资源消耗降低的同时，每个模型的效果都能得到进一步的提升。</p>
 <h4 id="知识表示">4、知识表示</h4>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1ocs618h5j20qe0f3gou.jpg"
-alt="image-20220427162045353" />
-<figcaption aria-hidden="true">image-20220427162045353</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1ocs618h5j20qe0f3gou.jpg" /></p>
 <p>事件表示构建的目标是构建一个高准确、高覆盖的事件知识表示体系，以支持后面事件抽取任务。在这一个任务上，它跟实体的
 Schema 挖掘也是有明显差异的。</p>
 <p>​ 实体的 Schema
@@ -318,12 +292,8 @@ Schema
 从类型名可以知道该事件可能会有一个“破产人”属性，但是“债权人”这个属性就必须从该类型相关的正文中才能找到。目前的解决方案是开放挖掘+人工校验。具体来说分成下面几个部分。首先是开放类型挖掘，基于事件检测得到的事件库、日志等数据，我们挖掘出事件对应的类型并进行层次构建。在得到这样一个事件类型体系之后，我们会针对事件类型进行相关资讯召回，再进行每个类型的角色挖掘。最后再进行人工校验。通过这种方式，我们在几十个领域中得到几千个事件类型，以及一万多的事件角色。</p>
 <h4 id="事件抽取">5、事件抽取</h4>
 <h5 id="事件要素结构化抽取">1、事件要素结构化抽取</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1ocygqhltj20q80ew76r.jpg"
-alt="image-20220427162647199" />
-<figcaption aria-hidden="true">image-20220427162647199</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1ocygqhltj20q80ew76r.jpg" /></p>
 <p>​
 第三步是事件抽取的任务。事件抽取的目标是对事件的相关要素进行结构化的抽取。还是以宋仲基、宋慧乔结婚为例，抽取的目标是，将这个事件抽取出来，并且能够识别它是一个结婚的事件类型，并且根据结婚类型的角色，包括时间、地点、男方、女方等，单独抽取出每个角色的具体的值。</p>
 <p>事件抽取的技术特点是：事件抽取是事件级理解的基础。只有通过事件抽取，才能够将事件图谱和知识图谱结合起来，提升事件理解能力；</p>
@@ -334,12 +304,8 @@ alt="image-20220427162647199" />
 <p>事件抽取是当前学术界的热点之一。近年来有很多优秀的事件抽取论文在自然语言处理顶会、顶刊上发表。然而，事件抽取的技术难度依然是较大的，学术上效果还没有达到直接可用的水平，目前在公开权威数据集
 ACE2005 上论元分类任务只有 60%左右的 F1。</p>
 <h5 id="挑战与方案">2、挑战与方案</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1od1fz2g2j20q80f00v7.jpg"
-alt="image-20220427162940233" />
-<figcaption aria-hidden="true">image-20220427162940233</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1od1fz2g2j20q80f00v7.jpg" /></p>
 <p>​
 目前百度通过类型角色设计、前后处理、模型优化方面的努力，在特定场景下效果能达到业务需求。但除了效果，事件抽取还有其他方面的挑战。</p>
 <p>事件抽取必须面对多种多样的文本形态。事件抽取有时候需要从短文本中抽取，如标题、事件句；有时候需要从篇章的角度进行抽取；有时候还需要跨篇章围绕某事件进行抽取。</p>
@@ -348,23 +314,15 @@ alt="image-20220427162940233" />
 <p>我们整体的解决方案如右图。针对不同的关注点和文本形态，我们均挖掘出核心的事件句。然后，基于这些事件句，针对不同场景使用不同的抽取技术进行抽取。</p>
 <p>目前我们已具备的抽取技术包括通用属性抽取、语义角色抽取和自定义的论元抽取。</p>
 <h5 id="通用属性抽取">3、通用属性抽取</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1od4fwy3yj20qa0f3juh.jpg"
-alt="image-20220427163234000" />
-<figcaption aria-hidden="true">image-20220427163234000</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1od4fwy3yj20qa0f3juh.jpg" /></p>
 <p>​
 通用属性抽取的目的是抽取触发词、时间，地点、参与者等通用的事件角色。由于技术是比较通用的，我们采取的是一个多属性联合抽取的模型。这里的
 ERNIE是百度提出的一个预训练语言模型，在这基础上再加上
 Bi-LSTM+CRF，同时抽取多个属性。如图所示，该流程是先进行一次事件句的识别，找到关于某个事件的句子。然后，再对这个句子进行多属性联合抽取，并对抽取的结果进行归一。地点归一到国家、省市区县等，时间进行规范化、参与者实体化等等。</p>
 <h5 id="自定义论元抽取">4、自定义论元抽取</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1od771mvlj20qr0f8dii.jpg"
-alt="image-20220427163512132" />
-<figcaption aria-hidden="true">image-20220427163512132</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1od771mvlj20qr0f8dii.jpg" /></p>
 <p>自定义论元抽取要解决的问题就是如何根据用户定义的角色少样本甚至零样本地进行事件抽取。我们的方案是基于阅读理解问答的事件抽取模型。</p>
 <p>我们把整个事件抽取的流程分成三轮问答：</p>
 <p>第一轮，问触发词，抽取出输入事件句的触发词是什么。</p>
@@ -373,12 +331,8 @@ alt="image-20220427163512132" />
 <p>这个方案中，角色、事件类型这些本来跟模型耦合的东西都解耦了，新的角色和事件类型只需要把它们放到问题中就可以抽取，从而实现少样本、甚至零样本的抽取。相关研究成果已被
 EMNLP Findings，2020 收录。</p>
 <h5 id="语义角色抽取">5、语义角色抽取</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1odakj4yej20qe0ft770.jpg"
-alt="image-20220427163826182" />
-<figcaption aria-hidden="true">image-20220427163826182</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1odakj4yej20qe0ft770.jpg" /></p>
 <p>​
 刚才讲到了两种事件抽取的方式，一种是通用属性抽取，一种是基于问答的论元抽取。通用属性抽取的问题是无法灵活的泛化。阅读理解方案的问题则是效率，</p>
 <p>因为我们需要对每一个角色都进行单独提问抽取。有没有一种方法可以既具灵活性又具备高效率？我们对这个问题提出了多种不同的方案，其中一种方案是：语义角色抽取。</p>
@@ -388,22 +342,14 @@ n*类型数这一数量级，降低到只有十几个语义角色的量</p>
 <p>在这个基础之上我们还可以通过多层指针结构对不同的语义角色同时进行抽取。</p>
 <p>如右图所示，整个句子只需要一次进入预训练语言模型后，再进入多层指针网络就可以同时抽取所有的角色。这样既保持了整体的灵活性也保持了抽取的高效率。</p>
 <h5 id="关系挖掘">6、关系挖掘</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1odcv09u3j20qv0fiwgf.jpg"
-alt="image-20220427164034465" />
-<figcaption aria-hidden="true">image-20220427164034465</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1odcv09u3j20qv0fiwgf.jpg" /></p>
 <p>事件之间存在多种关系。我们目前定义了 4
 种关系，包括从属关系、共指关系、</p>
 <p>时序关系和因果关系。由于时间的关系，我本次只分享因果关系。</p>
 <p><strong>因果关系</strong></p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1oddwrwhej20qp0f276t.jpg"
-alt="image-20220427164140137" />
-<figcaption aria-hidden="true">image-20220427164140137</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1oddwrwhej20qp0f276t.jpg" /></p>
 <blockquote>
 <p>因果关系的挖掘存在诸多挑战：</p>
 </blockquote>
@@ -419,12 +365,8 @@ alt="image-20220427164140137" />
 Pair
 中的每个事件节点再进行归一，将不同篇章中描述的相同事件归一在一起。归一结束后，我们就可以得到一个能支持多步因果的因果图谱。我们目前已经形成一个节点正确率90+%，节点数、关系数达到百万量级的因果图谱。</p>
 <h5 id="事理图谱">7、事理图谱</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1odgubizaj20qm0g5dia.jpg"
-alt="image-20220427164418562" />
-<figcaption aria-hidden="true">image-20220427164418562</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1odgubizaj20qm0g5dia.jpg" /></p>
 <p>​
 ·此基础上我们就可以进行因果推理了。比如，想知道某个事情是由什么原因导致的？它可能会有什么后果？我们只需要在因果图谱中先定位到这个节点，然后就可以在图谱上面进行基于拓扑的推理。</p>
 <p>问题来了，如果说我们需要进行推理的事件在因果语料中不存在，那我们应该怎么样进行推理和挖掘呢？目前我们正在尝试的
@@ -436,44 +378,24 @@ alt="image-20220427164418562" />
 <h3 id="事件图谱应用">事件图谱应用</h3>
 <p>上面我已经讲了事件图谱的检测、表示、抽取以及因果关系，下面我将介绍事件</p>
 <p>图谱在百度以及行业中的具体应用：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1odsph8dfj20qt0frta4.jpg"
-alt="image-20220427165553073" />
-<figcaption aria-hidden="true">image-20220427165553073</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1odsph8dfj20qt0frta4.jpg" /></p>
 <p>目前百度事件图谱的相关应用主要有这四块。第一块是热点发现，第二块是事件脉络，第三块是资源关联，第四块是因果推理。</p>
 <h5 id="多维度热点事件发现">1、多维度热点事件发现</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1odu1oamtj20qv0ft764.jpg"
-alt="image-20220427165709945" />
-<figcaption aria-hidden="true">image-20220427165709945</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1odu1oamtj20qv0ft764.jpg" /></p>
 <p>在热点发现这一块，我们能够做到分钟级的热点发现。对于行业热点、地域热点等中长尾事件也可以做到分钟级的发现，因此我们可以支持很多对中长尾、小事件敏感的应用场景。目前我们的事件检测已能够支持二十多个行业、三百多个省市的分钟级的热点发现，并在人民网，齐鲁网等数十家媒介机构中落地。</p>
 <h5 id="时间脉络">2、时间脉络</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1odvqqrn2j20qw0fcmz6.jpg"
-alt="image-20220427165848226" />
-<figcaption aria-hidden="true">image-20220427165848226</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1odvqqrn2j20qw0fcmz6.jpg" /></p>
 <p>其次是事件脉络。通过事件图谱的整个事件的关联关系，我们在搜索上上线了热点事件脉络，可以将热点事件的前因后果进行关联，并以脉络的形式呈现给用户，大大提升了用户了解热点前因后果的效率。在疫情中，我们也通过事件脉络支持了疫情相关的事件脉络的查询。目前脉络相关的产品也支持了百度智能创作平台、事件脉络视频等众多应用。</p>
 <h5 id="资源关联">3、资源关联</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1odwzpruxj20qy0fmwge.jpg"
-alt="image-20220427165959919" />
-<figcaption aria-hidden="true">image-20220427165959919</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1odwzpruxj20qy0fmwge.jpg" /></p>
 <p>第三块是资源关联。事件图谱围绕事件将相关的资源，如资讯、图片、视频等进行关联。目前我们通过这样的技术在“百家号的创作大脑”上面进行了应用，通过事件中心资源组织，辅助作者的内容生产分发效率大幅提升。</p>
 <h5 id="因果推理">4、因果推理</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1ody4cfevj20qy0f5wg8.jpg"
-alt="image-20220427170100802" />
-<figcaption aria-hidden="true">image-20220427170100802</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1ody4cfevj20qy0f5wg8.jpg" /></p>
 <p>最后一块是因果推理。目前，我们在金融领域做了一些因果推理的尝试。我们将
 5
 年历史数据的相关因果进行挖掘和提取，构成了一个因果图谱。该图谱目前的规模接近两百万节点与关系。我们能够进行在线、实时的溯因推理。支持推理的
@@ -481,33 +403,21 @@ alt="image-20220427170100802" />
 “非洲猪瘟爆发”为例，该事件爆发会导致
 “生猪存栏处于低位”，同时也会导致下游“玉米需求”下降，最终影响到与“玉米”行业相关的公司。目前在这个方向上，我们还处于探索阶段，非常欢迎金融圈感兴趣的朋友们跟我们一起合作&amp;探讨。</p>
 <h5 id="事件抽取数据集及评测任务">5、事件抽取数据集及评测任务</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1oe0r2i1pj20qn0f9q5i.jpg"
-alt="image-20220427170336780" />
-<figcaption aria-hidden="true">image-20220427170336780</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1oe0r2i1pj20qn0f9q5i.jpg" /></p>
 <p>在推动学界、业界事件相关技术发展方面，我们在 2020
 语言与智能技术竞赛中发布了目前最大的中文事件抽取数据集——DuEE，并吸引了一千多支团队报名。</p>
 <p>该数据集目前已经对外开源，在千言项目当中可以进行公开下载，同时我们也提</p>
 <p>供了一个公开的测评榜单，欢迎大家打榜参与，共同推动技术的发展。</p>
 <h3 id="总结与展望">总结与展望</h3>
 <h5 id="总结">1、总结</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1oe25xp6nj20rp0fljsf.jpg"
-alt="image-20220427170453023" />
-<figcaption aria-hidden="true">image-20220427170453023</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1oe25xp6nj20rp0fljsf.jpg" /></p>
 <p>​
 在本次分享中，我首先对事件图谱的价值进行了分享，包括认知方面的价值以及应用方面的价值。然后介绍了事件图谱的构建技术，包括检测、表示、抽取以及因果关系。同时也介绍了我们在事理图谱上的一些想法。最后分享了事件图谱的相关应用示例，包括热点发现、事件脉络、资源聚合以及因果推理等。</p>
 <h5 id="展望">2、展望</h5>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h1oe2o2zb8j20r10g2wfd.jpg"
-alt="image-20220427170527676" />
-<figcaption aria-hidden="true">image-20220427170527676</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h1oe2o2zb8j20r10g2wfd.jpg" /></p>
 <p>在未来，百度事件图谱的发展方向主要包括三个方面：</p>
 <p>在技术方面，我们会进一步完善事件的构建能力，包括抽取、事件关系与事理。</p>
 <p>在应用方面，我们还会进一步强化应用方面的能力，包括基于事件的理解、资源组织和辅助决策等能力。</p>
