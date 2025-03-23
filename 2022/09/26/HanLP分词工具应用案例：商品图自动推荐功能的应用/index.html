@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        HanLP分词工具应用案例：商品图自动推荐功能的应用 | 思想放牧之地
+      
+    </title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png" />
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color="" />
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/normal.ttf);
+        font-weight: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css' />
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    
+      <div id="search-mask" style="display:none">
+  <div class="search-main" id="search-main">
+    <div class="search__head">
+      <div class="search-form">
+        <svg t="1706347533072"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             p-id="7828"
+             width="20"
+             height="20">
+          <path d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z" fill="#000000" p-id="7829">
+          </path>
+        </svg>
+        <input id="search-input" placeholder="搜索文章">
+        <svg t="1706361500528"
+             id="search-clear"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             p-id="4351"
+             width="20"
+             height="20">
+          <path d="M512 562.688l-264.2944 264.2944-50.688-50.688L461.312 512 197.0176 247.7056l50.688-50.688L512 461.312l264.2944-264.2944 50.688 50.688L562.688 512l264.2944 264.2944-50.688 50.688L512 562.688z" fill="#00" p-id="4352">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class="search__body" id="search-result"></div>
+    <div class="search__foot"></div>
+  </div>
+</div>
+
+    
+    
+    <div class=head>
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox" />
+        <div class="nav-right">
+          
+            <div class="search-outer">
+  <div class="search" id="search-btn">
+    <svg t="1706347533072"
+         class="icon"
+         viewBox="0 0 1024 1024"
+         version="1.1"
+         xmlns="http://www.w3.org/2000/svg"
+         p-id="7828"
+         width="20"
+         height="20">
+      <path d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z" fill="#000000" p-id="7829">
+      </path>
+    </svg>
+    <span>搜索</span>
+    <span class="search-shortcut-key">Ctrl K</span>
+  </div>
+</div>
+
+          
+          <div class="nav-menu">
+            
+              
+                <a class="nav-menu-item" href="/AI">AI大模型</a>
+              
+                <a class="nav-menu-item" href="/photograph">拍摄摄影</a>
+              
+                <a class="nav-menu-item" href="/live">生活随记</a>
+              
+            
+            <a class="nav-menu-item" href='/cv/'>简历</a>
+          </div>
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">HanLP分词工具应用案例：商品图自动推荐功能的应用</div>
+        <div class="post-info">
+          
+  <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-tag">#大数据</a>
+
+
+          <span class="post-date">2022-09-26</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <h2
+id="hanlp分词工具应用案例商品图自动推荐功能的应用">HanLP分词工具应用案例：商品图自动推荐功能的应用</h2>
+<blockquote>
+<p>本篇分享一个hanlp分词工具应用的案例，简单来说就是做一图库，让商家轻松方便的配置商品的图片，最好是可以一键完成配置的。</p>
+</blockquote>
+<p>先看一下效果图吧：</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8t1rd0ji2g30bk0kh7dt.gif"
+alt="null" />
+<figcaption aria-hidden="true">null</figcaption>
+</figure>
+<p>商品单个推荐效果：匹配度高的放在最前面</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8t1sat0r0g30bk0khwjl.gif"
+alt="null" />
+<figcaption aria-hidden="true">null</figcaption>
+</figure>
+<p>这个想法很好，那怎么实现呢？分析了一下解决方案步骤：</p>
+<ol type="1">
+<li>图库建设：至少要有图片吧，图片肯定要有关联的商品名称、商品类别、商品规格、关键字等信息。</li>
+<li>商品分词算法：由于商品名称是商家自己设置的，不是规范的，所以不可能完全匹配，要有好的分词库来找出关键字。还有一点，分词库要能够自定义词库，最好能动态添加。如果读者不知道什么是分词，请自行百度，本文不普及这个。</li>
+<li>推荐匹配度算法：肯定要最匹配的放在前面，而且要有匹配度分数。商家肯定有图库没有的商品，自动匹配的时候，不能随便配置不相关的图片。</li>
+</ol>
+<p>先说明一下，本文企业没有搜索引擎之类的工具，所以本质就靠的是数据库检索。</p>
+<p>首页让我们先分析一下图库，下面是图库的设置界面。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8t1suxy7qj30v90ksmyt.jpg"
+alt="null" />
+<figcaption aria-hidden="true">null</figcaption>
+</figure>
+<p>让我们先贴一下图库的表结构：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> `wj_tbl_gallery` (</span><br><span class="line"></span><br><span class="line">  `gallery_id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;主键&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `fileid` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;文件服务器上的文件ID&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `ptype` tinyint(<span class="number">4</span>) <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;图片类型，0 点歌屏点餐图片&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `materialsort` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;商品分类&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `materialbrand` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;商品品牌&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `materialname` <span class="type">varchar</span>(<span class="number">100</span>) <span class="keyword">NOT NULL</span> COMMENT <span class="string">&#x27;商品名称&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `material_spec` <span class="type">varchar</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;商品规格&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `material_allname` <span class="type">varchar</span>(<span class="number">200</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;商品完整名称&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `status` tinyint(<span class="number">4</span>) <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;状态，0正常，1停用，2删除&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `updatedatetime` <span class="type">timestamp</span> <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `keyword` <span class="type">varchar</span>(<span class="number">200</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;商品关键字，用逗号隔开&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  `bstorage` tinyint(<span class="number">4</span>) <span class="keyword">NOT NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;关键字是否入库 0没有，1有&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  <span class="keyword">PRIMARY KEY</span> (`gallery_id`),</span><br><span class="line"></span><br><span class="line">  KEY `idx_fileid` (`fileid`)</span><br><span class="line"></span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">435</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8 COMMENT<span class="operator">=</span><span class="string">&#x27;图库信息表&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>数据示例：</strong></p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8t1tj2g8kj30v90120su.jpg"
+alt="null" />
+<figcaption aria-hidden="true">null</figcaption>
+</figure>
+<p>简单说一下material_allname是干什么用的呢，主要就是拼接商品名称、规则
+、关键字字段。用来写sql的时候比较方便。关键字字段是干什么用的呢，作用有两个。1是商品可能有多个名字，补充名称的。二是给分词库动态添加词库。图库简单说到这。</p>
+<p>再说一下分词库，笔者选择的是开源的汉语言分词库-hanlp分词工具</p>
+<p>优点是词库大，有词性分析，可以自定义词库。缺点当然也有，就是不支持数据库方法动态读取词库。后面说一下我自己的解决办法。</p>
+<p>上代码：</p>
+<p>分词代码,这其中去掉一些没用字符。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8t1uip0drj30ow1ppn0l.jpg"
+alt="null" />
+<figcaption aria-hidden="true">null</figcaption>
+</figure>
+<p>我们分词，就是调用SegmentUtils.segmentTerm(materialname);</p>
+<p>动态添加词库方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">addCustomerDictory</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">Integer</span> <span class="variable">max</span> <span class="operator">=</span> galleryRepository.getMaxGallery();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(CommonUtils.isNotEmpty(max) &amp;&amp; max &gt; <span class="number">0</span> &amp;&amp; max &gt; SegmentUtils.CACHE_GALLERY_ID)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> <span class="variable">oldid</span> <span class="operator">=</span> SegmentUtils.CACHE_GALLERY_ID;</span><br><span class="line"></span><br><span class="line">            SegmentUtils.CACHE_GALLERY_ID = max;</span><br><span class="line"></span><br><span class="line">            Listgallery = galleryRepository.getGallery(oldid,max);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(CommonUtils.isNotEmpty(gallery))&#123;</span><br><span class="line"></span><br><span class="line">                MapdicMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span>(String w : gallery)&#123;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span>(CommonUtils.isNotEmpty(w))&#123;</span><br><span class="line"></span><br><span class="line">                        String[] array = w.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span>(CommonUtils.isNotEmpty(array))&#123;</span><br><span class="line"></span><br><span class="line">                            <span class="keyword">for</span>(String item : array)&#123;</span><br><span class="line"></span><br><span class="line">                                <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> item.trim();</span><br><span class="line"></span><br><span class="line">                                <span class="keyword">if</span>(CommonUtils.isNotEmpty(value))&#123;</span><br><span class="line"></span><br><span class="line">                                    dicMap.put(value, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">                                &#125;</span><br><span class="line"></span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                Setkeys = dicMap.keySet();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(CommonUtils.isNotEmpty(keys))&#123;</span><br><span class="line"></span><br><span class="line">                    SegmentUtils.insertCustomDictory(keys);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * 获取关键字</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> deng</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2019年3月13日</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> galleryId</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Query(&quot;select keyword from Gallery a where galleryId &gt; ?1 and galleryId&lt;=?2 and a.keyword !=&#x27;&#x27; and bstorage=0&quot;)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListgetGallery</span><span class="params">(<span class="type">int</span> bgalleryId, <span class="type">int</span> egalleryId)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Cacheable(value = CacheConstants.CACHE_GALLERY, keyGenerator = CacheConstants.KEY_GENERATOR_METHOD)</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Query(value = &quot;select gallery_id from wj_tbl_gallery a where a.keyword !=&#x27;&#x27; and bstorage=0 order by gallery_id desc limit 1&quot;, nativeQuery = true)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Integer <span class="title function_">getMaxGallery</span><span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+<p>​
+说一下解决思路，由于HanLP文档上没有看到从mysql上动态添加词库方法，只有CustomDictionary.insert能动态添加单个实例词库，系统如果重启，就要重新添加。我就想出一个办法，就是分词的时候，查一下类的保存的最大图库表的主键是什么，如果跟数据库一样，就不动态添加。如果小于图库的主键，就把没有的那一段用CustomDictionary.insert添加进去。系统一般不重启，如果重启就在分词的时候重新添加一下。查询数据库当然都有缓存，编辑图库的时候，把对应缓存清除一下。这种方式也能支持分布式环境，多个实例都是一样处理的。每过一段时间，就把图库表的关键字词库搞成文件的词库，避免动态添加太多，占用太多内存。自定义词库其实是很重要的，任何分词库都不可能包含所有的词库，而分词算法是根据词库来展开的，可以说词库决定了分词结果的准确性。</p>
+<p>让我们看一下分词的效果:</p>
+<p><strong>商品名称为”雪碧（大）“的分词结果 雪碧/nz, 大/a
+,其中nz表示专有词汇，a表示形容词。</strong></p>
+<p>再看一下不理想的分词结果：</p>
+<p><strong>商品品名称:”蕾芙曼金棕色啤酒“,类别名称:啤酒,</strong></p>
+<p><strong>分词结果:蕾/ng,芙/n,曼/ag,金/ng,棕色/n,啤酒/nz</strong></p>
+<p>很明显，分词结果不理想，蕾芙曼金棕色其实是一个商品名，不能分开。怎么办呢，这时候动态添加词汇功能就派上用场了。</p>
+<p>再图库关键字时差添加蕾芙曼金棕色啤酒，保存一下，再看一下分词效果：</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8t1w6wmmvj30bv0d10t2.jpg"
+alt="null" />
+<figcaption aria-hidden="true">null</figcaption>
+</figure>
+<p>物品名称:蕾芙曼金棕色啤酒,类别名称:啤酒,分词结果:蕾芙曼金棕色/nz,啤酒/nz</p>
+<p>蕾芙曼金棕色被分到了一起，达到预期效果，这其实就是
+CustomDictionary.insert(data, "nz
+1024");再起作用。hanlp具体API功能，请参考官方文档，本文就不介绍了。</p>
+<p>最后重头戏来了，商品图片匹配度分析。作者就是采用了mysql的sql词句的方法搞定了，其实就用到了LOCATE函数，很简单。SQL示例如下:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> gallery_id, fileid, materialname, material_allname, score</span><br><span class="line"></span><br><span class="line">, ROUND(score <span class="operator">/</span> <span class="number">4</span> <span class="operator">*</span> <span class="number">100</span>, <span class="number">0</span>) <span class="keyword">AS</span> rate</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> (</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> a.gallery_id, a.fileid, materialname, material_allname</span><br><span class="line"></span><br><span class="line">, IF(LOCATE(<span class="string">&#x27;雪碧&#x27;</span>, a.material_allname), <span class="number">2</span>, <span class="number">0</span>) <span class="operator">+</span> IF(LOCATE(<span class="string">&#x27;大&#x27;</span>, a.material_allname), <span class="number">1</span>, <span class="number">0</span>) <span class="operator">+</span> IF(LOCATE(<span class="string">&#x27;饮料&#x27;</span>, a.material_allname), <span class="number">1</span>, <span class="number">0</span>) <span class="keyword">AS</span> score</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> wj_tbl_gallery a</span><br><span class="line"></span><br><span class="line"><span class="keyword">WHERE</span> a.STATUS <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">AND</span> (a.material_allname <span class="keyword">LIKE</span> <span class="string">&#x27;%雪碧%&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">OR</span> a.material_allname <span class="keyword">LIKE</span> <span class="string">&#x27;%大%&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">OR</span> a.material_allname <span class="keyword">LIKE</span> <span class="string">&#x27;%饮料%&#x27;</span>)</span><br><span class="line"></span><br><span class="line">) b</span><br><span class="line"></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> score <span class="keyword">DESC</span>, materialname</span><br><span class="line"></span><br><span class="line">LIMIT <span class="number">0</span>, <span class="number">8</span></span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8t1wycbjuj30gt03laa9.jpg"
+alt="null" />
+<figcaption aria-hidden="true">null</figcaption>
+</figure>
+<p>可以看出gallery_id是第一条，它的rate的是75，满分是100，匹配度蛮高的。</p>
+<p>说一下匹配度算法原则，如果完全匹配就是1百分，肯定就上了。然后去除某些关键字后，也匹配上了就是90分。最后采用分词算法，按照1百分打分，其中如果高于50分，可以算基本匹配，自动配置图片的时候，就可以当成匹配成功。总体原则就是匹配词汇越多，分数越多。但是两个字的词汇，和5个字的词汇，分数是不一样的。还有词性，专属词汇理论上应该比形容词分数高。详见下面的calculateWeight代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&gt; queryList(String searchstr, <span class="type">int</span> pagenumber, <span class="type">int</span> pagesize, String materialsortname,</span><br><span class="line"></span><br><span class="line">            ListsegmentList) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;%&quot;</span> + searchstr + <span class="string">&quot;%&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 先简单搜索 ，完全匹配100分</span></span><br><span class="line"></span><br><span class="line">        List&gt; list = queryList(name, pagenumber, pagesize, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (CommonUtils.isEmpty(list)) &#123;</span><br><span class="line"></span><br><span class="line">            searchstr = searchstr.replaceAll(<span class="string">&quot;\\s&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">regEx</span> <span class="operator">=</span> <span class="string">&quot;(特价)|(/)|(\\()|(\\))|(（)|(）)|(\\d+ml)|(买.送.)|(/)|(\\*)&quot;</span>;</span><br><span class="line"></span><br><span class="line">            searchstr = searchstr.replaceAll(regEx, <span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (CommonUtils.isNotEmpty(searchstr)) &#123;</span><br><span class="line"></span><br><span class="line">                name = <span class="string">&quot;%&quot;</span> + searchstr + <span class="string">&quot;%&quot;</span>;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 简单过滤 90分</span></span><br><span class="line"></span><br><span class="line">                list = queryList(name, pagenumber, pagesize, <span class="number">90</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 剩下分词 靠计算</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (CommonUtils.isEmpty(list)) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (CommonUtils.isNotEmpty(segmentList)) &#123;</span><br><span class="line"></span><br><span class="line">                    list = queryListTerm(pagenumber, pagesize, segmentList, materialsortname);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 如果只有分类，先定10分</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (CommonUtils.isNotEmpty(materialsortname))</span><br><span class="line"></span><br><span class="line">                    list = queryList(materialsortname, pagenumber, pagesize, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&gt; queryList(String name, <span class="type">int</span> pagenumber, <span class="type">int</span> pagesize, <span class="type">int</span> rate) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;SELECT\n&quot;</span> + <span class="string">&quot;  a.gallery_id,\n&quot;</span> + <span class="string">&quot;  a.fileid,a.material_allname,a.materialname \n, &quot;</span> + rate</span><br><span class="line"></span><br><span class="line">                + <span class="string">&quot; rate FROM\n&quot;</span> + <span class="string">&quot;  wj_tbl_gallery a\n&quot;</span> + <span class="string">&quot;WHERE\n&quot;</span></span><br><span class="line"></span><br><span class="line">                + <span class="string">&quot;  a.material_allname LIKE :searchstr and a.status = 0 order by length(materialname) LIMIT :pagenumber,:pagesize &quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">Dto</span> <span class="variable">param</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BaseDto</span>();</span><br><span class="line"></span><br><span class="line">        param.put(<span class="string">&quot;searchstr&quot;</span>, name).put(<span class="string">&quot;pagenumber&quot;</span>, pagenumber * pagesize).put(<span class="string">&quot;pagesize&quot;</span>, pagesize);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> namedParameterJdbcTemplate.queryForList(sql, param);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&gt; queryListTerm(<span class="type">int</span> pagenumber, <span class="type">int</span> pagesize, ListsegmentList,</span><br><span class="line"></span><br><span class="line">            String materialsortname) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">Dto</span> <span class="variable">param</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BaseDto</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">StringBuffer</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">StringBuffer</span> <span class="variable">wsb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>(<span class="string">&quot; (&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 总权重</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">tw</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (CommonUtils.isNotEmpty(segmentList)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; segmentList.size(); i++) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> segmentList.get(i).word;</span><br><span class="line"></span><br><span class="line">                <span class="type">int</span> <span class="variable">w</span> <span class="operator">=</span> SegmentUtils.calculateWeight(segmentList.get(i));</span><br><span class="line"></span><br><span class="line">                str = StringUtils.escapeMysqlSpecialChar(str);</span><br><span class="line"></span><br><span class="line">                tw += w;</span><br><span class="line"></span><br><span class="line">                sb.append(<span class="string">&quot;if(LOCATE(&#x27;&quot;</span>).append(str).append(<span class="string">&quot;&#x27;, a.material_allname),&quot;</span>).append(w).append(<span class="string">&quot;,0) &quot;</span>);</span><br><span class="line"></span><br><span class="line">                wsb.append(<span class="string">&quot; a.material_allname like &#x27;%&quot;</span>).append(str).append(<span class="string">&quot;%&#x27; &quot;</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (i &lt; segmentList.size() - <span class="number">1</span>) &#123;</span><br><span class="line"></span><br><span class="line">                    sb.append(<span class="string">&quot; + &quot;</span>);</span><br><span class="line"></span><br><span class="line">                    wsb.append(<span class="string">&quot; or &quot;</span>);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 类别单独处理，目前权重较低</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 表示字符串是否为空</span></span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> <span class="variable">emptylen</span> <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (CommonUtils.isNotEmpty(materialsortname)) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (sb.length() &gt; emptylen) &#123;</span><br><span class="line"></span><br><span class="line">                    sb.append(<span class="string">&quot; + &quot;</span>);</span><br><span class="line"></span><br><span class="line">                    wsb.append(<span class="string">&quot; or &quot;</span>);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                tw += SegmentUtils.DWEIGHT;</span><br><span class="line"></span><br><span class="line">                materialsortname = StringUtils.escapeMysqlSpecialChar(materialsortname);</span><br><span class="line"></span><br><span class="line">                sb.append(<span class="string">&quot; if(LOCATE(&#x27;&quot;</span>).append(materialsortname).append(<span class="string">&quot;&#x27;, a.material_allname),&quot;</span>)</span><br><span class="line"></span><br><span class="line">                        .append(SegmentUtils.DWEIGHT).append(<span class="string">&quot;,0) &quot;</span>);</span><br><span class="line"></span><br><span class="line">                wsb.append(<span class="string">&quot; a.material_allname like &#x27;%&quot;</span>).append(materialsortname)</span><br><span class="line"></span><br><span class="line">                        .append(<span class="string">&quot;%&#x27; &quot;</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (sb.length() &gt; emptylen) &#123;</span><br><span class="line"></span><br><span class="line">                sb.append(<span class="string">&quot; as score &quot;</span>);</span><br><span class="line"></span><br><span class="line">                wsb.append(<span class="string">&quot;) &quot;</span>);</span><br><span class="line"></span><br><span class="line">                <span class="type">String</span> <span class="variable">scoreSelect</span> <span class="operator">=</span> sb.toString();</span><br><span class="line"></span><br><span class="line">                <span class="type">String</span> <span class="variable">scorewhere</span> <span class="operator">=</span> wsb.toString();</span><br><span class="line"></span><br><span class="line">                <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;select gallery_id,fileid,materialname,material_allname,score,ROUND(score/&quot;</span> + tw</span><br><span class="line"></span><br><span class="line">                        + <span class="string">&quot;*100, 0) rate  from  (SELECT &quot;</span> + <span class="string">&quot;  a.gallery_id, &quot;</span></span><br><span class="line"></span><br><span class="line">                        + <span class="string">&quot;  a.fileid,materialname,material_allname, &quot;</span> + scoreSelect + <span class="string">&quot; FROM &quot;</span></span><br><span class="line"></span><br><span class="line">                        + <span class="string">&quot;  wj_tbl_gallery a &quot;</span> + <span class="string">&quot;WHERE &quot;</span> + <span class="string">&quot; a.status = 0 and &quot;</span> + scorewhere</span><br><span class="line"></span><br><span class="line">                        + <span class="string">&quot; ) b order by score desc ,materialname LIMIT &quot;</span> + pagenumber * pagesize + <span class="string">&quot;,&quot;</span> + pagesize;</span><br><span class="line"></span><br><span class="line">                param.put(<span class="string">&quot;pagenumber&quot;</span>, pagenumber * pagesize).put(<span class="string">&quot;pagesize&quot;</span>, pagesize);</span><br><span class="line"></span><br><span class="line">                logger.debug(<span class="string">&quot;商家搜索图库的SQL语句是&#123;&#125;&quot;</span>, sql);</span><br><span class="line"></span><br><span class="line">                List&gt; list = namedParameterJdbcTemplate.queryForList(sql, param);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (CommonUtils.isNotEmpty(list)) &#123;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">return</span> list;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * 计算分词权重</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> deng</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2019年6月21日</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> term</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">calculateWeight</span><span class="params">(Term term)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 汉字数</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> countChinese(term.word);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 大于3个汉字，权重增加</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> num &gt;= <span class="number">3</span> ? <span class="number">2</span> + (num - <span class="number">3</span>) / <span class="number">2</span> : DWEIGHT;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 专属词，如果有两个字至少要最小分是2分</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (term.nature == Nature.nz &amp;&amp; value &lt;= DWEIGHT) &#123;</span><br><span class="line"></span><br><span class="line">            value = DWEIGHT + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>总结一下，本文介绍的商品图片推荐和自动匹配方法，可以看出来是相当简单的，本质就是mysql的like%%
+优化来的，依赖sql语句和hanlp分词库，做法简单，但是能满足专门商品的匹配，适合小图库。</p>
+
+      </div>
+    </div>
+    
+      <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script>
+      <script>
+        if (window.mermaid) {
+          mermaid.initialize({"startOnload":true});
+        }
+      </script>
+    
+  </article>
+  <div class="post__foot">
+    
+      <div class="like-author">
+  <input type="checkbox" id="likeCode" />
+  <div class="author-face">
+    <img height="100px"
+         width="100px"
+         id="front-face"
+         alt="author face"
+         src="/images/author-face.jpg" />
+    <img height="100px"
+         width="100px"
+         id="back-face"
+         alt="like code"
+         src="/images/pay-code.jpg" />
+  </div>
+  <div class="like-text">“给作者倒杯卡布奇诺”</div>
+  <label for="likeCode" class="like-btn">
+    <svg viewBox="0 0 1024 1024"
+         width="20px"
+         style="margin-right: 10px"
+         height="20px">
+      <path d="M466.88 908.96L113.824 563.296a270.08 270.08 0 0 1 0-387.392c108.8-106.56 284.896-106.56 393.696 0 1.504 1.472 2.976 2.944 4.448 4.48 1.472-1.536 2.944-3.008 4.448-4.48 108.8-106.56 284.896-106.56 393.696 0a269.952 269.952 0 0 1 34.016 347.072l-387.392 385.6a64 64 0 0 1-89.92 0.384z" p-id="13650" fill="#ee4242" />
+    </svg>
+    喜欢作者
+  </label>
+</div>
+
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2022/12/05/%E6%95%B0%E6%8D%AE%E6%99%BA%E8%83%BD%E5%9C%A8%E4%BA%8C%E6%89%8B%E8%BD%A6%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%B2%89%E6%B7%80%20-%20%E4%B8%9A%E5%8A%A1%E6%A0%87%E7%AD%BE%E6%8C%96%E6%8E%98/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>基于HanLP数据智能在二手车业务场景中的探索与沉淀</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2022/09/26/ES%E9%87%8D%E6%9E%84%E6%90%9C%E6%88%BF%E7%BD%91/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
+        </svg>
+      </div>
+      ES重构搜房网
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+  <div class="foot-inner">
+    <div class="foot__head">
+      
+        <div class="foot-line">
+          <div class="matts">今</div><div class="matts">夜</div><div class="matts">无</div><div class="matts">眠</div>
+        </div>
+      
+        <div class="foot-line">
+          <div class="matts">睡</div><div class="matts">意</div><div class="matts">全</div><div class="matts">无</div>
+        </div>
+      
+    </div>
+    <div class="foot__body">
+      
+        <div class="foot-item">
+          <div class="foot-item__head">朋友</div>
+          <div class="foot-item__body">
+            
+            
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-link.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://moyanxinxu.github.io/unlock-hf/">unlock-hf</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-link+.svg" />
+            <a class="foot-link" href="mailto:873101411@qq.com?subject=申请http://example.com的友链">申请友链</a>
+          </div>
+        
+      
+        
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+          </div>
+        </div>
+      
+      
+        <div class="foot-item">
+          <div class="foot-item__head">账号</div>
+          <div class="foot-item__body">
+            
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-github.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/viserion-nlper">viserion-nlper</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-wx.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Fq9ZIUwZvMNx2kSahz8zEw">HanLP.com</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-zh.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/people/shuo-hao-jin-ye-bu-dian-yan">Mundooo</a>
+          </div>
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+          </div>
+        </div>
+      
+      <div class="foot-item">
+        <div class="foot-item__head">联系</div>
+        <div class="foot-item__body">
+          
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-email.svg" />
+            <a class="foot-link" href="mailto:name@example.com">name@example.com</a>
+          </div>
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <a href="http://example.com">思想放牧之地</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+      <svg width="20" height="20" viewBox="0 0 725 725">
+        <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+        <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+        <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+      </svg>
+      <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+    </div>
+  </div>
+</div>
+
+    
+    
+      <script src="/js/search.js"></script>
+      <script>searchInitialize("/search.json")</script>
+    
+    <script src="/js/copy-code.js"></script>
+    
+  
+
+  </body>
+</html>

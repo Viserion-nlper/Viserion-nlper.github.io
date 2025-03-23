@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        基于询问笔录的智慧化辅助办案系统 | 思想放牧之地
+      
+    </title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png" />
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color="" />
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/normal.ttf);
+        font-weight: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css' />
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    
+      <div id="search-mask" style="display:none">
+  <div class="search-main" id="search-main">
+    <div class="search__head">
+      <div class="search-form">
+        <svg t="1706347533072"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             p-id="7828"
+             width="20"
+             height="20">
+          <path d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z" fill="#000000" p-id="7829">
+          </path>
+        </svg>
+        <input id="search-input" placeholder="搜索文章">
+        <svg t="1706361500528"
+             id="search-clear"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             p-id="4351"
+             width="20"
+             height="20">
+          <path d="M512 562.688l-264.2944 264.2944-50.688-50.688L461.312 512 197.0176 247.7056l50.688-50.688L512 461.312l264.2944-264.2944 50.688 50.688L562.688 512l264.2944 264.2944-50.688 50.688L512 562.688z" fill="#00" p-id="4352">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class="search__body" id="search-result"></div>
+    <div class="search__foot"></div>
+  </div>
+</div>
+
+    
+    
+    <div class=head>
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox" />
+        <div class="nav-right">
+          
+            <div class="search-outer">
+  <div class="search" id="search-btn">
+    <svg t="1706347533072"
+         class="icon"
+         viewBox="0 0 1024 1024"
+         version="1.1"
+         xmlns="http://www.w3.org/2000/svg"
+         p-id="7828"
+         width="20"
+         height="20">
+      <path d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z" fill="#000000" p-id="7829">
+      </path>
+    </svg>
+    <span>搜索</span>
+    <span class="search-shortcut-key">Ctrl K</span>
+  </div>
+</div>
+
+          
+          <div class="nav-menu">
+            
+              
+                <a class="nav-menu-item" href="/AI">AI大模型</a>
+              
+                <a class="nav-menu-item" href="/photograph">拍摄摄影</a>
+              
+                <a class="nav-menu-item" href="/live">生活随记</a>
+              
+            
+            <a class="nav-menu-item" href='/cv/'>简历</a>
+          </div>
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">基于询问笔录的智慧化辅助办案系统</div>
+        <div class="post-info">
+          
+  <a href="/tags/%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96/" class="post-tag">#信息抽取</a><a href="/tags/UIE/" class="post-tag">#UIE</a>
+
+
+          <span class="post-date">1984-01-24</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <h1
+id="基于询问笔录的智慧化辅助办案系统">基于询问笔录的智慧化辅助办案系统</h1>
+<h2 id="技术方案">技术方案</h2>
+<p>本技术方案是一个在传统的智慧询问笔录模板应用系统基础上，采用语音对话自动文本分析的深度学习框架，通过对相关法律法规关系和海量案件分析抽取，构建辅助办案系统的神经网络和案件知识图谱库。在实战应用中，通过对笔录对话文本语音/语义信息的读取和分析对比，相关法律条款的定性和定量分析，历史案件和相关案件的参考比对，实现实时的辅助办案智慧化引导提示。</p>
+<h3 id="一系统的业务流程">一、系统的业务流程</h3>
+<h3 id="一业务流程图">（一）业务流程图</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8o9h94c8mj324t0u046b.jpg"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="二系统的技术方案">二、系统的技术方案</h3>
+<h4 id="一技术流程图">（一）技术流程图</h4>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8w8r6wey1j30u018642n.jpg"
+alt="笔录流程图第三版" />
+<figcaption aria-hidden="true">笔录流程图第三版</figcaption>
+</figure>
+<h4 id="二技术模组结构及功能">（二）技术模组结构及功能</h4>
+<p>本系统由四大模组构成。</p>
+<h5 id="文本分类模组">1、文本分类模组</h5>
+<p>文本分类模组文本分类算法模型及文本分类模型库构成。</p>
+<p>文本分类模组主要功能是分析判断所要新建的询问（讯问）笔录是否与历史笔录有关联，比如是再询问案件，系统提示有历史案卷可参考使用。</p>
+<h5
+id="语音转文本模组及模板调用模组">2、语音转文本模组及模板调用模组</h5>
+<p>语音转文本模组主由加载语言ASR和连续重复词去重算法模型及语音模型库构成。</p>
+<p>语音转文本模组主要功能是实现语音直接转换文本，供办案人员选用。</p>
+<p>模板调用模组由模板调用算法模型和模板库组成，根据被询问人的回答判断，调用对应的适用模板。</p>
+<h5 id="信息抽取模组">3、信息抽取模组</h5>
+<p>信息抽取模组由实体抽取模型、关系抽取模型、时间抽取模型和结构化数据库组成。</p>
+<p>信息抽取模组的功能是为会话记忆单元Memory-unit模组提供技术支撑。</p>
+<h5 id="会话记忆单元memory-unit模组">4、会话记忆单元Memory-unit模组</h5>
+<p>会话记忆单元Memory-unit模组由文本匹配模型、BERT联合抽取模型和会话要点（案件要件、要素、疑点）库、知识数据（文本结构）库组、应用数据（知识图谱、关系图谱、事件图谱）库组构成。</p>
+<p>会话记忆单元Memory-unit的功能是用于指导会话流、记录审案要素点、流程记录点、案件查询点等。</p>
+<p>文本匹配模型包括有条件的语义匹配召回模块和增加场景特征的领域自适应排序模块。</p>
+<p>文本匹配模型的功能是用于分析理解和处理被询问人（被讯问人）回答的内容文本以匹配法律依据库、事件图谱库进行组织调配语义文本，并根据上下文信息给询问人（讯问人）分析生成匹配的引导提示。</p>
+<h5 id="案件要素分类">5、案件要素分类</h5>
+<p>在笔录分析中将案件中包含的信息一般归纳为
+“何时（时间）、何地（地点）、何事（事情）、何物（作案工具）、何情（作案情形）、何故（动机目的）、何人（嫌疑人）”等七个方面的内容，每个方面又可以更细化到具体的研究分类。</p>
+<p>以下简单描述要素的分类：</p>
+<h6 id="案件类别何事">5.1、案件类别（何事）</h6>
+<p>（1）在刑事警情中，会将一般侵财类案件划分为：盗窃、抢劫、抢夺、诈骗……等类别；</p>
+<p>（2）在案件类别中，为研究作案时侵犯对象的规律，又会将某一类案件细分为多种形态：如盗窃类会包含，入室盗窃、盗窃企事业单位、盗窃商业门店、扒窃、拎包盗窃、盗窃汽车、盗窃摩托车、盗窃电动车、盗窃车内财物、盗窃路财，以及其他类等；</p>
+<p>（3）在具体的一种盗窃形态中，为研究作案的手段特点和规律，则又会根据作案手段细化分类：如入室盗窃中会划分，翻窗、技术开锁、插片开锁、撬门和其他类。</p>
+<h6 id="时间时段">5.2、时间（时段）</h6>
+<p>（1）对于具体案件，会有报警时间、发生时间、发现时间、处警时间等多个时间概念。报警时间指事主打110报警的时间点；发生时间指该警情实际发生时间（发案时段，此时间往往不能准确反应，可能为一个时间段）；发现时间为事主发现该警情的时间（往往是发生时段的时间止点）；处警时间为民警处置或处理该警情的时间；</p>
+<p>（2）发案时段，根据对警情发生时间的分析，判断该警情发生在那一个时段，主要分为上午、下午、晚上、凌晨等4个要素</p>
+<p>（3）案件发生时间是否为工作日或周末；</p>
+<h6 id="地点">5.3、地点</h6>
+<p>（1）对地点主要区分不同的部位，然后针对不同部位再更具不同的场所性质进行细分。如部位主要有：车站、村湾、道路、公共场所、交通工具、居民住宅、企业单位、商业场所、学校、医院等；</p>
+<p>（2）对某一部位，如居民住宅，又会细分为：城中村私房、小区等</p>
+<h6 id="作案工具">5.4、作案工具：</h6>
+<p>常见的如撬杠、螺丝刀（起子）、弹弓、液压钳、开锁工具、切割机、徒手等；</p>
+<h6 id="嫌疑人特征提取">5.5、嫌疑人特征提取</h6>
+<p>对有嫌疑人体貌特征描述的内容，需要从人员数量、性别、身高、衣着、发型、脸型、肤色、口音、体表特殊标记、配饰、行为特征、是否使用交通工具等方面进行要素的提取。</p>
+<h6 id="天气环境">5.6、天气环境</h6>
+<p>对案件发生时的自然天气环境进行记录。</p>
+<h5 id="分类要素提取方案">6.分类要素提取方案</h5>
+<h6 id="使用通用信息抽取模型">6.1、使用通用信息抽取模型</h6>
+<p>UIE(Universal Information Extraction)：Yaojie
+Lu等人在ACL-2022中提出了通用信息抽取统一框架UIE。该框架实现了实体抽取、关系抽取、事件抽取等任务的统一建模，使得不同任务间具备良好的迁移和泛化能力。该模型可以支持不限定行业领域和抽取目标的关键信息抽取，实现零样本快速冷启动，并具备优秀的小样本微调能力，快速适配特定的抽取目标，提取文本中的警情要素。</p>
+<p>（1）数据量：需要资源方提供10万—100万条文档，标注其中的10%。取90%作为训练集，10%作为测试集。</p>
+<p>数据示例：文档形式样式（以下示例已脱敏处理）：</p>
+<hr />
+<p>20xx年1月1日5时许，报警人吴桃枝报警称，其于2015年1月1日4时许发现位于杨园四美塘122号的嘉福零健康房门面被盗（经查，被盗现金9000元）。</p>
+<hr />
+<p>事主，陈x，男，1971年1月20日生，身份证号：xx0****9710120065x
+被盗现金200元，手机一部</p>
+<hr />
+<p>20xx年1月1日6时许，报警人张xx称其租住的xx省xx市xx区xx台58号2楼家中被盗，损失现金6000余元人民币，及xxx手机一部，已受理。</p>
+<p>（2）标注流程：</p>
+<p>使用数据标注平台doccano
+进行数据标注，doccano导出数据后，可以实现模型训练的无缝衔接。比如对于原文：</p>
+<p>20xx年1月1日6时许，报警人张xx称其租住的xx省xx市xx区xx台58号2楼家中被盗，损失现金6000余元人民币，及xxx手机一部，已受理。</p>
+<p>标注如下：</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8o9hf4987j31x20u0wgj.jpg"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>（3）模型训练流程：</p>
+<p>信息抽取模型选用了T5的模型结构并进行了参数初始化，为了让模型能够获得通用的信息抽取能力，需要做预训练，预训练目标包括以下3个部分。</p>
+<p>一、Text-to-Structure
+对于每一个pair(x,y)，其中x是原文本，y是要抽取的信息结构y（人名-触发关系-物品）。通过抽取y中的spot跟关联类型构造相应的正确的schema，同时自动构建错误的schema，让模型的编码器跟解码器根据原文本跟schema去生成相应的要抽取的信息结构y（人名-触发关系-物品）。通过预训练让模型学到基本的text-to-structure映射能力，可以根据schema跟原文本去生成对应的需要抽取的信息结构。</p>
+<p>二、这部分是为了让整个模型学习到语言模型基本的能力，所以使用了Mask掩码语言模型常用的训练目标。总的来说就是用打乱的原文本去预测打乱的目标问题。如20xx年1月1日6时许，报警人张xx称其租住的xx省xx市xx区xx台58号2楼家中被【Mask掩码】，损失现金6000余元人民币，其中被掩码的字符为“盗”，模型可以根据掩码token的上下文去预测该字为“盗”的语义，进而让模型学习到理解语义的能力。</p>
+<p>三、在完成信息抽取模型的预训练后，为了适配不同的信息抽取任务，需要对模型做进一步的微调。需要给定少量的场景标注语料{(s,
+x,
+y)}，其中s是任务对应的schema，x是原文本，y是要抽取的信息结构，通过交叉熵损失优化模型，在模型预训练学习到海量的语义表示后，针对该少量的场景语料进行参数的微调以达到融合该语义场景的目的。这样在无监督语料（不必进行标注的语料）大规模的训练完毕后，只需要少样本的场景标注语料就可以学习到很好的语义特征表示，从而适配更多的少样本语料的任务。</p>
+<h6 id="联合实体关系抽取">6.2、联合实体关系抽取</h6>
+<p>关系性事实通常表示为一个三元组，由两个实体（主体和客体）和它们之间的语义关系组成。早期的工作集中在关系的分类判断上，也就是假设实体对已经预先确定，然后再根据两个实体之间去判断关系，这限制了他们的应用准确率和召回率，因为忽略了实体的提取，忽略了实体提取和关系分类的相关性。</p>
+<p>如</p>
+<p>A：【<strong><em>*张x*</em><em>*x】*</em></strong>称其居住的{xx省xx市xx区xx台58号2楼}家中被盗。</p>
+<p>B：【<strong><em>*李xx*</em></strong>】称在{xx省xx市xx区xx号x楼}家里实施盗窃。</p>
+<p>【】中标记实体类型的可能是报警人或者是嫌疑人，他与一个地点的关系可以是居住或者入室（盗窃）关系。一旦关系被确认，实体类型就很容易被识别，反之亦然。例如，知道关系是居住，那么实体类型应该是报案人，实体提取和关系分类可以相互受益，如果分开考虑则会影响语义判断准确度，为了克服上述缺点，本项目使用联合抽取模型，在BERT的预训练中引入一个语义增强的任务来进一步优化BERT。并引入了大规模的裁判文书语料库进行实体识别预训练。使用了嵌入字码，以有效地在实体识别和关系抽取之间传递信息。</p>
+<p>例如，关于盗窃案件，我们定义出一个警情关系:</p>
+<p>{'报警人姓名','性别','年龄','身份证号码',</p>
+<p>'被盗时间','地点',</p>
+<p>'被盗物品','是否有监控'</p>
+<p>'嫌疑人人数','体貌特征'}</p>
+<p>输入文档： "text":
+"20xx年1月1日6时许，报警人张xx称其租住的xx省xx市xx区xx台58号2楼家中被盗，损失现金6000余元人民币，及xxx手机一部，已受理。"</p>
+<p>输出三元组： "spo_list": [{"predicate": "报警人姓名", "object_type":
+"人物", "subject_type": "盗窃", "object": "张xx", "subject": "盗窃"},
+{"predicate": "被盗物品", "object_type": "手机", "subject_type": "盗窃",
+"object": "xx手机yy型号", "subject": "盗窃"}],...}</p>
+<p>先使用bert搭建关系的分类模型，是一个多标签分类任务，类别就是上述的那几种关系接着用预测出来的关系和文本，使用bert搭建一个实体抽取的模型，是一个分类模型，类别是：</p>
+<p>["[Padding]","[category]","[##WordPiece]","[CLS]","[SEP]","B-SUB","I-SUB","B-OBJ","I-OBJ","O"]</p>
+<p>SUB对应的就是subject，B-SUB就是第一个实体开始的位置，后续的是I-SUB，OBJ就是第二个实体，所以第二个模型就是预测每一个tokens的标示，最后根据标示可提取出实体对。</p>
+<p>第二个模型是一个多分类的单标签任务，一句话中有可能有多个三元组，为此在进行第二个模型的时候，是先依据第一个模型预测出来的关系类如当前句子预测出3个关系，那么就重复该句话分成3个样本，那么3个样本就对应的是3个多分类单标签任务，为了使实体对和关系对应，所以第二个模型在计算loss的时候是综合考虑了关系和tokens标示的预测的。过程中所有结果都会生成保存在out文件夹下。</p>
+<h5 id="关系图谱概述">7、关系图谱概述</h5>
+<h6 id="案件法律关系图谱">7.1、案件法律关系图谱</h6>
+<p>（1）盗窃</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8w8rjpjiwj310q0u042k.jpg"
+alt="法律判断依据示意图" />
+<figcaption aria-hidden="true">法律判断依据示意图</figcaption>
+</figure>
+<h5 id="技术流程步骤解析">8、技术流程步骤解析</h5>
+<p><strong>步骤一</strong>、在进入系统之前加载本地数据内容（类型模版预设数据）和预训练模型（深度学习模型，如语义模型、语音模型）后，标志位为启动状态，检查是否有案件文本信息（包括本案预设信息或者同案件其他信息如他人笔录信息，如报案人手机号、报案人定位、历史报案信息、报案人姓名、类型、案发地点、案发时间、作案情节等），判断结果为是的话加载案件分类模型（ernie+bert
+Fine-tune）判断模板类型，判断结果为否的话支持手动选择模版类型。至此步骤，模板类型由多类确定唯一类。</p>
+<p><strong>步骤二</strong>、确定模版类型后，确定是否开启实时录音转换功能。</p>
+<p>确认开启后加载语音库、语音ASR、连续重复词去重等模型；</p>
+<p>确认不开启后，不加载语音模型，不启用语音转换功能。</p>
+<p><strong>步骤三</strong>、开始进如办案流程，选择预设询问文本（常规询问）后，询问人按照预设询问文本对被询问人进行询问。</p>
+<p>开启实时录音转换功能，则被询问人的回答作为流式语音输入到系统中的语音模型，实时生成笔录文本供办案人选择使用。</p>
+<p>如果未选择开启实时录音转换功能，则办案人需手动录入被询问人回答文本，生成笔录文本。</p>
+<p>在协同办案中，对于同一个案件多个嫌疑人进行询问笔录时：</p>
+<p>支持多个系统查看共享不同被询问人的笔录文本</p>
+<p>²支持对笔录文本进行身份证信息、信息库匹配</p>
+<p>²支持对笔录文本的对话信息抽取</p>
+<p><strong>步骤四</strong>、将被询问人回答文本输入到信息抽取、实体抽取、关系抽取、事件抽取模型中，输出结构化信息实体类型后，经过数据管道输入到会话记忆单元Memory-unit后存储，该会话记忆单元Memory-unit机制使本系统能够准确地提取和持续更新长期角色记忆，存储来自用户和被询问人的：历史角色信息
+审案要素点 流程记录点
+案件查询点等等，会话记忆单元Memory-unit负责对案件中的案件要素、以及事件脉络进行整理抽取。</p>
+<p><strong>步骤五</strong>、该会话记忆单元还支持单独生成本案件图谱，暂存在内存数据库中，并与全国人口基本信息资源库、全国出入境人员资源库、全国机动车/驾驶人信息资源库、全国在逃人员信息资源库、全国违法犯罪人员信息资源库、全国被盗抢汽车信息资源库、全国安全重点单位信息资源库七大库进行比对检索，生成更新数据支持后续的下游任务操作流程，在整个笔录流程结束后，存储位置由暂存数据库转为历史案件图谱库中。</p>
+<p><strong>步骤六</strong>、会话记忆单元Memory-unit在记录识别历史角色信息
+审案要素点 流程记录点
+案件查询点后触发系统设置好的Actions后输出相关信息到文本匹配模型STS中进行有条件的对比学习查询，文本匹配模型STS由1.3E裁判文书网数据以及警用对话数据、悬案疑案库等数据训练，支持对会话记忆单元输出的文本进行召回（相似度匹配）后，添加业务场景特征进行领域自适应（设定不同特征权重）如被盗物品的权重比盗窃场所的高等等，加入业务特征的领域自适应后对召回的文本进行重新的估值排序（领域特征匹配），支持设定阈值得到匹配文本。会话记忆单元支持：</p>
+<ul>
+<li><p>记录主客体描述及客观行为</p></li>
+<li><p>记录隐匿要件要素</p></li>
+<li><p>记录主客体描述矛盾</p></li>
+<li><p>记录实体信息</p></li>
+<li><p>记录证据信息</p></li>
+<li><p>记录犯罪情节</p></li>
+<li><p>记录犯罪证据等等</p></li>
+</ul>
+<p>步骤七、将匹配文本输入到由裁判文书网数据、警用对话数据等等联合抽取生成的事件案件图谱库中，经由图神经网络关系链路预测算法输出询问文本Templates，后对被询问人进行询问文本Templates的提问，至此步骤，一轮对话问讯结束。事件案件图谱库支持：</p>
+<ul>
+<li><p>新增本地处理案件</p></li>
+<li><p>实体发现</p>
+<ul>
+<li><p>证据发现</p></li>
+<li><p>证据发现</p></li>
+<li><p>旧案发现</p></li>
+</ul></li>
+<li><p>实体信息解释</p>
+<ul>
+<li><p>要件内容提问</p></li>
+<li><p>证据信息提问</p></li>
+<li><p>旧案信息关联</p></li>
+</ul></li>
+<li><p>涉案人主观动作分析</p>
+<ul>
+<li><p>身份关联分析</p></li>
+<li><p>主观意向</p></li>
+<li><p>前科分析</p></li>
+</ul></li>
+<li><p>隐匿要件要素识别</p></li>
+<li><p>主客体描述矛盾识别等等</p></li>
+</ul>
+<p><strong>步骤八</strong>、被询问人接收到算法输出询问文本Templates后，重新输出流式语音，后经语音模型或者手动录入文本，再经输入信息抽取模型UIE中，抽取完毕后的结果增添至会话记忆单元Memory-unit中，累积信息后重新进行案件事件图谱匹配，对被询问人进行多轮对话的问询及问询结果的分析检索。</p>
+<p><strong>步骤九</strong>、在本系统中，案件事件图谱库输出的询问文本停止向被询问人问询，多轮对话环节结束，支持进行后续下游警务子任务。</p>
+<h2 id="三应用场景解析">三、应用场景解析</h2>
+<p>本系统核心技术的特征是将语义分析功能和在现有笔录智慧模板系统有机的结合起来。在笔录过程中，实时地进行分类要素提取等自动处理。也可以在案件信息录入数据库后，由此服务进行关键要素的分析、拆分和提取，再另行存入案件分析数据库供分析使用。</p>
+<p>同时系统也可以提供拓展服务。基于本系统构建建设相应的刑事警情和案件信息语义分析系统，对已有的警情和案事件信息进行自动处理，并提供统计、分析等功能，以API方式将结果供其他刑侦业务系统使用。</p>
+<p>（1）在接受案件报警后，民警完成处警信息的采集和录入，语义分析功能则对处警信息进行核心语言含义的分析和关键要素的拆分、提取，并按确定的要素分类进行结构化的存储，为进一步对刑事警情进行深入的规律、趋势分析和统计分析、串并案件提供基础；</p>
+<p>（2）对案事件信息中简要案情和破案信息的语言描述进行核心语言含义的分析和关键要素的拆分、提取，并按确定的要素分类进行结构化的存储，为案件研究和串并案件提供基础；</p>
+<p>（3）对现勘信息、案件信息、询（讯）问笔录和刑事违法犯罪人员、物品采集信息进行语义分析，按规定要素比对所采集信息是否符合信息采集标准要求。</p>
+<p>（4）对于目前已有的警情案件等数据可以进行语料分析，作为对新出现的记录要素提取作为支撑。</p>
+<p>四、下一步的开发内容及需求</p>
+<p><strong><em>*（一）下一步的开发任务*</em></strong></p>
+<p>下一步的开发任务的内容主要有以下几方面：</p>
+<p>1、确定项目一期建设的案件内容。</p>
+<p>2、根据确定的案件构建案件相关法律知识库。</p>
+<p>3、根据确定的案件构建案件相关判决文书库。</p>
+<p>4、根据确定的案件构建案件的法律关系图谱。</p>
+<p>5、根据确定的案件罪名，筛选出较为典型的历史案件笔录样本，每个2级类目不少于10个笔录样本。</p>
+<p>6、按照2级分类分别构建分类要素库。</p>
+<p>7、按照2级分类分别构建事件图谱库。</p>
+<p>8、按照2级分类分别构建关系图谱库。</p>
+<p>9、利用上述数据库组，训练实体抽取算法模型。</p>
+<p>10、利用上述数据库组，训练关系抽取算法模型。</p>
+<p>11、利用上述数据库组，训练事件抽取算法模型。</p>
+<p>12、根据确定的案件罪名，建立提示引导模板库。</p>
+<p>13、调试训练语音转换文本模型。</p>
+<p><strong><em>*（二）下一步的开发需求*</em></strong></p>
+<p>1、需要崂山公安确定项目一期建设的案件罪种类名及2级分类明细。</p>
+<p>2、需要崂山公安提供与2级分类明细相关的历史案件笔录样本，每种2级类目数量不少于10个笔录样本。</p>
+<p>3、需要崂山公安提供与2级分类明细相关的判决文书，每种2级分类数量不少于10个判决文书样本。</p>
+
+      </div>
+    </div>
+    
+      <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script>
+      <script>
+        if (window.mermaid) {
+          mermaid.initialize({"startOnload":true});
+        }
+      </script>
+    
+  </article>
+  <div class="post__foot">
+    
+      <div class="like-author">
+  <input type="checkbox" id="likeCode" />
+  <div class="author-face">
+    <img height="100px"
+         width="100px"
+         id="front-face"
+         alt="author face"
+         src="/images/author-face.jpg" />
+    <img height="100px"
+         width="100px"
+         id="back-face"
+         alt="like code"
+         src="/images/pay-code.jpg" />
+  </div>
+  <div class="like-text">“给作者倒杯卡布奇诺”</div>
+  <label for="likeCode" class="like-btn">
+    <svg viewBox="0 0 1024 1024"
+         width="20px"
+         style="margin-right: 10px"
+         height="20px">
+      <path d="M466.88 908.96L113.824 563.296a270.08 270.08 0 0 1 0-387.392c108.8-106.56 284.896-106.56 393.696 0 1.504 1.472 2.976 2.944 4.448 4.48 1.472-1.536 2.944-3.008 4.448-4.48 108.8-106.56 284.896-106.56 393.696 0a269.952 269.952 0 0 1 34.016 347.072l-387.392 385.6a64 64 0 0 1-89.92 0.384z" p-id="13650" fill="#ee4242" />
+    </svg>
+    喜欢作者
+  </label>
+</div>
+
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/1984/01/24/%E5%B7%A5%E4%BD%9C%E4%BA%94%E5%B9%B4%E5%8F%8D%E6%80%9D-%E6%9D%8E%E6%B2%90/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>工作五年反思-李沐</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/1984/01/24/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86BERT%E6%A8%A1%E5%9E%8B/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
+        </svg>
+      </div>
+      自然语言处理BERT模型
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+  <div class="foot-inner">
+    <div class="foot__head">
+      
+        <div class="foot-line">
+          <div class="matts">今</div><div class="matts">夜</div><div class="matts">无</div><div class="matts">眠</div>
+        </div>
+      
+        <div class="foot-line">
+          <div class="matts">睡</div><div class="matts">意</div><div class="matts">全</div><div class="matts">无</div>
+        </div>
+      
+    </div>
+    <div class="foot__body">
+      
+        <div class="foot-item">
+          <div class="foot-item__head">朋友</div>
+          <div class="foot-item__body">
+            
+            
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-link.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://moyanxinxu.github.io/unlock-hf/">unlock-hf</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-link+.svg" />
+            <a class="foot-link" href="mailto:873101411@qq.com?subject=申请http://example.com的友链">申请友链</a>
+          </div>
+        
+      
+        
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+          </div>
+        </div>
+      
+      
+        <div class="foot-item">
+          <div class="foot-item__head">账号</div>
+          <div class="foot-item__body">
+            
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-github.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/viserion-nlper">viserion-nlper</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-wx.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Fq9ZIUwZvMNx2kSahz8zEw">HanLP.com</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-zh.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/people/shuo-hao-jin-ye-bu-dian-yan">Mundooo</a>
+          </div>
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+          </div>
+        </div>
+      
+      <div class="foot-item">
+        <div class="foot-item__head">联系</div>
+        <div class="foot-item__body">
+          
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-email.svg" />
+            <a class="foot-link" href="mailto:name@example.com">name@example.com</a>
+          </div>
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <a href="http://example.com">思想放牧之地</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+      <svg width="20" height="20" viewBox="0 0 725 725">
+        <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+        <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+        <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+      </svg>
+      <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+    </div>
+  </div>
+</div>
+
+    
+    
+      <script src="/js/search.js"></script>
+      <script>searchInitialize("/search.json")</script>
+    
+    <script src="/js/copy-code.js"></script>
+    
+  
+
+  </body>
+</html>

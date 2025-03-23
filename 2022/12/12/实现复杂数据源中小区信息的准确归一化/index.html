@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        实现复杂数据源中小区信息的准确归一化 | 思想放牧之地
+      
+    </title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png" />
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color="" />
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/normal.ttf);
+        font-weight: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css' />
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    
+      <div id="search-mask" style="display:none">
+  <div class="search-main" id="search-main">
+    <div class="search__head">
+      <div class="search-form">
+        <svg t="1706347533072"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             p-id="7828"
+             width="20"
+             height="20">
+          <path d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z" fill="#000000" p-id="7829">
+          </path>
+        </svg>
+        <input id="search-input" placeholder="搜索文章">
+        <svg t="1706361500528"
+             id="search-clear"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             p-id="4351"
+             width="20"
+             height="20">
+          <path d="M512 562.688l-264.2944 264.2944-50.688-50.688L461.312 512 197.0176 247.7056l50.688-50.688L512 461.312l264.2944-264.2944 50.688 50.688L562.688 512l264.2944 264.2944-50.688 50.688L512 562.688z" fill="#00" p-id="4352">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class="search__body" id="search-result"></div>
+    <div class="search__foot"></div>
+  </div>
+</div>
+
+    
+    
+    <div class=head>
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox" />
+        <div class="nav-right">
+          
+            <div class="search-outer">
+  <div class="search" id="search-btn">
+    <svg t="1706347533072"
+         class="icon"
+         viewBox="0 0 1024 1024"
+         version="1.1"
+         xmlns="http://www.w3.org/2000/svg"
+         p-id="7828"
+         width="20"
+         height="20">
+      <path d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z" fill="#000000" p-id="7829">
+      </path>
+    </svg>
+    <span>搜索</span>
+    <span class="search-shortcut-key">Ctrl K</span>
+  </div>
+</div>
+
+          
+          <div class="nav-menu">
+            
+              
+                <a class="nav-menu-item" href="/AI">AI大模型</a>
+              
+                <a class="nav-menu-item" href="/photograph">拍摄摄影</a>
+              
+                <a class="nav-menu-item" href="/live">生活随记</a>
+              
+            
+            <a class="nav-menu-item" href='/cv/'>简历</a>
+          </div>
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">实现复杂数据源中小区信息的准确归一化</div>
+        <div class="post-info">
+          
+  <a href="/tags/%E7%BC%98%E8%8B%91%E5%9B%AD/" class="post-tag">#缘苑园</a>
+
+
+          <span class="post-date">2022-12-12</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <h1
+id="实现复杂数据源中小区信息的准确归一化">实现复杂数据源中小区信息的准确归一化</h1>
+<h2 id="背景">背景</h2>
+<p>小区是租房业务中很重要的信息，它能够反映房源的位置和品质。对租客而言，能否浏览到准确的小区信息是高效找房的关键。因此，收集和展示准确的小区信息是提高用户找房效率的重要方面。为了获得全面的小区信息，租房业务通常会依赖多种数据源获得小区数据，这些数据格式不一，信息杂乱无章，含有很多冗余信息。为了提高找房效率，必须把同一个小区的不同数据聚合到一起并理清小区信息之间的从属关系。本文抓住小区的独有特征并利用相似度算法，设计了一种基于文本匹配的方法来解决这个问题。</p>
+<h2 id="目标">目标</h2>
+<p>现有的小区数据中重复小区很多，比如“福鼎家园”、“福鼎家园晓风苑”、“福鼎家园2幢3单元”、“西溪北苑西区”和“西溪北苑东区”等等。这些小区名虽然不完全一样，但是其中一些表示的同一个小区或者同一小区的子小区，我们把这些小区名叫做同义小区，比如“福鼎家园”、“福鼎家园晓风苑”、“福鼎家园2幢3单元”。表示整个小区的是父小区，比如福鼎家园、西溪北苑。表示小区下面的部分区域的叫做子小区，比如福鼎家园晓风苑、西溪北苑东区。而像“福鼎家园2幢3单元”这样的小区地址，称为楼栋地址。</p>
+<p>为了房源信息搜索和展示的准确与效率，我们需要把解析出每条小区数据对应的小区信息，以及小区的层级关系，甚至补充一些小区信息。具体来说，一是把现有小区统一到子小区：子小区是期、区、苑一级，比如‘福鼎家园晓风苑’，‘福鼎家园雨露苑’：1.
+子小区是单元、栋、幢的上一级：像单元、栋、幢、xx号楼这样的名称，属于小区楼栋；2.
+每个子小区都有唯一的父小区，比如子小区“福鼎家园晓风苑”的父小区是“福鼎家园”；二是能够补充父小区、子小区信息：对于小区库中不存在的父小区或者子小区信息，可以补充进来；</p>
+<h2 id="思路">思路</h2>
+<p>小区作为一个独特的地址单位，有下面这些特征：
+<em>子小区的父小区通常是多个子小区的最长公共前缀：小区的命名是一个层级结构，同一个父小区的子小区通常具有相同的前缀，这符合人对于位置的命名习惯；</em>
+子小区和小区楼栋的名称有独特的特征：比如子小区大多符合这样的模式：“PP[ww|xx|yy|zz]区”，“PP[ww|xx|yy]期”，“PP[ww|xx|yy]号”以及“PP[ww|xx|yy]座”等等。其中PP是公共前缀，也就是确定的虚拟父小区名，ww表示数字，xx表示代表数字的汉字，yy表示大写或者小写字母，zz表示方位词（比如东、西、南、北、东北、西北等）。而小区楼栋地址通常是下面的形式：“PP[ww|xx|yy]幢”，“PP[ww|xx|yy]楼”，“PP[ww|xx|yy]栋”，“PP[ww|xx|yy]单元”以及“PP[ww|xx|yy]号楼”等等
+（PP是子小区名，ww,xx和yy代表的含义与上面一样）；
+<em>小区作为一个相对小的地址单位，范围是较小的，而且同一个小区的不同子小区的距离不可能太远；</em>
+同一个小区的不同子小区名称通常非常相似。</p>
+<p>基于上述观察，我们提出一种以前缀匹配和文本相似度为基础的小区归一化方案。基本的想法是
+1. 使用前缀匹配算法对小区实施初步聚类， 2.
+然后通过计算文本相似度附加距离权重做进一步筛选， 3.
+最后识别父子小区识别。</p>
+<h2 id="数据预处理">数据预处理</h2>
+<p>我们按照市、区、小区名和经纬度信息确定一个小区。所有小区数据存储在一个表plot里：小区id、市、区、小区名称、小区gps、来源source（标记出小区的来源），类型type（0表示父小区，1表示虚拟父小区，2表示子小区，3表示楼栋地址），父小区id。我们需要对原始的小区数据做预处理：
+<em>需要对原始数据做数据处理：市区的格式，整理成类似：杭州，余杭区；有些小区gps是非高德gps，需要转换为高德gps</em>
+有些小区数据只有省市街道小区名，没有具体的区域和经纬度信息，需要使用地图提示进行校正，尽量补全区域和经纬度信息
+*
+小区名里还会夹杂很多标点符号，干扰我们的分析，我们会首先清除掉这些标点，只对中文字符进行匹配分析</p>
+<h2 id="归一化算法">归一化算法</h2>
+<p>小区信息归一化流程如下图所示：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008vxvgGly1h911au0xnbj30ia0ccgm2.jpg" alt="image-20221212145109222" style="zoom:67%;" /></p>
+<p>主要的思路是先利用前缀匹配算法匹配小区得到近似小区树，然后在同一个近似小区树里面筛选掉不适合的小区，然后在小区树之间根据相似度算法匹配，接着合并同义小区树，得到最终的归一化小区树，在每一棵小区树中可以使用模式匹配识别父子小区。下面重点介绍前四步。</p>
+<h2 id="前缀匹配聚集小区">前缀匹配聚集小区</h2>
+<p>前面提到同一个父小区的大多数子小区都拥有相同的前缀。我们以这个作为切入点来识别近似的小区，具体方法如下：
+对于同一城市同一区域里的每一个小区，开始搜索所有以其名称的前两个字开头的所有小区，这些小区拥有公共前缀，称为以该小区为根的近似小区树。找到所有的近似小区树，不断增加前缀的长度，近似小区树不断分裂成更小的树，在合适的时候停止前缀长度的增加，最后得到的每个小区树里面的小区都是近似小区，可以提取出父小区和子小区。但是如何确定前缀长度的最大值呢？分下面几种情况：</p>
+<ol type="1">
+<li>如果是能够判断出本小区的名称是子小区或者楼栋的，直接抽取出父小区名，如果没有同名的父小区则新建一个父小区名，然后搜索所有以该父小区名为前缀的小区，构成一棵以父小区为根的近似小区树；判断一个小区名代表的是不是子小区或者小区楼栋的方法是通过前文阐释的小区名进行正则匹配完成。</li>
+<li>如果存在其他小区以本小区为前缀，那么认为本小区是一个父小区，并且把以本小区为前缀的所有小区都聚集在一起。下图展示了1、2两种情况的例子，其中蓝色是父小区，红色是楼栋地址，黄色是子小区：</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008vxvgGly1h9115sovylj30u011b76q.jpg" alt="image-20221212145319426" style="zoom: 50%;" /></p>
+<ol start="3" type="1">
+<li>对于其他的小区，那么前缀长度的确定有以下原则：以该长度为前缀的小区不超过20（除去重复的小区，以及市、区和小区名完全一样的小区）。一般来说一个小区的子小区不会太多，一个父小区的子小区数量超过20个是非常少见的。举例来说，如下图，小区“翡翠城木兰苑”无法被识别为子小区或者楼栋地址，依靠前缀得到了它的近似小区树，树的数量小于20，停止前缀增长。</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008vxvgGly1h9116oh1apj30p00mo760.jpg" alt="image-20221212145410948" style="zoom:50%;" /></p>
+<p>对于每一个小区都做这样一个操作，就会得到每个小区对应的前缀树，也称为小区树（使用前缀树实现），这个小区称为小区树的根。容易知道一个小区可能在多个小区树中。在这个过程中也能够识别一部分小区楼栋、子小区和父小区。
+本质上讲，这一步是文本聚类的过程。如下图所示，文本聚类通常对文本分词，然后使用TF-IDF(Term
+Frequency-Inverse Document
+Frequency，词频-逆文本频率)统计出词频、设置词语权重，构建VSM(Vector
+Space Model，向量空间模型),
+为每个文本构建等长向量，最后设置度量标准（欧氏距离、余弦相似度等），使用聚类算法对文本聚类。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008vxvgGly1h91178aqg5j30pc0a03z0.jpg" alt="image-20221212145443034" style="zoom:50%;" /></p>
+<p>这种方法不太适合我们的场景：1.
+这种方法通常是针对具有多个特征词的文档进行聚类，然而小区名称短，很难提取出有效的特征词；2.
+小区名称有一个特征比较明显，即父子小区以及楼栋号的名称按照顺序是有层级关系的，然而这个特征却不能在文本向量化聚类算法中体现并利用；3.
+常用的聚类算法如K-Means等选择合适的k值需要技巧和摸索，而我们的方法利用子小区数量不会太多这一点规避了这个问题。</p>
+<h2 id="非同义小区过滤">非同义小区过滤</h2>
+<p>上一步中得到的是拥有相同前缀的小区树。依靠前缀，我们圈选的小区是比较多的，很多不属于同一个父小区的小区被圈选到同一棵小区树中了。一般来说，一个小区的不同子小区之间的距离不会太远。因此，我们过滤掉地理位置较远的小区。具体来讲就是，如果近似小区树里面小区A和小区树的根小区的距离大于2km，那么把这个小区从小区树中删除。</p>
+<h2 id="近似小区再聚集">近似小区再聚集</h2>
+<p>并不是所有的同义小区都有相同的后缀。所以，我们也通过文本相似度，来补充一些被遗漏的同义小区：
+计算近似树前缀的编辑距离和gps距离，对于gps距离小于1km，而且相似度大于2的近似树可以合并为一棵同义小区树，其中相似度的计算如下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008vxvgGly1h91198gm1kj30om03ojrj.jpg" alt="image-20221212145551158" style="zoom:67%;" /></p>
+<p>其中a和b分别是两棵小区树的根小区的名称，max(a,b)是a和b的长度最大值，LevenshteinDistance(a,
+b)是编辑距离，similarity(a, b)越大表示a和b越相似。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008vxvgGly1h9118y0awuj31280a8t9r.jpg" alt="image-20221212145621821" style="zoom: 50%;" /></p>
+<p>如上图所示，“西溪风情”不是“大华西溪风情”的前缀，所以在第一步的前缀匹配聚集中，没有被加入到“大华西溪风情”的近似小区树。针对这种前缀覆盖不到的情况，我们计算“西溪风情”和“大华西溪风情”的相似度为3，这个相似度表示文本总长度是文本差异的倍数，越大说明相对差别越小。当这个相似度大于2时，我们把两棵相似树合并。</p>
+<h2 id="归一化">归一化</h2>
+<p>在以每个小区为根，聚集得到相应的小区树之后，小区树之间会有很多重叠。这一步把有交集的小区树合并得到最终的小区归一化结果。合并后的小区树中的小区可以认为是同义的小区，这一步可以说是最终的小区归一化。</p>
+<h2 id="评估">评估</h2>
+<p>使用高德地图中准确区分了同义小区的数据以及人工识别，衡量小区归一化算法的准确度。主要从两个方面：
+- 正误识（false positives): 本来归于父小区的子小区，未能被识别出来； -
+负误识（false negatives):
+不归某一父小区的子小区，却被误识为这个父小区的子小区；
+数据显示本文介绍的算法正误识比率低于8%，负误识比率低于5%，说明这种归一化方法的准确度有一定保证。</p>
+<h2 id="总结">总结</h2>
+<p>本文通过观察小区名称和层级关系的规律，提出了一种使用文本匹配和近似度分析解决小区信息归一化问题的方法。方法实现简单，有较高的准确度，能够快速识别近似的小区，为提高房源搜索的效率和房源发布的准确度提供了基础数据保障。</p>
+
+      </div>
+    </div>
+    
+      <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script>
+      <script>
+        if (window.mermaid) {
+          mermaid.initialize({"startOnload":true});
+        }
+      </script>
+    
+  </article>
+  <div class="post__foot">
+    
+      <div class="like-author">
+  <input type="checkbox" id="likeCode" />
+  <div class="author-face">
+    <img height="100px"
+         width="100px"
+         id="front-face"
+         alt="author face"
+         src="/images/author-face.jpg" />
+    <img height="100px"
+         width="100px"
+         id="back-face"
+         alt="like code"
+         src="/images/pay-code.jpg" />
+  </div>
+  <div class="like-text">“给作者倒杯卡布奇诺”</div>
+  <label for="likeCode" class="like-btn">
+    <svg viewBox="0 0 1024 1024"
+         width="20px"
+         style="margin-right: 10px"
+         height="20px">
+      <path d="M466.88 908.96L113.824 563.296a270.08 270.08 0 0 1 0-387.392c108.8-106.56 284.896-106.56 393.696 0 1.504 1.472 2.976 2.944 4.448 4.48 1.472-1.536 2.944-3.008 4.448-4.48 108.8-106.56 284.896-106.56 393.696 0a269.952 269.952 0 0 1 34.016 347.072l-387.392 385.6a64 64 0 0 1-89.92 0.384z" p-id="13650" fill="#ee4242" />
+    </svg>
+    喜欢作者
+  </label>
+</div>
+
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2025/03/09/hello-world/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>未命名</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2022/12/05/%E5%9F%BA%E4%BA%8EHanLP%E7%9A%84Elasticsearch%E5%88%86%E8%AF%8D%E6%8F%92%E4%BB%B6/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
+        </svg>
+      </div>
+      基于HanLP的Elasticsearch分词插件
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+  <div class="foot-inner">
+    <div class="foot__head">
+      
+        <div class="foot-line">
+          <div class="matts">今</div><div class="matts">夜</div><div class="matts">无</div><div class="matts">眠</div>
+        </div>
+      
+        <div class="foot-line">
+          <div class="matts">睡</div><div class="matts">意</div><div class="matts">全</div><div class="matts">无</div>
+        </div>
+      
+    </div>
+    <div class="foot__body">
+      
+        <div class="foot-item">
+          <div class="foot-item__head">朋友</div>
+          <div class="foot-item__body">
+            
+            
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-link.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://moyanxinxu.github.io/unlock-hf/">unlock-hf</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-link+.svg" />
+            <a class="foot-link" href="mailto:873101411@qq.com?subject=申请http://example.com的友链">申请友链</a>
+          </div>
+        
+      
+        
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+          </div>
+        </div>
+      
+      
+        <div class="foot-item">
+          <div class="foot-item__head">账号</div>
+          <div class="foot-item__body">
+            
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-github.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/viserion-nlper">viserion-nlper</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-wx.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Fq9ZIUwZvMNx2kSahz8zEw">HanLP.com</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-zh.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/people/shuo-hao-jin-ye-bu-dian-yan">Mundooo</a>
+          </div>
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+          </div>
+        </div>
+      
+      <div class="foot-item">
+        <div class="foot-item__head">联系</div>
+        <div class="foot-item__body">
+          
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-email.svg" />
+            <a class="foot-link" href="mailto:name@example.com">name@example.com</a>
+          </div>
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <a href="http://example.com">思想放牧之地</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+      <svg width="20" height="20" viewBox="0 0 725 725">
+        <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+        <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+        <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+      </svg>
+      <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+    </div>
+  </div>
+</div>
+
+    
+    
+      <script src="/js/search.js"></script>
+      <script>searchInitialize("/search.json")</script>
+    
+    <script src="/js/copy-code.js"></script>
+    
+  
+
+  </body>
+</html>

@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        几种多模态向量检索引擎的了解与思考 | 思想放牧之地
+      
+    </title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png" />
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color="" />
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/normal.ttf);
+        font-weight: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css' />
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    
+      <div id="search-mask" style="display:none">
+  <div class="search-main" id="search-main">
+    <div class="search__head">
+      <div class="search-form">
+        <svg t="1706347533072"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             p-id="7828"
+             width="20"
+             height="20">
+          <path d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z" fill="#000000" p-id="7829">
+          </path>
+        </svg>
+        <input id="search-input" placeholder="搜索文章">
+        <svg t="1706361500528"
+             id="search-clear"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             p-id="4351"
+             width="20"
+             height="20">
+          <path d="M512 562.688l-264.2944 264.2944-50.688-50.688L461.312 512 197.0176 247.7056l50.688-50.688L512 461.312l264.2944-264.2944 50.688 50.688L562.688 512l264.2944 264.2944-50.688 50.688L512 562.688z" fill="#00" p-id="4352">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class="search__body" id="search-result"></div>
+    <div class="search__foot"></div>
+  </div>
+</div>
+
+    
+    
+    <div class=head>
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox" />
+        <div class="nav-right">
+          
+            <div class="search-outer">
+  <div class="search" id="search-btn">
+    <svg t="1706347533072"
+         class="icon"
+         viewBox="0 0 1024 1024"
+         version="1.1"
+         xmlns="http://www.w3.org/2000/svg"
+         p-id="7828"
+         width="20"
+         height="20">
+      <path d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z" fill="#000000" p-id="7829">
+      </path>
+    </svg>
+    <span>搜索</span>
+    <span class="search-shortcut-key">Ctrl K</span>
+  </div>
+</div>
+
+          
+          <div class="nav-menu">
+            
+              
+                <a class="nav-menu-item" href="/AI">AI大模型</a>
+              
+                <a class="nav-menu-item" href="/photograph">拍摄摄影</a>
+              
+                <a class="nav-menu-item" href="/live">生活随记</a>
+              
+            
+            <a class="nav-menu-item" href='/cv/'>简历</a>
+          </div>
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">几种多模态向量检索引擎的了解与思考</div>
+        <div class="post-info">
+          
+  <a href="/tags/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-tag">#向量数据库</a>
+
+
+          <span class="post-date">1984-01-24</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <h1
+id="几款多模态向量检索引擎faiss-milvusproximavearchjina等">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等</h1>
+<blockquote>
+<p>本文学习了 <a
+target="_blank" rel="noopener" href="http://blog.sunqiang.me/author/admin/">sunny5156</a>发表的博文，并对此做了扩展批注，考虑罗列几个向量搜索引擎在工程中的实践与落地。</p>
+</blockquote>
+<h2
+id="引用文章7的开篇来表示什么是-向量化搜索">引用文章[7]的开篇，来表示，什么是：
+向量化搜索？</h2>
+<p>​
+人工智能算法可以对物理世界的人/物/场景所产生各种非结构化数据（如语音、图片、视频，语言文字、行为等）进行抽象，变成多维的向量。</p>
+<p>​
+这些向量如同数学空间中的坐标，标识着各个实体和实体关系。我们一般将非结构化数据变成向量的过程称为
+Embedding，而非结构化检索则是对这些生成的向量进行检索，从而找到相应实体的过程。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86yjzwaglj30o607rjs8.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第1张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第1张 | 技术人生</figcaption>
+</figure>
+<p>非结构化检索本质是向量检索技术，其主要的应用领域如人脸识别、推荐系统、图片搜索、视频指纹、语音处理、自然语言处理、文件搜索等。</p>
+<p>随着 AI
+技术的广泛应用，以及数据规模的不断增长，<strong>向量检索也逐渐成了 AI
+技术链路中不可或缺的一环</strong>，更是对传统搜索技术的补充，并且具备多模态搜索的能力。</p>
+<p>向量检索的应用场景远不止上面提到的这些类型。</p>
+<p>如下图所示，它几乎覆盖了大部分的可以应用AI的业务场景。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h868p1pu38j30o60cd0u7.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第2张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第2张 | 技术人生</figcaption>
+</figure>
+<h3 id="facebook-faiss">1、<strong>facebook – Faiss</strong></h3>
+<blockquote>
+<p>github: https://github.com/facebookresearch/faiss</p>
+<p>tutorial:
+https://github.com/facebookresearch/faiss/wiki/Getting-started</p>
+</blockquote>
+<p>向量化检索开山鼻祖的应用，Faiss库是由 Facebook
+开发的适用于稠密向量匹配的开源库，支持 c++ 与 python 调用。</p>
+<p>Faiss
+支持多种向量检索方式，包括内积、欧氏距离等，同时支持精确检索与模糊搜索，篇幅有限嘛，我就先简单介绍精确检索相关内容。</p>
+<p><strong>Faiss 主要特性：</strong></p>
+<p>· 支持相似度检索和聚类；</p>
+<p>· 支持多种索引方式；</p>
+<p>· 支持CPU和GPU计算；</p>
+<p>· 支持Python和C++调用；</p>
+<p><strong>Faiss 使用场景：</strong></p>
+<p>最常见的人脸比对，指纹比对，基因比对等。</p>
+<blockquote>
+<p>在模糊搜索项目中我们使用了faiss+texSmart词向量，融合了es进行短词、短语的检索。关于faiss更多的索引方式并未深入研究，这里记录待后续整理补充。</p>
+</blockquote>
+<h3 id="faiss原理">2、Faiss原理</h3>
+<h4 id="整体流程图">2.1整体流程图</h4>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86y4jqizwj30y60f3ab0.jpg"
+alt="image-20221116142119796" />
+<figcaption aria-hidden="true">image-20221116142119796</figcaption>
+</figure>
+<blockquote>
+<p>Faiss核心原理就两个，<strong>倒排索引 IVF</strong>和<strong>乘积量化
+PQ</strong>，这两个方法是Faiss实现高速，少内存以及精确检索的主要手段。</p>
+</blockquote>
+<h4 id="倒排索引-ivfinverted-file-system">2.2 倒排索引 IVF（Inverted
+File System）</h4>
+<p>​
+IVF其实很好理解，假如我们想要在全国范围内找到一个给定年龄，性别，身高体重等信息的人，那么其中的一个办法是，拿这些信息和全国的人都一一对比，然后找到和这个条件最相近的一类人。但是如果我们先把全国的人按照省份进行划分，先看这个人是哪个省份的，接着从这个省份里去全量搜，那么计算了一下子降了一个数量级，如果是按城市划分，则计算量可以降低好几个量级，这就是IVF的基本原理。
+​
+暴力搜索的方式是在全空间进行搜索，为了加快查找速度，几乎所有的ANN方法都是通过对全空间进行分割（聚类），将其分割成很多小的子空间，在搜索时，通过某种方式快速锁定在某一(几)个子空间，然后在这几个子空间中进行遍历。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86y5s5ij1j30vj0u0jt9.jpg"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<p>​ <strong>确定子空间：
+通过计算query向量和所有子空间中心(如子空间内所有向量的均值)的距离，选出距离最近的K个子空间，表示和该query最相近的向量，最有可能在这几个子空间里。</strong></p>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><p>可能会损失精度，找到的是局部解，不是全局最优</p>
+<p>​
+很可能更相近的向量不在遍历的这几个空间内，因此找到的相似向量不是全局最优的，在faiss中有两个参数，分别是nlist
+和 nprobe
+，其中前者决定了对全量用户聚类的个数，一般来说聚类个数越大，训练过程越慢，检索速度越快（每个子空间需要遍历的向量变少），后者nprobe决定了每次检索几个子空间，一般来说，检索的子空间越多，检索越精确，但是检索速度越慢。两者需要做一定的权衡。特别地，当两者相等时，等价于暴力检索。</p></li>
+<li><p>检索速度可能不太稳定</p>
+<p>​ 一般来说，在进行聚类后，检索的速度应该是暴力检索的 1/nlist
+，但是由于聚类算法不可能保证每个类包含的向量数量都是一样的，实际直觉上各个类的大小也不应该一样（如每个省份的人有多有少），因此在需要对较大的子空间进行遍历时，需要消耗较多的时间，反之则速度更快。一般有个常量C来表示，整体的查询效率为
+C/nlist 。</p></li>
+<li><p>内存消耗较大</p>
+<p>​
+无论是训练还是最后的检索，为了提升速度，都需要把全量数据加载到内存中，这种方法没有对向量进行压缩，内存消耗较大。</p></li>
+</ul>
+<h4 id="乘积量化">2.3 乘积量化</h4>
+<blockquote>
+<p>乘积量化的核心思想还是聚类。其主要分为两个步骤，Cluster 和
+Assign，也即聚类和量化。</p>
+</blockquote>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86y8g88a1j31010myach.jpg"
+alt="image-20221116142508313" />
+<figcaption aria-hidden="true">image-20221116142508313</figcaption>
+</figure>
+<p>​
+实际上就是先切块然后聚类，再每个切的小块上通过量化编码的形式进行拼接组合，节省了大量内存，压缩比率2000+</p>
+<p>乘积量化有个重要的参数m_split
+，这个参数控制着向量被切分的段数，如图所示，假设每个向量的维度为128，每个向量被切分为4段，这样就得到了4个小的向量，对每段小向量分别进行聚类，聚类个数为256个，这就完成了Cluster。然后做Assign操作，先每个聚类进行编码，然后分别对每个向量来说，先切分成四段小的向量，对每一段小向量，分别计算其对应的最近的簇心，然后使用这个簇心的ID当做该向量的第一个量化编码，依次类推，每个向量都可以由4个ID进行编码。
+每个ID可以由一个字节保存，每个向量只需要用4个字节就可以编码，这样就完成的向量的压缩，节省了大量的内存，压缩比率2000+。
+这一步其实就是Faiss训练的部分，目的是为了获取索引Index。在完成向量压缩，获取索引之后，就要考虑如何进行向量查询，下图表示了某个查询向量Query进行查询时的操作流程：
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86yay17s1j30z70lnmz6.jpg"
+alt="image-20221116142730279" /></p>
+<p>查询也是和训练时一样，先对查询的向量进行切分，得到四小段向量，计算每个小向量和对应的256个类中心距离，存在一个距离矩阵或者数组中，接着就可以通过查表，计算query向量和每个向量之间的距离，类加每个小向量之间的距离之和。</p>
+<h3 id="优化效率计算">3、优化效率计算</h3>
+<p>由上可以看出，在原来的暴力算法下，进行一次查询需要的计算量是
+N128次计算，但是使用PQ后，只需要
+425632次计算，加上4N次查表计算，因此计算量之比为： <img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86ydue4egj307302eq2q.jpg"
+alt="image-20221116143019563" /></p>
+<p>当N特别大时，425632
+可以忽略，<strong>计算量减少32倍。</strong>（注：分母的查表操作耗时远小于分子的浮点乘法计算，因此计算效率会远大于32）
+但是，考虑到3.2小节提到的IVF方法，先进行聚类，再进行PQ，那么计算量再次减少，变成
+: <img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86ye07f89j308601wq2r.jpg"
+alt="image-20221116143028859" /></p>
+<p>假设nlist设置为2000，常数c为5，则优化效率至少为1200，提升了3个数量级,计算量再次减少，最终可以实现快速，高效的相似向量查询。</p>
+<h3 id="总结">4、总结</h3>
+<p>本文只着重讲解Faiss比较核心的原理，还有基于局部哈希敏感，基于图检索的分层小世界导航等方法，有兴趣的同学可以看它的github以及相关的博客等。另外具体使用方法也可自行查找相关资料。</p>
+<h2 id="reference">Reference</h2>
+<p>[1] https://github.com/facebookresearch/faiss [2]
+https://zhuanlan.zhihu.com/p/164888905</p>
+<p>构建索引的方式有暴力检索的方法FlatL2，L2代表构建的index采用相似度度量方法是L2范数，欧氏距离。</p>
+<p>检索TopK相似query</p>
+<p><strong>Flat ：暴力检索</strong></p>
+<ul>
+<li>优点：该方法是Faiss所有index中最准确的，召回率最高的方法，没有之一；</li>
+<li>缺点：速度慢，占内存大。</li>
+<li>使用情况：向量候选集很少，在50万以内，并且内存不紧张。</li>
+</ul>
+<p><strong>IVFx Flat ：倒排暴力检索</strong></p>
+<ul>
+<li>优点：IVF主要利用倒排的思想，在文档检索场景下的倒排技术是指，一个kw后面挂上很多个包含该词的doc，由于kw数量远远小于doc，因此会大大减少了检索的时间。在向量中如何使用倒排呢？可以拿出每个聚类中心下的向量ID，每个中心ID后面挂上一堆非中心向量，每次查询向量的时候找到最近的几个中心ID，分别搜索这几个中心下的非中心向量。通过减小搜索范围，提升搜索效率。</li>
+<li>缺点：速度也还不是很快。</li>
+<li>使用情况：同Flat，</li>
+<li>参数：IVFx中的x是k-means聚类中心的个数</li>
+</ul>
+<p><strong>PQx ：乘积量化</strong></p>
+<ul>
+<li>优点：利用乘积量化的方法，改进了普通检索，将一个向量的维度切成x段，每段分别进行检索，每段向量的检索结果取交集后得出最后的TopK。因此速度很快，而且占用内存较小，召回率也相对较高。</li>
+<li>缺点：召回率相较于暴力检索，下降较多。</li>
+<li>使用情况：内存及其稀缺，并且需要较快的检索速度，不那么在意召回率</li>
+<li>参数：PQx中的x为将向量切分的段数，因此，<strong>x需要能被向量维度整除</strong>，且x越大，切分越细致，时间复杂度越高</li>
+</ul>
+<p><strong>IVFxPQy 倒排乘积量化</strong></p>
+<ul>
+<li>优点：工业界大量使用此方法，各项指标都均可以接受，利用乘积量化的方法，改进了IVF的k-means，将一个向量的维度切成x段，每段分别进行k-means再检索。</li>
+<li>缺点：集百家之长，自然也集百家之短</li>
+<li>使用情况：一般来说，各方面没啥特殊的极端要求的话，<strong>最推荐使用该方法！</strong></li>
+<li>参数：IVFx，PQy，其中的x和y同上</li>
+</ul>
+<p><strong>LSH 局部敏感哈希</strong></p>
+<ul>
+<li>原理：哈希对大家再熟悉不过，向量也可以采用哈希来加速查找，我们这里说的哈希指的是局部敏感哈希（Locality
+Sensitive
+Hashing，LSH），不同于传统哈希尽量不产生碰撞，局部敏感哈希依赖碰撞来查找近邻。高维空间的两点若距离很近，那么设计一种哈希函数对这两点进行哈希值计算，使得他们哈希值有很大的概率是一样的，若两点之间的距离较远，他们哈希值相同的概率会很小。不同距离度量的哈希函数不同，不是所有距离度量（如内积）都能找到对应局部敏感哈希。摘自<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/264367144">这篇文章</a>。</li>
+<li>优点：训练非常快，支持分批导入，index占内存很小，检索也比较快</li>
+<li>缺点：召回率非常拉垮。在候选语料比较多的时候（亿级别），检索也不是特别快，大概是秒级别的。</li>
+<li>使用情况：候选向量库非常大，离线检索，内存资源比较稀缺的情况</li>
+</ul>
+<p><strong>HNSWx</strong></p>
+<ul>
+<li>优点：该方法为基于图检索的改进方法，检索速度极快，10亿级别秒出检索结果，而且召回率几乎可以媲美Flat，能达到惊人的97%。检索的时间复杂度为loglogn，几乎可以无视候选向量的量级了。并且支持分批导入，极其适合线上任务，毫秒级别体验。</li>
+<li>缺点：构建索引极慢，占用内存极大（是Faiss中最大的，大于原向量占用的内存大小）</li>
+<li>参数：HNSWx中的x为构建图时每个点最多连接多少个节点，x越大，构图越复杂，查询越精确，当然构建index时间也就越慢，x取4~64中的任何一个整数。</li>
+<li>使用情况：不在乎内存，并且有充裕的时间来构建index</li>
+</ul>
+<p>对不同index做过一些对比实验结果：</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86ywvxjntj30k005nt9d.jpg"
+alt="召回率、搜索时间对比" />
+<figcaption aria-hidden="true">召回率、搜索时间对比</figcaption>
+</figure>
+<p>​ 召回率、搜索时间对比</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86yxn49q8j30k003rweu.jpg"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>​ 召回率、检索时间、内存消耗、构建时间对比</p>
+<p>当然可以先使用pca降维，在用IVF等方法构建索引。</p>
+<hr />
+<h3 id="国产-milvus">2、国产 – Milvus</h3>
+<p>文章1、8提及， Milvus 是一款开源的特征向量相似度搜索引擎Milvus
+使用方便、实用可靠、易于扩展、稳定高效和搜索迅速。</p>
+<p>Milvus能够很好地应对海量向量数据，它集成了目前在向量相似性计算领域比较知名的几个开源库（Faiss，
+SPTAG等），通过对数据和硬件算力的合理调度，以获得最优的搜索性能。</p>
+<blockquote>
+<p>https://milvus.io/</p>
+</blockquote>
+<p>Milvus 提供完整的向量数据更新，索引与查询框架。Milvus 利用
+GPU（Nvidia）进行索引加速与查询加速，能大幅提高单机性能。除了提供针对向量的近实时搜索能力外，Milvus
+可以对标量数据进行过滤。</p>
+<p>随着数据和查询规模的增加，Milvus
+还提供了集群分片的解决方案，支持读写分离、水平扩展、动态扩容等功能，实现了对于超大数据规模的支持。</p>
+<p>目前，Milvus 是一个单节点主从式架构（Client-server
+model）的服务器，最高可以支持 TB
+级特征数据的存储和搜索服务。对于有更大数据规模或者高并发需求的用户，可以使用目前尚在实验阶段的集群分片中间件
+Mishards 进行部署。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h868xtdqomj30k40dbt9k.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第4张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第4张 | 技术人生</figcaption>
+</figure>
+<p>Milvus索引类型：</p>
+<p>· IVF：集成 Faiss IVF、Milvus 团队自研 IVF</p>
+<p>· Graph：Milvus 团队实现的 NSG 索引、集成 Faiss hnsw</p>
+<p>· Tree &amp; Graph：集成微软 SPTAG</p>
+<p>· IVF &amp; Graph：Milvus 团队实现</p>
+<p>可支撑的应用场景：</p>
+<h4 id="图像视频检索"><strong>2.1 图像视频检索</strong></h4>
+<p>深度学习模型最开始就是用来对图像、视频等进行处理，通过训练可以精准的提取图片、视频中的特征从而对图片、视频进行分类，打标签，以图搜图，以图搜视频等等。Milvus凭借其出色的性能和数据管理能力，可以支持各种深度学习模型，实现对海量图片和视频的高性能分析检索能力。</p>
+<p>· 图片搜索</p>
+<p>· 图片去重</p>
+<p>· 视频去重</p>
+<p>· 以商品搜商品</p>
+<h4 id="智能问答机器人"><strong>2.2 智能问答机器人</strong></h4>
+<p>传统的问答机器人大都是基于规则的知识图谱方式实现，这种方式需要对大量的语料进行分类整理。而基于深度学习模型的实现方式可以彻底摆脱对语料的预处理，只需提供问题和答案的对应关系，通过自然语言处理的语义分析模型对问题库提取语义特征向量存入Milvus中，然后对提问的问题也进行语义特征向量提取，通过对向量特征的匹配就可以实现自动回复，轻松实现智能客服等应用。</p>
+<p>· 语义提取</p>
+<p>· 个性化推荐</p>
+<p>· 语料分析和推荐</p>
+<h4 id="赋能传统向量计算"><strong>2.3 赋能传统向量计算</strong></h4>
+<p>在传统的数据处理领域也存在大量向量计算的场景，使用传统的计算方式需要消耗大量的算力而Milvus凭借先进的算法可以在同等算力资源下将向量数据处理能力提高至少两个数量级。</p>
+<p>· 分子结构相似性分析</p>
+<p>· 分子药理分析</p>
+<p>· 药物分子虚拟筛选</p>
+<h4 id="音频数据处理"><strong>2.4 音频数据处理</strong></h4>
+<p>利用深度学习模型对音频数据进行分析和处理能够大大提高语音识别的准确率，而其核心也是对相关音频切片进行向量化处理并且通过向量距离的计算来判断其表达的含义，因此，Milvus在语音、音乐等音频数据处理领域的也有丰富的应用。</p>
+<p>· 个性化音乐推荐</p>
+<p>· 音乐去重</p>
+<p>· 声纹验证</p>
+<p>· 语音识别</p>
+<p>· 智能语音小助手</p>
+<p>· 智能翻译机器人</p>
+<h3 id="国产-jina--神经网络搜索">3、<strong>国产 – Jina-
+神经网络搜索</strong></h3>
+<p>文章[15]提及，</p>
+<p>​ Jina
+AI是一家专注基于深度学习模型搭建搜索引擎技术的开源商业公司，打造下一代的开源神经搜索引擎开发平台，通过深度学习和人工智能搜索能力的结合做到全内容搜索，无论是文本、图片、语音、视频、源代码、元数据亦或是文件都可以称为搜索引擎输入源进行全域全方位搜索。</p>
+<p>​
+由AI界大名鼎鼎的肖涵老师带领的开源团队创始和开发，秉承了肖涵老师团队优秀的开源文化，其团队名下的Bert
+as server 和Fashion-Mnist
+在GitHub的star数都高达8000，故本次的Jina质量可见一斑。
+Jina以通用性为目标，几乎可以搜索任何内容形式（例如文本，图像，视频，音频）；它的目标是在AI生产中，利用现代软件基础架构并以最佳工程实践进行构建。旨在易于使用，针对多个平台，架构和用例进行优化。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h8693172n9j30rv0ant9o.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第5张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第5张 | 技术人生</figcaption>
+</figure>
+<p>​
+Jina也有着自身的Yaml语法，可通过API和仪表盘迅速的搭建出一个属于自己的云端系统。同时他最大的亮点就是其可以在多个平台和架构上实现任意类型的大规模索引和查询。</p>
+<p><strong>Jina Hub</strong></p>
+<p>· 90+ 的 Pod 镜像可供使用</p>
+<p>· 支持最先进的AI模型</p>
+<p>· 支持多种向量数据库</p>
+<p>· 支持多种Evaluation 的方式</p>
+<h3 id="阿里达摩院-proxima-蚂蚁金服--zsearch">4、 <strong>阿里达摩院 –
+Proxima &amp; 蚂蚁金服- ZSearch</strong></h3>
+<h4 id="阿里达摩院--proxima">4.1、** 阿里达摩院 -Proxima**</h4>
+<p>文章[7]提及， Proxima
+是阿里巴巴达摩院自研的向量检索内核。目前，其核心能力广泛应用于阿里巴巴和蚂蚁集团内众多业务，如淘宝搜索和推荐、蚂蚁人脸支付、优酷视频搜索、阿里妈妈广告检索等。
+同时，Proxima 还深度集成在各式各类的大数据和数据库产品中，如阿里云
+Hologres、搜索引擎 Elastic Search 和 ZSearch、离线引擎 MaxCompute (ODPS)
+等，为其提供向量检索的能力。 Proxima
+是通用化的向量检索工程引擎，实现了对大数据的高性能相似性搜索，支持
+ARM64、x86、GPU
+等多种硬件平台，支持嵌入式设备和高性能服务器，从边缘计算到云计算全面覆盖，支持单片索引十亿级别下高准确率、高性能的索引构建和检索。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869hqqg1ej30o60b9ab6.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第6张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第6张 | 技术人生</figcaption>
+</figure>
+<p>向量检索的算法繁多且缺乏通用性，应对不同数据维度和分布有不同算法，但总体可归为三类思想：</p>
+<p>空间划分法：空间划分法以
+KD-Tree、聚类检索为代表，检索时快速定位到这些小集合，从而减少需要扫描的数据点的量，提高检索效率。</p>
+<p>空间编码和转换法：空间编码和转换法，如 p-Stable LSH、PQ
+等方法，将数据集重新编码或变换，映射到更小的数据空间，从而减少扫描的数据点的计算量。</p>
+<p>· 邻居图法：邻居图法，如 HNSW、SPTAG、ONNG
+等，通过预先建立关系图的方法，去加快检索时的收敛速度，减少需要扫描的数据点的量，以提高检索效率。</p>
+<p>向量检索发展多年，并逐渐成为非结构化检索的主流方法，但仍存在了不少的技术挑战和问题。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869ibuvrbj30o6087js2.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第7张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第7张 | 技术人生</figcaption>
+</figure>
+<ul>
+<li><strong>业务场景：标签+向量的联合检索</strong></li>
+</ul>
+<p>在大多数业务场景下，需要同时满足标签检索条件和相似性检索的要求，如查询某些属性条件组合下相似性的图片等，我们称这种检索为“带条件的向量检索”。</p>
+<p>目前，业内采用多路归并的方式，即分别检索标签和向量再进行结果合并，虽可以解决部分问题，但多数情况下结果不甚理想。主要原因在于，向量检索无范围性，其目标是尽可能保证
+TOPK 的准确性，TOPK
+很大时，准确性容易下降，造成归并结果的不准确甚至为空的情况。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869ikryaaj30o604adg0.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第8张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第8张 | 技术人生</figcaption>
+</figure>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869itsys9j30o608wgma.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第9张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第9张 | 技术人生</figcaption>
+</figure>
+<ul>
+<li><strong>业务场景： 语音/图像/视频检索</strong></li>
+</ul>
+<p>以图片搜索为例，我们先以离线的方式对所有历史图片进行机器学习分析，将每一幅图片（或者图片里分割出来的人物）抽象成高维向量特征，然后将所有特征构建成高效的向量索引，当一个新查询（图片）来的时候，我们用同样的机器学习方法对其进行分析并产出一个表征向量，然后用这个向量在之前构建的向量索引中查找出最相似的结果，这样就完成了一次以图片内容为基础的图像检索。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869kj3i92j30o60da75s.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第10张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第10张 | 技术人生</figcaption>
+</figure>
+<ul>
+<li><strong>业务场景： 搜索/推荐/广告</strong></li>
+</ul>
+<p>在电商领域的搜索/推荐/广告业务场景中，常见的需求是找到相似的同款商品和推荐给用户感兴趣的商品，这种需求绝大多数都是采用商品协同和用户协同的策略来完成的。</p>
+<p>新一代的搜索推荐系统吸纳了深度学习的 Embedding 的能力， 通过诸如
+Item-Item (i2i)、User-Item (u2i)、User-User-Item (u2u2i)、User2Item2Item
+(u2i2i) 等向量召回的方式实现快速检索。</p>
+<p>算法工程师通过对商品的相似和相关关系，以及被浏览和被购买的用户行为的抽象，将它们表征成高维向量特征并存储在向量引擎中。这样，当我们需要找一个商品的相似商品（i2i）时，就可以高效快捷地从向量引擎中检索出来。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869kuihi5j30o60chjsn.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第12张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第12张 | 技术人生</figcaption>
+</figure>
+<h4 id="蚂蚁金服--zsearch"><strong>4.2 蚂蚁金服- ZSearch</strong></h4>
+<p>文章[5]提及，</p>
+<p>ElasticSearch（简称
+ES）是一个非常受欢迎的分布式全文检索系统，常用于数据分析、搜索、多维过滤等场景。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869qyozmpj30u40gcacb.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第13张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第13张 | 技术人生</figcaption>
+</figure>
+<p>ElasticSearch
+广泛应用于蚂蚁金服内部的日志分析、多维分析、搜索等场景。当我们的
+ElasticSearch
+集群越来越多，用户场景越来越丰富，我们会面临越来越多的痛点：</p>
+<p>· 如何管理集群；</p>
+<p>· 如何方便用户接入和管理用户；</p>
+<p>· 如何支持用户不同的个性化需求；</p>
+<p>为了解决这些痛点，我们开发了 ZSearch 通用搜索平台：</p>
+<p>· 基于 K8s 底座，快速创建 ZSearch
+组件，快捷运维，故障机自动替换；</p>
+<p>· 跨机房复制，重要业务方高保；</p>
+<p>· 插件平台，用户自定义插件热加载；</p>
+<p>· SmartSearch 简化用户搜索，开箱即用</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869ravq1lj30u40dswft.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第14张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第14张 | 技术人生</figcaption>
+</figure>
+<h4 id="zsearch-proxima-proximaengine"><strong>4.3 ZSearch + Proxima
+=&gt; ProximaEngine</strong></h4>
+<p>文章[5]提及， proxima
+是阿里内部达摩院开发的一个通用向量检索引擎框架，类似与 facebook 开源的
+faiss；支持多种向量检索算法。</p>
+<p><strong>写入流程</strong></p>
+<p>扩展 ElasticSearch 本身的 InternalEngine，在写完 Lucene 以后，先写
+Proxima 框架，Proxima 框架的数据通过 mmap
+方式会直接刷到磁盘，一次请求的最后，Translog
+刷入磁盘。就是一次完整的写入请求了。至于内存中的 segment，ElasticSearch
+会异步到达某个条件是刷入磁盘。</p>
+<p><strong>Query 流程</strong></p>
+<p>查询的时候，通过 VectorQueryPlugin，先从 Proxima 向量检索引擎中查找
+topN 的向量，获得 seqNo 和相似度，再通过构造 newSetQuery 的
+FunctionScoreQuery，去 join 其他查询语句。这里的数字型 newSetQuery
+底层是通过 BKDTree 去一次遍历所得，性能还是很高效的。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86a782uizj30u40g70ua.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第15张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第15张 | 技术人生</figcaption>
+</figure>
+<h3 id="京东-vearch"><strong>5 京东 – vearch</strong></h3>
+<p>github：https://github.com/vearch/vearch
+文档：https://vearch.readthedocs.io/zh_CN/latest/</p>
+<p>文章[16]提及，vearch
+是一个分布式向量搜索系统，可用来存储、计算海量的特征向量，为 AI
+领域的向量检索提供基础系统支撑与保障。该系统能够广泛地应用于图像，
+音视频和自然语言处理等各个机器学习领域。</p>
+<p>vearch 基于 Facebook AI 研究院开源的 Faiss 实现，但 Faiss
+本身只是一个能够单机运行的支持各种向量检索模型的机器学习算法基础库，不支持分布式、实时索引和检索，同时也不支持标量字段的存储和索引等等。</p>
+<p>因此结合在实际应用中的需求，我们在 faiss 的基础上研发了
+vearch，提供了类似 ElasticSearch 的灵活易用的 RESTFul
+API，可以方便地对表结构及数据进行管理查询。</p>
+<p>为了提升检索召回及排序的质量，在实际应用场景中，通过量化，Hash
+及图等检索模型召回后得到的 TopN
+候选集，需要进一步比对计算其原始向量距离。因此在实际生产环境及成熟产品应用中，庞大原始向量的存储是不能逃避开的一个问题。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869ok0q7tj30u40q641o.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第16张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第16张 | 技术人生</figcaption>
+</figure>
+<p>如下图清晰地展示了 vearch 的总体用法及其内部结构。vearch
+的使用主要分为三个步骤。
+首先，创建数据库和空间，然后导入数据，最后可以搜索自己的数据集。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869plc0tlj30sk0bwgm9.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第17张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第17张 | 技术人生</figcaption>
+</figure>
+<p>vearch 主要的应用场景有：</p>
+<p>· 图像/视频/音频检索和去重；</p>
+<p>· 安防领域视频智能监控</p>
+<p>· 文本相似度计算；</p>
+<p>· 推荐，搜索召回及排序；</p>
+<p>案例 1：人脸识别底层特征向量存储、计算引擎，如图 6
+所示，目前已经应用到京东之家业务中，为业务过滤掉了
+40%左右的不良数据。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869md5l7oj30u40k1760.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第18张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第18张 | 技术人生</figcaption>
+</figure>
+<p>案例 2：vearch
+可提供实时在线相似性图片搜索服务，比如在电商平台可以用来搜同款。详细流程如图
+7 所示：</p>
+<figure>
+<img
+src="http://blog.cxiangnet.cn/wp-content/uploads/2022/01/wpsDA5F.tmp_-1-1.png"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第19张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第19张 | 技术人生</figcaption>
+</figure>
+<p>案例 3：海量重复图片去重，在目前已经应用到了京东重复铺货检测，如图 8
+所示：</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869myjj3fj30u40cs75i.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第20张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第20张 | 技术人生</figcaption>
+</figure>
+<p>案例 4：可应用于搜索，推荐系统。比如视频网站推荐系统将各种特征
+embedding 成向量后，利用向量相似性检索做召回，召回模型细节如图 9
+所示：</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86a1iev2vj30io0e6gmo.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第21张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第21张 | 技术人生</figcaption>
+</figure>
+<h3 id="应用案例一贝壳找房-向量检索框架的选择"><strong>6
+应用案例一：贝壳找房 – 向量检索框架的选择</strong></h3>
+<h4 id="技术选型"><strong>6.1 技术选型</strong></h4>
+<p>在技术选型阶段，我们调研了业界已经比较成熟的工具，如facebook的faiss、微软的SPTAG，以及国内发起的开源项目Vearch，Milvus。</p>
+<p>具体对比见表1,2。Vearch和Milvus属于同类型产品，对比faiss和SPTAG的优势在于，后两者为开发库，不能开箱即用，在生产环境中使用涉及更多的开发、维护成本。Milvus和Vearch是两款基于现有的开发库，开箱即用的应用，在实现基本的相似计算功能的基础上，围绕服务整体易用性、部署、稳定性等方面做了更多工作。</p>
+<p>另外，Milvus对比Vearch，在社区活跃度、支持度上具有更明显的优势。基于以上的调研，综合考虑各方面的成本，我们选择Milvus作为底层引擎。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869t51yswj30u40ma40h.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第22张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第22张 | 技术人生</figcaption>
+</figure>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869t81fbej30u40hn75v.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第23张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第23张 | 技术人生</figcaption>
+</figure>
+<h4 id="服务框架"><strong>6.2 服务框架</strong></h4>
+<p>Milvus基于Faiss、Annoy等比较成熟的开源库，并针对性做了定制，支持结构化查询、多模查询等业界比较急需的功能；Milvus支持cpu、gpu、arm等多种类型的处理器；同时使用mysql存储元数据，并且在共享存储的支持下，Milvus可以支持分布式部署。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869tolt8ij30u40guq5r.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第24张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第24张 | 技术人生</figcaption>
+</figure>
+<p>贝壳找房整体架构分三层，网关层、应用层和引擎层。</p>
+<figure>
+<img
+src="http://blog.cxiangnet.cn/wp-content/uploads/2022/01/wpsDA84.tmp_-1-1.png"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第25张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第25张 | 技术人生</figcaption>
+</figure>
+<h3 id="应用案例二58同城向量检索平台架构实践"><strong>7
+应用案例二：58同城向量检索平台架构实践</strong></h3>
+<p>为了满足业务上对向量检索的需求，降低学习成本，提高开发效率，我们开发并上线了向量检索平台。我们支持了Faiss算法库，实现了几种常用索引的全量索引构建、实时增量索引、实时在线检索，旨在帮助用户更快更好的使用海量高维向量相似性检索功能。</p>
+<figure>
+<img
+src="http://blog.cxiangnet.cn/wp-content/uploads/2022/01/wpsDA85.tmp_-1-1.png"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第26张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第26张 | 技术人生</figcaption>
+</figure>
+<p>平台基于Facebook的Faiss进行向量索引的构建，目前支持三种比较具有代表性的索引全量构建，分别是IndexFlatL2（基于欧氏距离的暴力索引）、IndexIVFFlat（加聚类的倒排索引，支持欧式距离和向量内积两种距离算法）、IndexIVFPQ（加聚类、加量化的倒排索引），并且支持分布式索引（支持大规模数据的分布式索引构建）。</p>
+<p>分布式索引构建Faiss本身只是一个能够单机运行的向量检索基础算法库，不支持分布式。在海量数据的场景下，向量数据集达到百亿级及以上时，单机构建索引会产生如下问题：</p>
+<p>1、 单机处理数据量，构建索引耗时较长</p>
+<p>· 2、
+构建的索引，可能达到百GB以上甚至达到TB级别，会超过单机物理节点的内存资源上限针对以上问题，向量检索平台支持了分布式索引的构建。</p>
+<h3 id="拓展阅读"><strong>8 拓展阅读</strong></h3>
+<h4 id="google-scann"><strong>8.1 google – ScaNN</strong></h4>
+<blockquote>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/google-research/google-research/tree/master/scann">google-research/scanngithub.com/google-research/google-research/tree/master/scann</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/google-research/google-research/blob/master/scann/docs/algorithms.md">google-research/google-researchgithub.com/google-research/google-research/blob/master/scann/docs/algorithms.md</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/google-research/google-research/blob/master/scann/docs/example.ipynb">google-research/google-researchgithub.com/google-research/google-research/blob/master/scann/docs/example.ipynb</a></p>
+</blockquote>
+<p>ICML 2020 论文“Accelerating Large-Scale Inference with Anisotropic
+Vector
+Quantization”中，我们通过关注如何压缩数据集向量来实现快速近似距离计算解决这一问题，并提出了一种新的压缩技术，与以前的工作相比，这项技术可以大大提高准确率。我们在近期开源的向量相似性搜索库
+(ScaNN)
+中应用了这项技术，与其他向量相似性搜索库相比，我们的性能高出两倍（在 <a
+target="_blank" rel="noopener" href="http://ann-benchmarks.com/">ANN-Benchmarks</a> 上测得）。</p>
+<p>各向异性向量量化使 ScaNN 可以更好地估计前 k 个 MIPS
+结果中的内积，从而实现更高的精度。在来自 <a
+target="_blank" rel="noopener" href="http://ann-benchmarks.com/">ANN-Benchmarks</a> 的
+glove-100-angular 基准测试中，ScaNN 的性能优于其他 11
+个经过精心调整的向量相似性搜索库，在给定的精度下，每秒处理的查询数量大约是第二快的库的两倍。*</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h86a0gwxndj30hw0aldgy.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第27张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第27张 | 技术人生</figcaption>
+</figure>
+<p>Recall@k 是最近邻搜索精度的常用指标，用于衡量算法返回的 k
+个近邻中存在的真正的最近 k
+个近邻的比例：ScaNN（上面的紫色线）在速度-精度权衡的各个方面始终展现出优异的性能</p>
+<p>我们已经将 ScaNN 在 GitHub 上开源。ScaNN 可以通过 Pip
+直接安装，并具有用于 TensorFlow 和 Numpy 输入的接口。</p>
+<p>原文链接：</p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/jilrvrtrc/article/details/107969603">揭开
+ScaNN
+的神秘面纱：高效的向量相似性搜索blog.csdn.net/jilrvrtrc/article/details/107969603</a></p>
+<h3 id="繁星快手搜索在向量检索方向的探索和实践"><strong>9
+「繁星」：快手搜索在向量检索方向的探索和实践</strong></h3>
+<p>2021-11-30更新；参考：</p>
+<p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1ed9BDZKzjQIgDScyxpbHw">「繁星」：快手搜索在向量检索方向的探索和实践mp.weixin.qq.com/s/1ed9BDZKzjQIgDScyxpbHw</a></p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869vots07j30u40cw0u9.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第28张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第28张 | 技术人生</figcaption>
+</figure>
+<p><strong>「繁星」向量检索平台</strong></p>
+<p>·
+<strong>性能挑战：</strong>开源算法不一定代表最优性能！需要不断自研提升开源算法性能吞吐进而降低服务部署成本，吞吐
+= 金钱；</p>
+<p>·
+<strong>易用性挑战：</strong>开源算法通常是不易用的。开源算法功能比较单一太底层，没有提供面向业务的功能，重复建设成本高；</p>
+<p>·
+<strong>超大规模挑战：</strong>如何设计合理的在线、离线架构支持超大规模数据集(百亿)、超高并发(百万级qps)等特殊业务场景需求，对工程能力挑战极大；</p>
+<p>·
+<strong>综合检索场景挑战：</strong>单纯向量检索能力已不能满足实际业务中复杂场景检索需求，更高级的结构化检索能力成为工业界新的发展方向，融合”非结构化数据向量检索”+”结构化数据布尔检索”的综合检索实现，才能满足类似于(Brand
+= Adidas) and (Pirce in [100-200]) and (Location = Beijing) and (Ann dis
+: top 100) results 等相关性限制条件下的复杂场景向量检索需求；</p>
+<p>·
+<strong>算法及超参挑战：</strong>实际生产中业务场景极度复杂，向量检索算法数十种，但没有’银弹’算法适用所有场景，每种算法又有众多的超参影响精度和性能，如何合理选择算法及其并使用合理参数来达到最优的效果是一项十分复杂的工程，需要不断的积累与探索；</p>
+<p>·
+<strong>接入效率挑战：</strong>需求到线上服务需要多长时间？在业务需求很多的情况下，效率往往会成为使用方更大的关注点；</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869w6n7c7j30pe0gm41k.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第29张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第29张 | 技术人生</figcaption>
+</figure>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869x35agpj30u40jj41g.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第30张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第30张 | 技术人生</figcaption>
+</figure>
+<p>向量检索平台具备丰富的“算法特性”、“功能特性”及”架构特性”，我们主要选择几个主要特性进行展开介绍：</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/008vxvgGly1h869xji9hvj30su0xi0vo.jpg"
+alt="几款多模态向量检索引擎：Faiss 、milvus、Proxima、vearch、Jina等 - 第31张 | 技术人生" />
+<figcaption aria-hidden="true">几款多模态向量检索引擎：Faiss
+、milvus、Proxima、vearch、Jina等 - 第31张 | 技术人生</figcaption>
+</figure>
+<h4 id="参考文献"><strong>参考文献</strong></h4>
+<p>1 向量搜索 产品调研报告 jina AI 以及milvus</p>
+<p>2 Milvus 向量搜索引擎开源了！ 3
+还在手撸faiss算法库？不如试试这个开源向量搜索系统，单机十亿好轻松 4
+京东开源的分布式特征储存检索系统vearch理解 5 蚂蚁金服 ZSearch
+在向量检索上的探索 6 <a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU1NTMyOTI4Mw==&amp;mid=2247516794&amp;idx=1&amp;sn=a3f2243dfba429f3956514c2e00aca1b&amp;scene=21%23wechat_redirect">贝壳商业化算法中台架构实践</a>
+7 <a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI0NTE4NjA0OQ==&amp;mid=2658373467&amp;idx=1&amp;sn=256a43f943f963bac9328053a61c849d&amp;scene=21%23wechat_redirect">比
+Faiss 更胜一筹？达摩院自主研发的向量检索引擎 Proxima 首次公开！</a> 8
+Milvus 是一款开源的特征向量相似度搜索引擎 9 <a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU3OTY2MjQ2NQ==&amp;mid=2247485325&amp;idx=1&amp;sn=f62c471d2e7cf9051f17602c12a364c3&amp;scene=21%23wechat_redirect">基于Milvus的向量搜索实践（一）</a>
+10 <a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU3OTY2MjQ2NQ==&amp;mid=2247485384&amp;idx=1&amp;sn=fee83ac6c9d5d2b6ed76a5699f137c50&amp;scene=21%23wechat_redirect">基于Milvus的向量搜索实践（二）</a>
+11 <a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU3OTY2MjQ2NQ==&amp;mid=2247485412&amp;idx=1&amp;sn=9f0f790355e4867f26822d1a7e86fffa&amp;scene=21%23wechat_redirect">基于Milvus的向量搜索实践（三）</a>
+12 <a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI1NDc5MzIxMw==&amp;mid=2247491376&amp;idx=1&amp;sn=e2e0cb28dd630fbfc1eb6376e4d8c9de&amp;scene=21%23wechat_redirect">58同城向量检索平台架构实践</a>
+13 <a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MjM5ODkzMzMwMQ==&amp;mid=2650420026&amp;idx=2&amp;sn=da08cdb815fe561661b32aa182321116&amp;scene=21%23wechat_redirect">万变不离其宗：用统一框架理解向量化召回</a>
+14 <a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg2ODExMjc4NQ==&amp;mid=2247487631&amp;idx=1&amp;sn=22c8351718a4e483439b44cb190560e4&amp;scene=21%23wechat_redirect">完全解析
+| 使用Faiss进行海量特征的相似度匹配</a> 15
+创立半年融资近千万美元，「Jina AI」打造下一代开源神经搜索引擎开发平台 16
+京东分布式向量检索系统 vearch 如何一招搞定海量特征存储与计算？</p>
+<ul>
+<li>参考文章链接:https://fblog.sunqiang.me/2022/01/28/%E5%87%A0%E6%AC%BE%E5%A4%9A%E6%A8%A1%E6%80%81%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E5%BC%95%E6%93%8E%EF%BC%9Afaiss-%E3%80%81milvus%E3%80%81proxima%E3%80%81vearch%E3%80%81jina%E7%AD%89/</li>
+<li>转载请注明: <a
+target="_blank" rel="noopener" href="http://blog.sunqiang.me/author/admin/">sunny5156</a>
+2022年01月28日 于 <a target="_blank" rel="noopener" href="http://blog.sunqiang.me/">技术人生</a>
+发表</li>
+</ul>
+
+      </div>
+    </div>
+    
+      <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script>
+      <script>
+        if (window.mermaid) {
+          mermaid.initialize({"startOnload":true});
+        }
+      </script>
+    
+  </article>
+  <div class="post__foot">
+    
+      <div class="like-author">
+  <input type="checkbox" id="likeCode" />
+  <div class="author-face">
+    <img height="100px"
+         width="100px"
+         id="front-face"
+         alt="author face"
+         src="/images/author-face.jpg" />
+    <img height="100px"
+         width="100px"
+         id="back-face"
+         alt="like code"
+         src="/images/pay-code.jpg" />
+  </div>
+  <div class="like-text">“给作者倒杯卡布奇诺”</div>
+  <label for="likeCode" class="like-btn">
+    <svg viewBox="0 0 1024 1024"
+         width="20px"
+         style="margin-right: 10px"
+         height="20px">
+      <path d="M466.88 908.96L113.824 563.296a270.08 270.08 0 0 1 0-387.392c108.8-106.56 284.896-106.56 393.696 0 1.504 1.472 2.976 2.944 4.448 4.48 1.472-1.536 2.944-3.008 4.448-4.48 108.8-106.56 284.896-106.56 393.696 0a269.952 269.952 0 0 1 34.016 347.072l-387.392 385.6a64 64 0 0 1-89.92 0.384z" p-id="13650" fill="#ee4242" />
+    </svg>
+    喜欢作者
+  </label>
+</div>
+
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/1984/01/24/%E5%8D%9A%E5%A3%AB%E8%BF%99%E4%BA%94%E5%B9%B4-%E6%9D%8E%E6%B2%90/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>博士这五年-李沐</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/1984/01/24/%E5%9F%BA%E4%BA%8E%E7%89%A9%E5%93%81%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E7%AE%97%E6%B3%95%EF%BC%88ItemCF%EF%BC%89%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
+        </svg>
+      </div>
+      基于物品的协同过滤算法（ItemCF）原理以及代码实践
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+  <div class="foot-inner">
+    <div class="foot__head">
+      
+        <div class="foot-line">
+          <div class="matts">今</div><div class="matts">夜</div><div class="matts">无</div><div class="matts">眠</div>
+        </div>
+      
+        <div class="foot-line">
+          <div class="matts">睡</div><div class="matts">意</div><div class="matts">全</div><div class="matts">无</div>
+        </div>
+      
+    </div>
+    <div class="foot__body">
+      
+        <div class="foot-item">
+          <div class="foot-item__head">朋友</div>
+          <div class="foot-item__body">
+            
+            
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-link.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://moyanxinxu.github.io/unlock-hf/">unlock-hf</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-link+.svg" />
+            <a class="foot-link" href="mailto:873101411@qq.com?subject=申请http://example.com的友链">申请友链</a>
+          </div>
+        
+      
+        
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+          </div>
+        </div>
+      
+      
+        <div class="foot-item">
+          <div class="foot-item__head">账号</div>
+          <div class="foot-item__body">
+            
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-github.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/viserion-nlper">viserion-nlper</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-wx.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Fq9ZIUwZvMNx2kSahz8zEw">HanLP.com</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-zh.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/people/shuo-hao-jin-ye-bu-dian-yan">Mundooo</a>
+          </div>
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+          </div>
+        </div>
+      
+      <div class="foot-item">
+        <div class="foot-item__head">联系</div>
+        <div class="foot-item__body">
+          
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-email.svg" />
+            <a class="foot-link" href="mailto:name@example.com">name@example.com</a>
+          </div>
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <a href="http://example.com">思想放牧之地</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+      <svg width="20" height="20" viewBox="0 0 725 725">
+        <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+        <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+        <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+      </svg>
+      <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+    </div>
+  </div>
+</div>
+
+    
+    
+      <script src="/js/search.js"></script>
+      <script>searchInitialize("/search.json")</script>
+    
+    <script src="/js/copy-code.js"></script>
+    
+  
+
+  </body>
+</html>

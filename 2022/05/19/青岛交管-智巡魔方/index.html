@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <title>
       
-         | 思想放牧之地
+        交管-智巡魔方 | 思想放牧之地
       
     </title>
     <meta name="description" content="" />
@@ -149,13 +149,13 @@
   <article class="post-content">
     <div class="post-inner">
       <div class="post-content__head">
-        <div class="post-title">未命名</div>
+        <div class="post-title">交管-智巡魔方</div>
         <div class="post-info">
           
-  
+  <a href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/" class="post-tag">#路径规划</a><a href="/tags/%E4%BA%A4%E8%AD%A6/" class="post-tag">#交警</a>
 
 
-          <span class="post-date">2025-03-09</span>
+          <span class="post-date">2022-05-19</span>
         </div>
       </div>
       
@@ -165,7 +165,144 @@
             
           </div>
         
-        <p>1111</p>
+        <h1 id="交管-智巡魔方">交管-智巡魔方</h1>
+<hr />
+<h2 id="一业务需求">一、业务需求</h2>
+<h3 id="业务需求-现状与问题">业务需求-现状与问题</h3>
+<h4 id="巡逻警力规模-6辆警车24h">巡逻警力规模： 6辆警车（24h）</h4>
+<h4 id="辆铁骑8-19">12辆铁骑（8-19）</h4>
+<h4 id="辆机关车1830---2030">8辆机关车（18:30 - 20:30）</h4>
+<h4 id="业务瓶颈问题">业务瓶颈问题：</h4>
+<ul>
+<li><h5 id="问题一-警力动态巡逻分布均匀性">问题一：
+警力动态巡逻分布均匀性</h5>
+<h5
+id="现有分区巡逻模式下某些情况易出现警力聚集现象导致较远警情得不到及时响应">现有分区巡逻模式下，某些情况易出现警力聚集现象，导致较远警情得不到及时响应。</h5></li>
+<li><h5 id="问题二-警力静态停靠分布均匀性">问题二：
+警力静态停靠分布均匀性</h5>
+<h5
+id="后半夜静态停靠的能力如何根据警情估计进行合理空间分布的设计问题">后半夜静态停靠的能力，如何根据警情估计进行合理空间分布的设计问题。</h5></li>
+<li><h5 id="问题三-出警补位问题">问题三： 出警补位问题</h5>
+<h5
+id="出警时如何合理利用现有警力补位巡逻路线空档降低出警等待体验">出警时，如何合理利用现有警力补位巡逻路线空档，降低出警等待体验。</h5></li>
+<li><h5 id="问题四最低警力规模边界">问题四：最低警力规模边界</h5>
+<h5
+id="在既定平均响应时间条件下如何计算出每个巡区所需的最小警力作为工作依据">在既定平均响应时间条件下，如何计算出每个巡区所需的最小警力，作为工作依据。</h5></li>
+</ul>
+<h4 id="业务需求-建设思路">业务需求-建设思路</h4>
+<ol type="1">
+<li><h5
+id="总体目标为基于电子地图实现巡区或路线的可视化可查询可-编辑可排班提高指挥中心处置效率并支持任务信息可下发至交警手台让交警便捷地明确自己的巡区和路线">总体目标为：基于电子地图实现巡区或路线的<strong>可视化、可查询、可</strong>
+<strong>编辑、可排班</strong>，提高指挥中心处置效率，并支持任务信息可下发至交警手台，让交警便捷地明确自己的巡区和路线。</h5></li>
+<li><h5
+id="系统可以根据当日出勤警力规模在满足响应时间前提下推荐合理的巡逻任务配置方案">系统可以根据当日出勤警力规模，在满足响应时间前提下，推荐合理的巡逻任务配置方案。</h5></li>
+<li><h5
+id="系统支持将变更后的工作路线与任务下发至对应的交警手台出勤警力明确自身巡防区域重点位置">系统支持将变更后的工作路线与任务下发至对应的交警手台，出勤警力明确自身巡防区域、重点位置</h5></li>
+</ol>
+<h3 id="业务需求-关键问题">业务需求-关键问题</h3>
+<h4
+id="单位巡区最优警力分配---思路"><strong>单位巡区最优警力分配</strong> -
+思路：</h4>
+<blockquote>
+<p>单位巡区的警力配置范围为 <strong>{1...x...N},</strong>即最小为1，
+最多为N，希望在满足指定响应时间下，得到最小的警力配置 x：</p>
+<p>存在的因变量为：巡区面积、巡区道路长度、警情规模与发生时间分布、历史平均响应时间与警力位置分布等。通过历史数据结合地图计算，可以提炼出警力匹配模型，作为警力推荐方案</p>
+</blockquote>
+<h2 id="二解决方案">二、解决方案</h2>
+<h3 id="解决方案-需求分析">解决方案-需求分析</h3>
+<p>​ <img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abp6zy1jj21oh0u07an.jpg"
+alt="image-20220516162529679" /></p>
+<h3 id="解决方案-需求分析-关键性场景">解决方案-需求分析-关键性场景</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abrgntk8j21pd0u00wz.jpg"
+alt="image-20220516162754719" />
+<figcaption aria-hidden="true">image-20220516162754719</figcaption>
+</figure>
+<h3
+id="解决方案-需求分析-关键性场景-1">解决方案-需求分析-关键性场景</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abt7faa4j21oh0u0wk7.jpg"
+alt="image-20220516162935285" />
+<figcaption aria-hidden="true">image-20220516162935285</figcaption>
+</figure>
+<h3 id="解决方案---总体方案">解决方案 - 总体方案</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abuplyomj21pg0tq42s.jpg"
+alt="image-20220516163102399" />
+<figcaption aria-hidden="true">image-20220516163102399</figcaption>
+</figure>
+<h3 id="解决方案---建设内容">解决方案 - 建设内容</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abwwsdvvj21lj0u042c.jpg"
+alt="image-20220516163308955" />
+<figcaption aria-hidden="true">image-20220516163308955</figcaption>
+</figure>
+<h3 id="解决方案-系统逻辑架构设计">解决方案-系统逻辑架构设计</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abxqsyccj21jt0u0jvy.jpg"
+alt="image-20220516163356986" />
+<figcaption aria-hidden="true">image-20220516163356986</figcaption>
+</figure>
+<h3 id="解决方案---地图可视化管理">解决方案 - 地图可视化管理</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2ac9i3finj21l10u0n69.jpg"
+alt="image-20220516164514621" />
+<figcaption aria-hidden="true">image-20220516164514621</figcaption>
+</figure>
+<h3 id="解决方案---片区规划">解决方案 - 片区规划</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2acawfhx9j21o60tg416.jpg"
+alt="image-20220516164636193" />
+<figcaption aria-hidden="true">image-20220516164636193</figcaption>
+</figure>
+<h3 id="解决方案---警用终端">解决方案 - 警用终端</h3>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2ace8y902j214s0u0jut.jpg" alt="image-20220516164948863" style="zoom: 50%;" /></p>
+<h3 id="解决方案---巡区编辑">解决方案 - 巡区编辑</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2acilanh4j21jr0u0q99.jpg"
+alt="image-20220516165358766" />
+<figcaption aria-hidden="true">image-20220516165358766</figcaption>
+</figure>
+<h3 id="解决方案---预案编辑">解决方案 - 预案编辑</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2acolnenfj21jq0u0tfl.jpg"
+alt="image-20220516165945388" />
+<figcaption aria-hidden="true">image-20220516165945388</figcaption>
+</figure>
+<h3 id="三预期成效">三、预期成效</h3>
+<h4 id="image-20220516175344078"><img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2ae8r7r5kj21eq0u0104.jpg"
+alt="image-20220516175344078" /></h4>
+<h3 id="四实施计划---建设内容">四、实施计划 - 建设内容</h3>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2ae9uxqjkj21oy0ts7ax.jpg"
+alt="image-20220516175448088" />
+<figcaption aria-hidden="true">image-20220516175448088</figcaption>
+</figure>
+<h1 id="新增加">新增加：</h1>
+<ul>
+<li><p>重点部位的临时添加、突发情况</p></li>
+<li><p>一两个常用的预案进行模型的学习，尽量让其合理化，（领导组织部门到位，管理车辆到位，警力装备到位，-》。怎么部署
+个性化较多</p>
+<p>正常情况下，巡逻的路线预案，普适性的，以及变化的过程如何处理的。</p>
+<p>（重大交通事故，情况不一样处置不一样，只能落实原则性的问题，具体操作性的东西难以界定。）</p></li>
+</ul>
+<p>常态、战时两种模式的方案，片区，方案。</p>
+<p>补充预案</p>
+<h3 id="时间节点">时间节点：</h3>
+<p>​</p>
+<p>20号后对接，0</p>
 
       </div>
     </div>
@@ -209,7 +346,7 @@
     
     <div class="post-nav">
   
-    <a class="post-nav-item-left" href="/2025/03/10/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+    <a class="post-nav-item-left" href="/2022/05/20/%E5%9F%BA%E4%BA%8E%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
       <div class="text-align">
         <svg t="1670570876164"
              class="icon"
@@ -220,12 +357,12 @@
         </svg>
         <span class="text-small">上一篇</span>
       </div>
-      <div>第一篇博客</div>
+      <div>基于知识图谱的推荐系统综述</div>
     </a>
   
   <div class="vhr"></div>
   
-    <a class="post-nav-item-right" href="/2022/12/12/%E5%AE%9E%E7%8E%B0%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%AD%E5%B0%8F%E5%8C%BA%E4%BF%A1%E6%81%AF%E7%9A%84%E5%87%86%E7%A1%AE%E5%BD%92%E4%B8%80%E5%8C%96/">
+    <a class="post-nav-item-right" href="/2022/05/19/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%9C%A8%E5%B0%8F%E7%B1%B3%E7%9A%84%E5%BA%94%E7%94%A8%E4%B8%8E%E6%8E%A2%E7%B4%A2/">
       <div class="text-align">
         <span class="text-small">下一篇</span>
         <svg t="1670570876164"
@@ -237,7 +374,7 @@
           <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
         </svg>
       </div>
-      实现复杂数据源中小区信息的准确归一化
+      知识图谱在小米的应用与探索
     </a>
   
 </div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <title>
       
-         | 思想放牧之地
+        Pycharm远程连接服务器、配置SSH、配置py环境 | 思想放牧之地
       
     </title>
     <meta name="description" content="" />
@@ -149,13 +149,13 @@
   <article class="post-content">
     <div class="post-inner">
       <div class="post-content__head">
-        <div class="post-title">未命名</div>
+        <div class="post-title">Pycharm远程连接服务器、配置SSH、配置py环境</div>
         <div class="post-info">
           
-  
+  <a href="/tags/%E5%B7%A5%E5%85%B7/" class="post-tag">#工具</a>
 
 
-          <span class="post-date">2025-03-09</span>
+          <span class="post-date">2022-06-10</span>
         </div>
       </div>
       
@@ -165,7 +165,109 @@
             
           </div>
         
-        <p>1111</p>
+        <h1
+id="pycharm远程连接服务器配置ssh配置py环境">Pycharm远程连接服务器、配置SSH、配置py环境</h1>
+<p>在这里我将配置python、pytorch到指定服务器，前提是需要知道远程服务器提供的ip、port、账号、密码。</p>
+<h2 id="配置ssh">1 配置<a
+target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=SSH&amp;spm=1001.2101.3001.7020">SSH</a></h2>
+<p>输入ip、port、账号、密码</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h333xx6lhij215m0u0tby.jpg" alt="image-20220610135817289" style="zoom:50%;" /></p>
+<h2 id="新建项目">2 新建项目</h2>
+<p>新建你想要的项目名称</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h333yn0cklj21400u0n0m.jpg" alt="image-20220610135923520" style="zoom:50%;" /></p>
+<p>在<code>previously configured interpreter</code>右边的‘…’新建SSH
+Interpreter。</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h333zxjmqfj219r0u0taz.jpg" alt="image-20220610140037859" style="zoom:50%;" /></p>
+<p>先使用默认的python环境</p>
+<p><img src="https://img-blog.csdnimg.cn/087849741a584a21b55aa28bd8460046.png#pic_center" alt="在这里插入图片描述" style="zoom:50%;" /></p>
+<p>确认后改一下remote project location</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3341bc5kcj20z00a675a.jpg" alt="image-20220610140158018" style="zoom: 67%;" /></p>
+<p>在这里我设置的是<code>/usr/local/testSSH</code></p>
+<h2 id="设置远程连接配置">3 设置<a
+target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=远程连接&amp;spm=1001.2101.3001.7020">远程连接</a>配置</h2>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3353rfmccj21fo0u0dmt.jpg"
+alt="image-20220610143854374" />
+<figcaption aria-hidden="true">image-20220610143854374</figcaption>
+</figure>
+<p>点一下autodetect，设置自己的根目录</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3354i9ew2j20zq0u0408.jpg" alt="image-20220610143937733" style="zoom: 67%;" /></p>
+<p>Mappings也改一下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h33551nb8qj20zq0u0taf.jpg" alt="image-20220610144009512" style="zoom:67%;" /></p>
+<p>browse remote host可以帮助我们查看远程服务器的状态：</p>
+<p><img src="https://img-blog.csdnimg.cn/8e3e5a53690841fab0eabbf5c98de505.png#pic_center" alt="在这里插入图片描述" style="zoom:67%;" /></p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h33572qry4j20d80akjrp.jpg"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<h2 id="配置远程服务器的虚拟环境">4 配置远程服务器的<a
+target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=虚拟环境&amp;spm=1001.2101.3001.7020">虚拟环境</a></h2>
+<p>使用start SSH <a
+target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=session&amp;spm=1001.2101.3001.7020">session</a></p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h33589t2ioj20m60s2gnj.jpg" alt="image-20220610144305804" style="zoom: 50%;" /></p>
+<p>随后弹出的窗口，我们就很熟悉了</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3358sno1ij20t20ga3zd.jpg"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<p>随后就是正常的conda创建虚拟环境的方法，文末给出一个参考文献。</p>
+<blockquote>
+<p>//一些常用的方法 //创建虚拟环境 conda create -n tfEnvi python=3.6
+//进入虚拟环境 conda activate tfEnvi //安装tensorflow pip install
+tensorflow==2.1.0</p>
+</blockquote>
+<p>虚拟环境会在自己的源目录下，<code>.conda/envs</code></p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3359j918cj20do0a2aag.jpg"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<h2 id="使用虚拟环境">5 使用虚拟环境</h2>
+<p>Add…</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3359xck8mj21h40j60vf.jpg"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<p>老样子，SSH Interpreter-〉Existing server
+configuration，这次Interptreter使用自己创建的环境，还有更改Sync
+folders。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h335a4dpx1j21ba0ecgne.jpg"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<p>Apply-》ok。</p>
+<h2 id="同步代码">6 同步代码</h2>
+<p>在你本地写好代码后，如果你要同步代码。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h335ay4rboj21aa0t2aet.jpg"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<p>按下按钮，成功上传至远程服务器。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h335b1iy0fj21rp0u0agu.jpg"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<p>最后，快乐的运行代码吧。</p>
+<figure>
+<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h335bd23k4j21hf0u00x3.jpg"
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
 
       </div>
     </div>
@@ -209,7 +311,7 @@
     
     <div class="post-nav">
   
-    <a class="post-nav-item-left" href="/2025/03/10/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+    <a class="post-nav-item-left" href="/2022/07/27/%E5%AF%BB%E5%B1%8B%E7%AC%94%E8%AE%B0/">
       <div class="text-align">
         <svg t="1670570876164"
              class="icon"
@@ -220,12 +322,12 @@
         </svg>
         <span class="text-small">上一篇</span>
       </div>
-      <div>第一篇博客</div>
+      <div>寻屋开发笔记</div>
     </a>
   
   <div class="vhr"></div>
   
-    <a class="post-nav-item-right" href="/2022/12/12/%E5%AE%9E%E7%8E%B0%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%AD%E5%B0%8F%E5%8C%BA%E4%BF%A1%E6%81%AF%E7%9A%84%E5%87%86%E7%A1%AE%E5%BD%92%E4%B8%80%E5%8C%96/">
+    <a class="post-nav-item-right" href="/2022/05/31/5%E6%9C%88%E5%BA%95%E6%9C%80%E5%90%8E%E4%B8%80%E5%91%A8%E6%80%BB%E7%BB%93/">
       <div class="text-align">
         <span class="text-small">下一篇</span>
         <svg t="1670570876164"
@@ -237,7 +339,7 @@
           <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
         </svg>
       </div>
-      实现复杂数据源中小区信息的准确归一化
+      五月底最后一周总结
     </a>
   
 </div>
