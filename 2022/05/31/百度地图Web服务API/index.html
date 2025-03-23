@@ -188,12 +188,8 @@
 </ul>
 <hr />
 <h2 id="获取密钥">获取密钥</h2>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2klwpnkr1j21h10grmyf.jpg"
-alt="image-20220525135433526" />
-<figcaption aria-hidden="true">image-20220525135433526</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2klwpnkr1j21h10grmyf.jpg" /></p>
 <p>访问应用（AK）： NwrFdXX7d9ulyeUvuvrRL1pRwHEHl7qU 浏览器端</p>
 <p>​ vVo0GpUwrXGIyq7Xpv6U7Bui5dNGDjaL 服务端</p>
 <p>​ C3mLyfNmVlzGD4lZEpsMK0GhuxDPmQKB js API</p>
@@ -213,65 +209,37 @@ target="_blank" rel="noopener" href="http://lbsyun.baidu.com/index.php?title=web
 <h4 id="地点详情检索">地点详情检索</h4>
 <p>不同于其他三种检索功能。地点详情检索针对指定POI，检索其相关的详情信息。开发者可以通过三种区域检索（或其他服务）功能，<strong>获取POI
 id</strong>。使用“地点详情检索”功能，<strong>传入id</strong>，即可检索POI详情信息，如评分、营业时间等（不同类型POI对应不同类别详情数据）。</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kmrxy473j20bk06yt94.jpg"
-alt="place4.png" />
-<figcaption aria-hidden="true">place4.png</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kmrxy473j20bk06yt94.jpg" /></p>
 <p>多边形区域检索</p>
 <p>多边形区域检索为高级权限，如有需求请提交<a
 target="_blank" rel="noopener" href="http://lbsyun.baidu.com/apiconsole/fankui">【工单】</a>咨询。</p>
 <h3 id="服务文档">2、服务文档</h3>
 <h4 id="行政区划区域检索-1">行政区划区域检索</h4>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https<span class="punctuation">:</span><span class="comment">//api.map.baidu.com/place/v2/search?query=ATM机&amp;tag=银行&amp;region=北京&amp;output=json&amp;ak=您的ak //GET请求</span></span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kpea39sej21bj0u0jv2.jpg"
-alt="image-20220525155517417" />
-<figcaption aria-hidden="true">image-20220525155517417</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kpea39sej21bj0u0jv2.jpg" /></p>
 <p>返回结果如下：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kpqvle6bj21at0u0gpr.jpg"
-alt="image-20220525155559662" />
-<figcaption aria-hidden="true">image-20220525155559662</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kpqvle6bj21at0u0gpr.jpg" /></p>
 <h4 id="圆形区域检索-1">圆形区域检索</h4>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https<span class="punctuation">:</span><span class="comment">//api.map.baidu.com/place/v2/search?query=银行&amp;location=39.915,116.404&amp;radius=2000&amp;output=xml&amp;ak=您的密钥 //GET请求		</span></span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kpqtoq0zj21c10u0ada.jpg"
-alt="image-20220525160718360" />
-<figcaption aria-hidden="true">image-20220525160718360</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kpqtoq0zj21c10u0ada.jpg" /></p>
 <p>其中<strong>query</strong>是检索关键字。圆形区域检索和矩形区域内检索支持多个关键字并集检索，不同关键字间以<span
 class="math inline">\(符号分隔，最多支持10个关键字检索。如:”银行\)</span>酒店”
 如果需要按POI分类进行检索，请将分类通过query参数进行设置，如query=美食</p>
 <p><strong>page_size</strong>单次召回POI数量，默认为10条记录，最大返回20条</p>
 <p>返回结果如下：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kpwnzk3zj21eb0u0tci.jpg"
-alt="image-20220525161252826" />
-<figcaption aria-hidden="true">image-20220525161252826</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kpwnzk3zj21eb0u0tci.jpg" /></p>
 <h4 id="地点详情检索服务"><strong>地点详情检索服务</strong></h4>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https<span class="punctuation">:</span><span class="comment">//api.map.baidu.com/place/v2/detail?uid=435d7aea036e54355abbbcc8&amp;output=json&amp;scope=2&amp;ak=您的密钥 //GET请求</span></span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kq7iswh5j21cg0u0goy.jpg"
-alt="image-20220525162320156" />
-<figcaption aria-hidden="true">image-20220525162320156</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kq7iswh5j21cg0u0goy.jpg" /></p>
 <p>返回结果如下：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kq7x6z69j21on0u078k.jpg"
-alt="image-20220525162346216" />
-<figcaption aria-hidden="true">image-20220525162346216</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kq7x6z69j21on0u078k.jpg" /></p>
 <h2 id="section"></h2>
 <h2 id="地址输入提示服务">地址输入提示服务</h2>
 <blockquote>
@@ -285,35 +253,19 @@ target="_blank" rel="noopener" href="http://lbsyun.baidu.com/index.php?title=web
 <p>用户可通过该服务，匹配用户输入关键词的地点推荐列表。
 在应用方面，可将地点推荐列表展示给用户，用户可通过点击等交互方式，结合<a
 target="_blank" rel="noopener" href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-placeapi">地点检索</a>服务，检索用户点击的POI信息，实现地点详情检索功能。</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kqha6lpsj20bk06w74q.jpg"
-alt="Sug1.png" />
-<figcaption aria-hidden="true">Sug1.png</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kqha6lpsj20bk06w74q.jpg" /></p>
 <p>轻量级地点检索</p>
 <p>通过关键词和检索城市限制，可满足轻量级地点检索需求，获取地点基础数据</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kqhhitnvj20bk06ydgb.jpg"
-alt="Sug2.png" />
-<figcaption aria-hidden="true">Sug2.png</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kqhhitnvj20bk06ydgb.jpg" /></p>
 <h3 id="服务文档-1">2、服务文档</h3>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https<span class="punctuation">:</span><span class="comment">//api.map.baidu.com/place/v2/suggestion?query=天安门&amp;region=北京&amp;city_limit=true&amp;output=json&amp;ak=你的ak //GET请求</span></span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kr29th27j21ij0u041o.jpg"
-alt="image-20220525165254126" />
-<figcaption aria-hidden="true">image-20220525165254126</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kr29th27j21ij0u041o.jpg" /></p>
 <p>结果如下：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2kr2lkhg0j21e00u0n0l.jpg"
-alt="image-20220525165312858" />
-<figcaption aria-hidden="true">image-20220525165312858</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2kr2lkhg0j21e00u0n0l.jpg" /></p>
 <h2 id="正逆地理编码服务">正/逆地理编码服务</h2>
 <blockquote>
 <p>地理编码服务（又名Geocoder）是一类Web API接口服务；
@@ -326,19 +278,11 @@ alt="image-20220525165312858" />
 <h3 id="服务文档-2">2、服务文档</h3>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https<span class="punctuation">:</span><span class="comment">//api.map.baidu.com/geocoding/v3/?address=北京市海淀区上地十街10号&amp;output=json&amp;ak=您的ak&amp;callback=showLocation //GET请求</span></span><br><span class="line">注意：当前为V3<span class="number">.0</span>版本接口文档，V2<span class="number">.0</span>及以前版本自<span class="number">2019.6</span><span class="number">.18</span>起新用户无法使用。老用户仍可继续使用V2<span class="number">.0</span>及以前版本请求实现逆地理编码服务，为保障用户体验，建议您尽快迁移到V3<span class="number">.0</span>版本。</span><br></pre></td></tr></table></figure>
 <p>请求如下：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2krujqqxjj21eo0u041r.jpg"
-alt="image-20220525172003357" />
-<figcaption aria-hidden="true">image-20220525172003357</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2krujqqxjj21eo0u041r.jpg" /></p>
 <p>结果如下：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2krv0kvzsj21hf0u00vn.jpg"
-alt="image-20220525172031112" />
-<figcaption aria-hidden="true">image-20220525172031112</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2krv0kvzsj21hf0u00vn.jpg" /></p>
 <h2 id="天气查询">天气查询</h2>
 <h3 id="功能介绍-3">1、功能介绍</h3>
 <p>国内天气查询服务分为基础服务和高级权限。
@@ -347,19 +291,11 @@ alt="image-20220525172031112" />
 target="_blank" rel="noopener" href="http://lbsyun.baidu.com/apiconsole/fankui#?typeOne=产品需求&amp;typeTwo=高级服务">联系我们</a>开通15天试用并了解更多信息。</p>
 <h3 id="服务文档-3">2、服务文档</h3>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https<span class="punctuation">:</span><span class="comment">//api.map.baidu.com/weather/v1/?district_id=222405&amp;data_type=all&amp;ak=你的ak  //GET请求	</span></span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2ks9urql4j21ex0u0q6d.jpg"
-alt="image-20220525173446676" />
-<figcaption aria-hidden="true">image-20220525173446676</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2ks9urql4j21ex0u0q6d.jpg" /></p>
 <p>结果如下：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2ksa9ae70j21cf0u0tc7.jpg"
-alt="image-20220525173509954" />
-<figcaption aria-hidden="true">image-20220525173509954</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2ksa9ae70j21cf0u0tc7.jpg" /></p>
 <h2 id="地址解析聚合">地址解析聚合</h2>
 <h3 id="功能介绍-4">1、功能介绍</h3>
 <p>该服务用于解析地址结构。结合自然语言理解能力，可以对地址信息按照文本信息、空间位置信息等因子进行区域化聚合。同时也可解析并提取地址中核心结构，如行政区划（省、市、区、乡镇）、街道、POI，以及地址中的联系人，联系方式等信息，并对地址进行一定的补全和纠错。</p>
@@ -375,12 +311,8 @@ alt="image-20220525173509954" />
 <p><strong>付费服务</strong></p>
 <h2 id="javascript-api-v3.0">JavaScript API v3.0</h2>
 <h3 id="使用方法">使用方法</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2mpk27rybj20p4039jrf.jpg"
-alt="image-20220527093150127" />
-<figcaption aria-hidden="true">image-20220527093150127</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2mpk27rybj20p4039jrf.jpg" /></p>
 <p>ak申请需要选择浏览器端-Javascript API</p>
 <h3 id="百度地图的hello-world">百度地图的Hello World</h3>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;initial-scale=1.0, user-scalable=no&quot;</span> /&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=utf-8&quot;</span> /&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello, World<span class="tag">&lt;/<span class="name">title</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css">  </span></span><br><span class="line"><span class="language-css"><span class="selector-tag">html</span>&#123;<span class="attribute">height</span>:<span class="number">100%</span>&#125;  </span></span><br><span class="line"><span class="language-css"><span class="selector-tag">body</span>&#123;<span class="attribute">height</span>:<span class="number">100%</span>;<span class="attribute">margin</span>:<span class="number">0px</span>;<span class="attribute">padding</span>:<span class="number">0px</span>&#125;  </span></span><br><span class="line"><span class="language-css"><span class="selector-id">#container</span>&#123;<span class="attribute">height</span>:<span class="number">100%</span>&#125;  </span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://api.map.baidu.com/api?v=3.0&amp;ak=您的密钥&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="comment">//v3.0版本的引用方式：src=&quot;https://api.map.baidu.com/api?v=3.0&amp;ak=您的密钥&quot;</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span>  </span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"> </span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> map = <span class="keyword">new</span> <span class="title class_">BMap</span>.<span class="title class_">Map</span>(<span class="string">&quot;container&quot;</span>);</span></span><br><span class="line"><span class="language-javascript"><span class="comment">// 创建地图实例  </span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> point = <span class="keyword">new</span> <span class="title class_">BMap</span>.<span class="title class_">Point</span>(<span class="number">116.404</span>, <span class="number">39.915</span>);</span></span><br><span class="line"><span class="language-javascript"><span class="comment">// 创建点坐标  </span></span></span><br><span class="line"><span class="language-javascript">map.<span class="title function_">centerAndZoom</span>(point, <span class="number">15</span>);</span></span><br><span class="line"><span class="language-javascript"><span class="comment">// 初始化地图，设置中心点坐标和地图级别  </span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -508,7 +440,7 @@ target="_blank" rel="noopener" href="http://lbsyun.baidu.com/cms/jsapi/reference
 <p>添加平移缩放控件效果如下：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24egy1h2mr7zc8brj203b06caa2.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24egy1h2mr7zc8brj203b06caa2.jpg"
 alt="image-20220527102930582" />
 <figcaption aria-hidden="true">image-20220527102930582</figcaption>
 </figure>
@@ -698,7 +630,7 @@ target="_blank" rel="noopener" href="http://lbsyun.baidu.com/cms/jsapi/reference
 </blockquote>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2q9c0fcygj20pq0acac3.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2q9c0fcygj20pq0acac3.jpg"
 alt="image-20220530111252651" />
 <figcaption aria-hidden="true">image-20220530111252651</figcaption>
 </figure>
@@ -744,7 +676,7 @@ target="_blank" rel="noopener" href="http://lbsyun.baidu.com/cms/jsapi/reference
 <h4 id="信息窗口">6、信息窗口</h4>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2q9jsko6aj20pt0acq4w.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2q9jsko6aj20pt0acq4w.jpg"
 alt="image-20220530112019539" />
 <figcaption aria-hidden="true">image-20220530112019539</figcaption>
 </figure>
@@ -769,7 +701,7 @@ target="_blank" rel="noopener" href="http://api.map.baidu.com/library/InfoBox/1.
 </blockquote>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2q9m2yo0ej20ps0a9gns.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2q9m2yo0ej20ps0a9gns.jpg"
 alt="image-20220530112232097" />
 <figcaption aria-hidden="true">image-20220530112232097</figcaption>
 </figure>
@@ -826,7 +758,7 @@ alt="jsguide06.jpg" />
 </blockquote>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2qef8k5iaj20pr0a4dim.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2qef8k5iaj20pr0a4dim.jpg"
 alt="image-20220530140900099" />
 <figcaption aria-hidden="true">image-20220530140900099</figcaption>
 </figure>
@@ -925,7 +857,7 @@ target="_blank" rel="noopener" href="http://lbsyun.baidu.com/cms/jsapi/reference
 <p>地址解析服务提供从地址转换到经纬度的服务，反之，逆地址解析则提供从经纬度坐标转换到地址的转换功能。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2qiz6y3gcj20ak01nweh.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2qiz6y3gcj20ak01nweh.jpg"
 alt="geocoding.png" />
 <figcaption aria-hidden="true">geocoding.png</figcaption>
 </figure>
@@ -949,7 +881,7 @@ true}来获得乡镇级数据，仅限国内。</p>
 <h4 id="出行路线规划">13、出行路线规划</h4>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2qjxv3qzxj20fc0d5mz2.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2qjxv3qzxj20fc0d5mz2.jpg"
 alt="image-20220530171950351" />
 <figcaption aria-hidden="true">image-20220530171950351</figcaption>
 </figure>
@@ -1034,7 +966,7 @@ TransitRoutePlan.getTotalType方法，可以获取一条公交换乘方案中总
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> <span class="title class_">BMap</span>.<span class="title class_">Map</span>(<span class="string">&quot;container&quot;</span>); </span><br><span class="line">map.<span class="title function_">centerAndZoom</span>(<span class="keyword">new</span> <span class="title class_">BMap</span>.<span class="title class_">Point</span>(<span class="number">116.404</span>, <span class="number">39.915</span>), <span class="number">14</span>); </span><br><span class="line"><span class="keyword">var</span> riding = <span class="keyword">new</span> <span class="title class_">BMap</span>.<span class="title class_">RidingRoute</span>(map, &#123; </span><br><span class="line">    <span class="attr">renderOptions</span>: &#123;<span class="attr">map</span>: map&#125; </span><br><span class="line">&#125;); </span><br><span class="line"><span class="keyword">var</span> start = <span class="keyword">new</span> <span class="title class_">BMap</span>.<span class="title class_">Point</span>(<span class="number">116.310791</span>, <span class="number">40.003419</span>);</span><br><span class="line"><span class="keyword">var</span> end = <span class="keyword">new</span> <span class="title class_">BMap</span>.<span class="title class_">Point</span>(<span class="number">116.486419</span>, <span class="number">39.877282</span>);</span><br><span class="line">riding.<span class="title function_">search</span>(start, end);</span><br></pre></td></tr></table></figure>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2qk9n6xz2j21400q20wv.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2qk9n6xz2j21400q20wv.jpg"
 alt="image-20220530173113074" />
 <figcaption aria-hidden="true">image-20220530173113074</figcaption>
 </figure>
@@ -1092,7 +1024,7 @@ target="_blank" rel="noopener" href="http://lbsyun.baidu.com/index.php?title=and
 <h4 id="鼠标绘制">15、鼠标绘制</h4>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2rllg7cgbj21bj0drdl8.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2rllg7cgbj21bj0drdl8.jpg"
 alt="image-20220531150242144" />
 <figcaption aria-hidden="true">image-20220531150242144</figcaption>
 </figure>
@@ -1109,12 +1041,8 @@ id="在页面的头部应用鼠标绘制工具开源库的文件">1在页面的�
 <blockquote>
 <p>您常常需要在地图上展示非常多的点。当地图可视范围内的点越多，点与点的图标堆叠、覆盖的效果就会越严重。为了保证展示效果，本节介绍如何使用点聚合功能，聚合区域内的点，使得可以自适应地图的比例尺进行数据展示。</p>
 </blockquote>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2rlofokrmj20pw0a6q48.jpg"
-alt="image-20220531150530432" />
-<figcaption aria-hidden="true">image-20220531150530432</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2rlofokrmj20pw0a6q48.jpg" /></p>
 <h5 id="提供的点聚合工具">1、提供的点聚合工具</h5>
 <p>MarkerClusterer：多标注聚合器。此工具解决加载大量点要素到地图上造成缓慢，且产生覆盖现象的问题。详情可见<a
 target="_blank" rel="noopener" href="https://lbs.baidu.com/index.php?title=jspopular3.0/openlibrary">开源库</a>。</p>
