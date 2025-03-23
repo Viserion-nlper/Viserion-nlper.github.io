@@ -147,17 +147,23 @@
     <div class="body">
       
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner--toc">
       <div class="post-content__head">
         <div class="post-title">基于物品的协同过滤算法（ItemCF）原理以及代码实践</div>
         <div class="post-info">
           
-  <a href="/tags/ItemCF/" class="post-tag">#ItemCF</a>
+  <a href="/tags/ItemCF/" class="post-tag">#ItemCF</a><a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" class="post-tag">#推荐系统</a>
 
 
-          <span class="post-date">1984-01-24</span>
+          <span class="post-date">2022-06-19</span>
         </div>
       </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%96%87%E6%A1%A3"><span class="post-toc-text">推荐系统文档</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%89%A9%E5%93%81%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E7%AE%97%E6%B3%95itemcf%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5"><span class="post-toc-text">1、基于物品的协同过滤算法（ItemCF）原理以及代码实践</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="post-toc-text">算法原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="post-toc-text">算法工作流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B8%E4%BC%BC%E5%BA%A6%E7%AE%97%E6%B3%95%E6%94%B9%E8%BF%9B"><span class="post-toc-text">相似度算法改进</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B8%E4%BC%BC%E5%BA%A6%E7%9F%A9%E9%98%B5%E5%BD%92%E4%B8%80%E5%8C%96%E5%A4%84%E7%90%86"><span class="post-toc-text">相似度矩阵归一化处理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5"><span class="post-toc-text">代码实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%AD%E7%BB%83%E9%98%B6%E6%AE%B5"><span class="post-toc-text">训练阶段</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E5%BB%BA%E7%AB%8Buser-item%E8%A1%A8"><span class="post-toc-text">数据预处理，建立User-Item表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BB%BA%E7%AB%8B%E7%89%A9%E5%93%81%E6%95%B4%E4%BD%93%E5%85%B1%E7%8E%B0%E7%9F%A9%E9%98%B5"><span class="post-toc-text">建立物品整体共现矩阵</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BB%BA%E7%AB%8B%E7%89%A9%E5%93%81%E7%9B%B8%E4%BC%BC%E5%BA%A6%E7%9F%A9%E9%98%B5"><span class="post-toc-text">建立物品相似度矩阵</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8E%A8%E8%8D%90%E9%98%B6%E6%AE%B5"><span class="post-toc-text">推荐阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="post-toc-text">完整代码</span></a></li></ol></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
       
       <div class="post-content__body">
         
@@ -194,77 +200,41 @@ filtering）是一种在推荐系统中广泛使用的技术。该技术通过�
 <p><strong>ItemCF算法并不是直接根据物品本身的属性来计算相似度，而是通过分析用户的行为来计算物品之间的相似度。</strong></p>
 <p>什么意思呢？比如手机和手机壳，除了形状相似之外没有什么其它的相似点，直接计算相似度似乎也无从下手。但是换个角度来考虑这个问题，如果有很多个用户在买了手机的同时，又买了手机壳，那是不是可以认为手机和手机壳比较相似呢？
 由此引出物品相似度的计算公式：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30me16ugnj206f02jjr7.jpg"
-alt="image-20220608102015504" />
-<figcaption aria-hidden="true">image-20220608102015504</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30me16ugnj206f02jjr7.jpg" /></p>
 <p>上式中，分母<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30meh4pfxj201j00w0pq.jpg"
-alt="image-20220608102043309" />表示的是喜欢物品<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg"
-alt="image-20220608102112555" />的用户的数量，分子<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mfedmklj203g010mwx.jpg"
-alt="image-20220608102136191" />是同时喜欢物品<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg"
-alt="image-20220608102112555" />和<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg"
-alt="image-20220608102227177" />的用户数量。因此上式可以理解成，喜欢<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg"
-alt="image-20220608102112555" />的用户当中有多少也喜欢<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg"
-alt="image-20220608102227177" />的，如果喜欢<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg"
-alt="image-20220608102112555" />的都喜欢<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg"
-alt="image-20220608102227177" />，那么<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mj4bp7sj202a00r0sh.jpg"
-alt="image-20220608102510931" />。</p>
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30meh4pfxj201j00w0pq.jpg" />表示的是喜欢物品<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg" />的用户的数量，分子<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mfedmklj203g010mwx.jpg" />是同时喜欢物品<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg" />和<img
+src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg" />的用户数量。因此上式可以理解成，喜欢<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg" />的用户当中有多少也喜欢<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg" />的，如果喜欢<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg" />的都喜欢<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg" />，那么<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mj4bp7sj202a00r0sh.jpg" />。</p>
 <p>上述公式看起来还是很合理的，但是如果物品<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg"
-alt="image-20220608102227177" />很热门，很多人都喜欢，那么上式子中分子与分母就会很接近，此时<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mk1vzyuj201f00t0pv.jpg"
-alt="image-20220608102604977" />就会很接近1。即任何商品都和热门商品之间的相似度很高，这会导致ItemCF算法会总是推荐热门商品，这并不是一个好的设计。因此可以采用下面的公式：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30ml4s45aj207b02ka9w.jpg"
-alt="image-20220608102707424" />
-<figcaption aria-hidden="true">image-20220608102707424</figcaption>
-</figure>
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg" />很热门，很多人都喜欢，那么上式子中分子与分母就会很接近，此时<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mk1vzyuj201f00t0pv.jpg" />就会很接近1。即任何商品都和热门商品之间的相似度很高，这会导致ItemCF算法会总是推荐热门商品，这并不是一个好的设计。因此可以采用下面的公式：</p>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30ml4s45aj207b02ka9w.jpg" /></p>
 <p>上式的改进在于，如果<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mm15if9j201900u0op.jpg"
-alt="image-20220608102758641" />很大的话，分母也会相应变大，相当于惩罚了物品<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg"
-alt="image-20220608102227177" />的权值，减轻了热门物品会和很多其他物品相似的可能性。在建立起了物品的相似度矩阵之后，与UserCF算法一样，我们也要面临一个问题，就是如何从众多相似的物品中挑选出用户最感兴趣的物品。因此ItemCF算法通过以下公式计算用户u对物品j的感兴趣程度：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mn7rgh6j207z02dmwz.jpg"
-alt="image-20220608102907108" />
-<figcaption aria-hidden="true">image-20220608102907108</figcaption>
-</figure>
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mm15if9j201900u0op.jpg" />很大的话，分母也会相应变大，相当于惩罚了物品<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg" />的权值，减轻了热门物品会和很多其他物品相似的可能性。在建立起了物品的相似度矩阵之后，与UserCF算法一样，我们也要面临一个问题，就是如何从众多相似的物品中挑选出用户最感兴趣的物品。因此ItemCF算法通过以下公式计算用户u对物品j的感兴趣程度：</p>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mn7rgh6j207z02dmwz.jpg" /></p>
 <p>上式中的<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mnjndxfj201900s0pg.jpg"
-alt="image-20220608102925913" />是用户喜欢的物品集合，<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mntpik1j201o00q3y9.jpg"
-alt="image-20220608102942322" />是和物品j最相似的K个物品的集合，<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mo4gu25j200x00u0ky.jpg"
-alt="image-20220608102959300" />是物品j和i的相似度，<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mocbi9nj200v00p0ht.jpg"
-alt="image-20220608103012562" />是用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg"
-alt="image-20220608102112555" />对物品i的兴趣（对于隐反馈数据集，如果用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg"
-alt="image-20220608102112555" />对物品i有过行为，即可令<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mpdfvttj201v00t0qb.jpg"
-alt="image-20220608103110547" /></p>
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mnjndxfj201900s0pg.jpg" />是用户喜欢的物品集合，<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mntpik1j201o00q3y9.jpg" />是和物品j最相似的K个物品的集合，<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mo4gu25j200x00u0ky.jpg" />是物品j和i的相似度，<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mocbi9nj200v00p0ht.jpg" />是用户<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg" />对物品i的兴趣（对于隐反馈数据集，如果用户<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg" />对物品i有过行为，即可令<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mpdfvttj201v00t0qb.jpg" /></p>
 <p>对于上式的通俗理解就是，对于用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg"
-alt="image-20220608102112555" />喜欢的物品列表中的每一个物品i，都根据物品相似度矩阵找到与其最相似的K个物品，令为<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mr4n76vj204j00vt8h.jpg"
-alt="image-20220608103252684" />然后使用物品相似度<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mrl6ebxj200v00n0it.jpg"
-alt="image-20220608103319407" />来表示用户对物品j的感兴趣程度。
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg" />喜欢的物品列表中的每一个物品i，都根据物品相似度矩阵找到与其最相似的K个物品，令为<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mr4n76vj204j00vt8h.jpg" />然后使用物品相似度<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mrl6ebxj200v00n0it.jpg" />来表示用户对物品j的感兴趣程度。
 最后将筛选出来的物品按照用户对其感兴趣程度逆序排序，取全体列表或者列表前K个物品推荐给用户，至此ItemCF算法完成。</p>
 <hr />
 <h2 id="算法工作流程">算法工作流程</h2>
@@ -302,48 +272,29 @@ alt="image-20220608103319407" />来表示用户对物品j的感兴趣程度。
 </table>
 <p>首先，我们需要根据物品相似度公式建立物品相似度矩阵。</p>
 <p>先看公式的分子部分</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30oag7wtrj203r00smwx.jpg"
-alt="image-20220608112602478" />
-<figcaption aria-hidden="true">image-20220608112602478</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30oag7wtrj203r00smwx.jpg" /></p>
 <p>也就是我们需要先求出同时喜欢物品<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg"
-alt="image-20220608102112555" />和<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg"
-alt="image-20220608102227177" />的用户数量，这一点可以根据User-Item表快速构建出来，下面以用户A为例，展示下构建过程：
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mezccogj200i00n0dh.jpg" />和<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mga5ra8j200i00k0co.jpg" />的用户数量，这一点可以根据User-Item表快速构建出来，下面以用户A为例，展示下构建过程：
 用户A的喜欢物品列表是{a,b,d}，我们对这个列表的成员进行两两组合，可以得到下面的矩阵：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mu0w2mxj208w084mx8.jpg"
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mu0w2mxj208w084mx8.jpg" /></p>
 <p>​ 用户A的共现矩阵</p>
 <p>上图是用户A的共现矩阵C，C[i][j]代表的含义是同时喜欢物品i和物品j的用户数量。举个例子，C[a][b]=1代表的含义就是同时喜欢物品a和物品b的用户有一个，就是用户A。
 由于同时喜欢物品i和物品j的人与同时喜欢物品j和物品i的人数是一样的，所以这是一个对称矩阵。
 同样的道理，其他用户也都有一张类似的表格。因为不同的用户的喜爱物品列表不一致，会导致每个用户形成的共现矩阵大小不一，这里为了统一起见，将矩阵大小扩充到nxn,其中n是所有用户喜欢物品列表的并集的大小。</p>
 <p>下面用一张图来描述如何构建完整的共现矩阵：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30muobn7pj20xc0hjdif.jpg"
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30muobn7pj20xc0hjdif.jpg" /></p>
 <p>通过对不同用户的喜爱物品集合构成的共现矩阵进行累加，最终得到了上图中的矩阵C，这其实就是相似度公式中的分子部分。</p>
 <blockquote>
 <p>这里只是为了演示如何计算物品整体共现矩阵，实际在代码中我们并不会采用分别为每个用户建立一个共现矩阵再累加的方式。为了加快效率和节省空间，可以使用python的dict来实现，具体可以参考代码实现章节。</p>
 </blockquote>
 <p>接下来我们计算最终的物品相似度矩阵，以物品a和物品b的相似度计算为例，通过上面计算的计算可知C[a][b]=1，即同时喜欢物品a和物品b的用户有一位。根据User-Item表可以统计出N(a)=2，N(b)=3，那么物品a和物品b的相似度<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mv9w2ynj200x00p0k1.jpg"
-alt="image-20220608103645622" />计算如下：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mvl91bmj20iq04074b.jpg"
-alt="image-20220608103710169" />
-<figcaption aria-hidden="true">image-20220608103710169</figcaption>
-</figure>
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mv9w2ynj200x00p0k1.jpg" />计算如下：</p>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mvl91bmj20iq04074b.jpg" /></p>
 <p>了物品相似度矩阵W之后，我们对用户进行物品推荐了，下面以给用户C推荐物品为例，展示一下计算过程：
 可以看到用户C喜欢的物品列表为{c,d}，通过查物品相似度矩阵可知，与物品c相似的有{b,d,e}，同理与物品d相似的物品有{a,b,c}，故最终给用户C推荐的物品列表为{a,b,e}<strong>(注意这里并不是{a,b,c,d,e}，因为要去掉用户C喜欢的物品，防止重复推荐)</strong>。接下来分别计算用户C对这些物品的感兴趣程度。</p>
 <p>P(C,a) = W [d] [a] = 0.71 P(C,b) = W [c] [b] + W [d] [b]= 0.67 + 0.58
@@ -357,21 +308,13 @@ alt="image-20220608103710169" />
 Frequence)，即用户活跃度对数的
 倒数的参数，他也认为活跃用户对物品相似度的贡献应该小于不活跃的用户，他提出应该增加IUF
 参数来修正物品相似度的计算公式:</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mweretlj20gf04nq30.jpg"
-alt="image-20220608103757043" />
-<figcaption aria-hidden="true">image-20220608103757043</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mweretlj20gf04nq30.jpg" /></p>
 <p>上述公式对活跃用户做了一种软性的惩罚，但是对于很多过于活跃的用户，比如上面那位买了当当网80%图书的用户，为了避免相似度矩阵过于稠密，我们在实际计算中一般直接忽略他的兴趣列表，而不将其纳入到相似度计算的数据集中。</p>
 <h3 id="相似度矩阵归一化处理">相似度矩阵归一化处理</h3>
 <p>Karypis在研究中发现如果将ItemCF的相似度矩阵按最大值归一化，可以提高推荐的准确率。其研究表明，如果已经得到了物品相似度矩阵w，那么可以用如下公式得到归一化之后的相似度矩阵w'：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30mwqgnx6j205202i742.jpg"
-alt="image-20220608103816468" />
-<figcaption aria-hidden="true">image-20220608103816468</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30mwqgnx6j205202i742.jpg" /></p>
 <p>实验表明，归一化的好处不仅仅在于增强推荐的准确度，还可以提高推荐的覆盖率和多样性。</p>
 <h2 id="代码实践">代码实践</h2>
 <p>上一节是基于一个非常简易的测试数据集，接下来我们将UserCF算法运用在推荐系统经典数据集MovieLens上。
@@ -413,12 +356,8 @@ target="_blank" rel="noopener" href="https://www.jianshu.com/p/a59ff0dc22a3">链
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> itemgetter</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">LoadMovieLensData</span>(<span class="params">filepath, train_rate</span>):</span><br><span class="line">    ratings = pd.read_table(filepath, sep=<span class="string">&quot;::&quot;</span>, header=<span class="literal">None</span>, names=[<span class="string">&quot;UserID&quot;</span>, <span class="string">&quot;MovieID&quot;</span>, <span class="string">&quot;Rating&quot;</span>, <span class="string">&quot;TimeStamp&quot;</span>],\</span><br><span class="line">                            engine=<span class="string">&#x27;python&#x27;</span>)</span><br><span class="line">    ratings = ratings[[<span class="string">&#x27;UserID&#x27;</span>,<span class="string">&#x27;MovieID&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">    train = []</span><br><span class="line">    test = []</span><br><span class="line">    random.seed(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">for</span> idx, row <span class="keyword">in</span> ratings.iterrows():</span><br><span class="line">        user = <span class="built_in">int</span>(row[<span class="string">&#x27;UserID&#x27;</span>])</span><br><span class="line">        item = <span class="built_in">int</span>(row[<span class="string">&#x27;MovieID&#x27;</span>])</span><br><span class="line">        <span class="keyword">if</span> random.random() &lt; train_rate:</span><br><span class="line">            train.append([user, item])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            test.append([user, item])</span><br><span class="line">    <span class="keyword">return</span> PreProcessData(train), PreProcessData(test)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">PreProcessData</span>(<span class="params">originData</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    建立User-Item表，结构如下：</span></span><br><span class="line"><span class="string">        &#123;&quot;User1&quot;: &#123;MovieID1, MoveID2, MoveID3,...&#125;</span></span><br><span class="line"><span class="string">         &quot;User2&quot;: &#123;MovieID12, MoveID5, MoveID8,...&#125;</span></span><br><span class="line"><span class="string">         ...</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    trainData = <span class="built_in">dict</span>()</span><br><span class="line">    <span class="keyword">for</span> user, item <span class="keyword">in</span> originData:</span><br><span class="line">        trainData.setdefault(user, <span class="built_in">set</span>())</span><br><span class="line">        trainData[user].add(item)</span><br><span class="line">    <span class="keyword">return</span> trainData</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ItemCF</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot; Item based Collaborative Filtering Algorithm Implementation&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, trainData, similarity=<span class="string">&quot;cosine&quot;</span>, norm=<span class="literal">True</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>._trainData = trainData</span><br><span class="line">        <span class="variable language_">self</span>._similarity = similarity</span><br><span class="line">        <span class="variable language_">self</span>._isNorm = norm</span><br><span class="line">        <span class="variable language_">self</span>._itemSimMatrix = <span class="built_in">dict</span>() <span class="comment"># 物品相似度矩阵</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">similarity</span>(<span class="params">self</span>):</span><br><span class="line">        N = defaultdict(<span class="built_in">int</span>) <span class="comment">#记录每个物品的喜爱人数</span></span><br><span class="line">        <span class="keyword">for</span> user, items <span class="keyword">in</span> <span class="variable language_">self</span>._trainData.items():</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> items:</span><br><span class="line">                <span class="variable language_">self</span>._itemSimMatrix.setdefault(i, <span class="built_in">dict</span>())</span><br><span class="line">                N[i] += <span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> items:</span><br><span class="line">                    <span class="keyword">if</span> i == j:</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">                    <span class="variable language_">self</span>._itemSimMatrix[i].setdefault(j, <span class="number">0</span>)</span><br><span class="line">                    <span class="keyword">if</span> <span class="variable language_">self</span>._similarity == <span class="string">&quot;cosine&quot;</span>:</span><br><span class="line">                        <span class="variable language_">self</span>._itemSimMatrix[i][j] += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">elif</span> <span class="variable language_">self</span>._similarity == <span class="string">&quot;iuf&quot;</span>:</span><br><span class="line">                        <span class="variable language_">self</span>._itemSimMatrix[i][j] += <span class="number">1.</span> / math.log1p(<span class="built_in">len</span>(items) * <span class="number">1.</span>)</span><br><span class="line">        <span class="keyword">for</span> i, related_items <span class="keyword">in</span> <span class="variable language_">self</span>._itemSimMatrix.items():</span><br><span class="line">            <span class="keyword">for</span> j, cij <span class="keyword">in</span> related_items.items():</span><br><span class="line">                <span class="variable language_">self</span>._itemSimMatrix[i][j] = cij / math.sqrt(N[i]*N[j])</span><br><span class="line">        <span class="comment"># 是否要标准化物品相似度矩阵</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>._isNorm:</span><br><span class="line">            <span class="keyword">for</span> i, relations <span class="keyword">in</span> <span class="variable language_">self</span>._itemSimMatrix.items():</span><br><span class="line">                max_num = relations[<span class="built_in">max</span>(relations, key=relations.get)]</span><br><span class="line">                <span class="comment"># 对字典进行归一化操作之后返回新的字典</span></span><br><span class="line">                <span class="variable language_">self</span>._itemSimMatrix[i] = &#123;k : v/max_num <span class="keyword">for</span> k, v <span class="keyword">in</span> relations.items()&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">recommend</span>(<span class="params">self, user, N, K</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param user: 被推荐的用户user</span></span><br><span class="line"><span class="string">        :param N: 推荐的商品个数</span></span><br><span class="line"><span class="string">        :param K: 查找的最相似的用户个数</span></span><br><span class="line"><span class="string">        :return: 按照user对推荐物品的感兴趣程度排序的N个商品</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        recommends = <span class="built_in">dict</span>()</span><br><span class="line">        <span class="comment"># 先获取user的喜爱物品列表</span></span><br><span class="line">        items = <span class="variable language_">self</span>._trainData[user]</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">            <span class="comment"># 对每个用户喜爱物品在物品相似矩阵中找到与其最相似的K个</span></span><br><span class="line">            <span class="keyword">for</span> i, sim <span class="keyword">in</span> <span class="built_in">sorted</span>(<span class="variable language_">self</span>._itemSimMatrix[item].items(), key=itemgetter(<span class="number">1</span>), reverse=<span class="literal">True</span>)[:K]:</span><br><span class="line">                <span class="keyword">if</span> i <span class="keyword">in</span> items:</span><br><span class="line">                    <span class="keyword">continue</span>  <span class="comment"># 如果与user喜爱的物品重复了，则直接跳过</span></span><br><span class="line">                recommends.setdefault(i, <span class="number">0.</span>)</span><br><span class="line">                recommends[i] += sim</span><br><span class="line">        <span class="comment"># 根据被推荐物品的相似度逆序排列，然后推荐前N个物品给到用户</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dict</span>(<span class="built_in">sorted</span>(recommends.items(), key=itemgetter(<span class="number">1</span>), reverse=<span class="literal">True</span>)[:N])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">train</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.similarity()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    train, test = LoadMovieLensData(<span class="string">&quot;../Data/ml-1m/ratings.dat&quot;</span>, <span class="number">0.8</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;train data size: %d, test data size: %d&quot;</span> % (<span class="built_in">len</span>(train), <span class="built_in">len</span>(test)))</span><br><span class="line">    ItemCF = ItemCF(train, similarity=<span class="string">&#x27;iuf&#x27;</span>, norm=<span class="literal">True</span>)</span><br><span class="line">    ItemCF.train()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 分别对以下4个用户进行物品推荐</span></span><br><span class="line">    <span class="built_in">print</span>(ItemCF.recommend(<span class="number">1</span>, <span class="number">5</span>, <span class="number">80</span>))</span><br><span class="line">    <span class="built_in">print</span>(ItemCF.recommend(<span class="number">2</span>, <span class="number">5</span>, <span class="number">80</span>))</span><br><span class="line">    <span class="built_in">print</span>(ItemCF.recommend(<span class="number">3</span>, <span class="number">5</span>, <span class="number">80</span>))</span><br><span class="line">    <span class="built_in">print</span>(ItemCF.recommend(<span class="number">4</span>, <span class="number">5</span>, <span class="number">80</span>))</span><br></pre></td></tr></table></figure>
 <p>上述代码对测试集中前4个用户进行了电影推荐，对每个用户而言，从与他们喜爱电影相似的80部电影中挑选出5部推荐。
 输出结果是一个dict，里面包含了给用户推荐的电影以及用户对每部电影的感兴趣程度，按照逆序排列。</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h30nuf0a3hj223e0gaq7q.jpg"
-alt="image-20220608111037337" />
-<figcaption aria-hidden="true">image-20220608111037337</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h30nuf0a3hj223e0gaq7q.jpg" /></p>
 
       </div>
     </div>
@@ -462,7 +401,7 @@ alt="image-20220608111037337" />
     
     <div class="post-nav">
   
-    <a class="post-nav-item-left" href="/1984/01/24/%E5%87%A0%E7%A7%8D%E5%A4%9A%E6%A8%A1%E6%80%81%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E5%BC%95%E6%93%8EFaiss%20%E3%80%81milvus%E3%80%81Proxima%E3%80%81vearch%E3%80%81Jina%E7%AD%89/">
+    <a class="post-nav-item-left" href="/2022/07/27/%E5%AF%BB%E5%B1%8B%E7%AC%94%E8%AE%B0/">
       <div class="text-align">
         <svg t="1670570876164"
              class="icon"
@@ -473,12 +412,12 @@ alt="image-20220608111037337" />
         </svg>
         <span class="text-small">上一篇</span>
       </div>
-      <div>几种多模态向量检索引擎的了解与思考</div>
+      <div>寻屋开发笔记</div>
     </a>
   
   <div class="vhr"></div>
   
-    <a class="post-nav-item-right" href="/1984/01/24/%E5%9F%BA%E4%BA%8E%E7%89%A9%E5%93%81%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E7%AE%97%E6%B3%95%EF%BC%88ItemCF%EF%BC%89%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5%E7%9A%84%E5%89%AF%E6%9C%AC/">
+    <a class="post-nav-item-right" href="/2022/06/13/%E5%8D%9A%E5%A3%AB%E8%BF%99%E4%BA%94%E5%B9%B4-%E6%9D%8E%E6%B2%90/">
       <div class="text-align">
         <span class="text-small">下一篇</span>
         <svg t="1670570876164"
@@ -490,7 +429,7 @@ alt="image-20220608111037337" />
           <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
         </svg>
       </div>
-      推荐系统之评估方法和评价指标PR、ROC、AUC
+      博士这五年-李沐
     </a>
   
 </div>
