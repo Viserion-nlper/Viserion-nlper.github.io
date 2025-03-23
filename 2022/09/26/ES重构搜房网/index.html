@@ -147,17 +147,25 @@
     <div class="body">
       
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner--toc">
       <div class="post-content__head">
         <div class="post-title">ES重构搜房网</div>
         <div class="post-info">
           
-  <a href="/tags/elasticSearch/" class="post-tag">#elasticSearch</a>
+  <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-tag">#大数据</a><a href="/tags/elasticSearch/" class="post-tag">#elasticSearch</a>
 
 
           <span class="post-date">2022-09-26</span>
         </div>
       </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#es%E9%87%8D%E6%9E%84%E6%90%9C%E6%88%BF%E7%BD%91"><span class="post-toc-text">ES重构搜房网</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80es%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF"><span class="post-toc-text">一、es相关技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="post-toc-text">1、系统架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%BE%E7%A8%8B%E6%94%B6%E8%8E%B7"><span class="post-toc-text">2、课程收获</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">二、技术选型介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">1、数据库技术选型介绍</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="post-toc-text">三、需求分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF"><span class="post-toc-text">项目背景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%AE%E6%A0%87%E7%94%A8%E6%88%B7"><span class="post-toc-text">目标用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%8F%AF%E8%A1%8C%E6%80%A7"><span class="post-toc-text">项目可行性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="post-toc-text">四、数据库设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E7%A1%80%E8%A1%A8%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">1、基础表介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A1%A8%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="post-toc-text">2、表结构设计原则</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82"><span class="post-toc-text">五、环境要求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA"><span class="post-toc-text">六、后端框架搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B0%E5%BB%BAconfig%E5%B7%A5%E5%85%B7%E5%8C%85%E5%88%9B%E5%BB%BAjpaconfig%E7%B1%BB"><span class="post-toc-text">1、新建config工具包，创建JpaConfig类</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E9%9B%86%E6%88%90%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="post-toc-text">七、集成单元测试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9C%A8spring%E4%B8%AD%E4%BD%BF%E7%94%A8junit%E6%9D%A5%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="post-toc-text">1、在spring中使用JUnit来进行测试。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8h2%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E8%80%A6mysql%E6%9D%A5%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="post-toc-text">2、如何利用H2内存数据库解耦mysql来进行测试。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E5%89%8D%E7%AB%AF%E9%9B%86%E6%88%90"><span class="post-toc-text">八、前端集成</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9B%86%E6%88%90thymeleaf%E5%8F%8A%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="post-toc-text">1、集成thymeleaf及基本用法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9B%86%E6%88%90bootstrap"><span class="post-toc-text">2、集成Bootstrap</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9B%86%E6%88%90jquery"><span class="post-toc-text">3、集成jQuery</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B9%9D%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E5%B1%82"><span class="post-toc-text">九、架构设计与分层</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84%E5%88%86%E5%B1%82"><span class="post-toc-text">结构分层</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81api%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="post-toc-text">十、API结构设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#restfulapi%E7%9A%84%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="post-toc-text">RestfulApi的结构设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89api%E8%BF%94%E5%9B%9E%E7%9A%84%E6%A0%87%E5%87%86"><span class="post-toc-text">自定义API返回的标准</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%80%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="post-toc-text">十一、异常拦截器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A6%96%E5%85%88%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%B7%BB%E5%8A%A0%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="post-toc-text">1、首先，为什么要添加异常拦截器？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%88%91%E4%BB%AC%E4%B8%BB%E8%A6%81%E5%AE%9E%E7%8E%B0%E4%B8%A4%E4%B8%AA%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="post-toc-text">2、我们主要实现两个异常拦截器：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA%E5%99%A8-404-403-500%E9%A1%B5%E9%9D%A2%E7%AD%89"><span class="post-toc-text">1、页面异常拦截器 404 403
+500页面等。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#api%E5%BC%82%E5%B8%B8%E6%8B%A6%E6%88%AA%E5%99%A8-%E5%90%8C%E6%A0%B7%E6%98%AF%E6%8B%A6%E6%88%AA404-403-500%E7%AD%89%E6%83%85%E5%86%B5"><span class="post-toc-text">2、API异常拦截器
+同样是拦截404 403 500等情况。</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%BA%8C%E5%8A%9F%E8%83%BD%E6%80%A7%E9%A1%B5%E9%9D%A2%E5%BC%80%E5%8F%91"><span class="post-toc-text">十二、功能性页面开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9D%83%E9%99%90%E9%99%90%E5%88%B6%E6%80%A7%E9%A1%B5%E9%9D%A2"><span class="post-toc-text">403:权限限制性页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#not-found-%E6%8F%90%E7%A4%BA%E9%A1%B5%E9%9D%A2"><span class="post-toc-text">404:Not found 提示页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%82%E5%B8%B8%E6%9C%8D%E5%8A%A1%E6%8F%90%E7%A4%BA%E9%A1%B5%E9%9D%A2"><span class="post-toc-text">500:异常服务提示页面</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%89%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="post-toc-text">十三、后台管理模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E4%B8%8E%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90"><span class="post-toc-text">业务与功能分析：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E5%9B%9B%E5%90%8E%E5%8F%B0%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">十四、后台登录功能模块实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%BA%94%E9%AA%8C%E8%AF%81%E5%A4%B1%E8%B4%A5%E9%80%BB%E8%BE%91%E5%A4%84%E7%90%86"><span class="post-toc-text">十五、验证失败逻辑处理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E5%85%AD%E6%88%BF%E6%BA%90%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97"><span class="post-toc-text">十六、房源信息管理模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E4%B8%8E%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90-1"><span class="post-toc-text">业务与功能分析：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%9B%AE%E6%A0%87"><span class="post-toc-text">实现目标：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%83%E5%9F%BA%E4%BA%8E%E4%B8%83%E7%89%9B%E4%BA%91%E7%9A%84%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="post-toc-text">十七、基于七牛云的图片上传（上传到本地）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E5%85%AB%E5%9F%BA%E4%BA%8E%E4%B8%83%E7%89%9B%E4%BA%91%E7%9A%84%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E4%B8%8A%E4%BC%A0%E5%88%B0%E4%B8%83%E7%89%9B%E4%BA%91"><span class="post-toc-text">十八、基于七牛云的图片上传（上传到七牛云）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B9%9D%E6%96%B0%E5%A2%9E%E6%88%BF%E6%BA%90%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD1"><span class="post-toc-text">十九、新增房源信息功能(1)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E6%96%B0%E5%A2%9E%E6%88%BF%E6%BA%90%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD2"><span class="post-toc-text">二十、新增房源信息功能(2)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%80%E6%88%BF%E6%BA%90%E4%BF%A1%E6%81%AF%E6%B5%8F%E8%A7%88%E5%8A%9F%E8%83%BD1"><span class="post-toc-text">二十一、房源信息浏览功能(1)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91"><span class="post-toc-text">1）基础开发</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E9%A1%B5%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">2）分页实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E7%BB%B4%E5%BA%A6%E6%8E%92%E5%BA%8F"><span class="post-toc-text">3）多维度排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8A%A0%E4%B8%80%E4%B8%AAredissessionconfig%E9%85%8D%E7%BD%AE"><span class="post-toc-text">1、加一个RedisSessionConfig配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%8C%E6%88%BF%E6%BA%90%E4%BF%A1%E6%81%AF%E6%B5%8F%E8%A7%88%E5%8A%9F%E8%83%BD2"><span class="post-toc-text">二十二、房源信息浏览功能(2)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%89%E6%88%BF%E6%BA%90%E4%BF%A1%E6%81%AF%E6%B5%8F%E8%A7%88%E5%8A%9F%E8%83%BD3"><span class="post-toc-text">二十三、房源信息浏览功能(3)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E5%9B%9B%E7%BC%96%E8%BE%91%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B01"><span class="post-toc-text">二十四、编辑功能实现1</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%94%E7%BC%96%E8%BE%91%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B02"><span class="post-toc-text">二十五、编辑功能实现2</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AD%E5%AE%A1%E6%A0%B8%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">二十六、审核功能实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%83%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90"><span class="post-toc-text">二十七、基础功能分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E4%B8%8E%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90-2"><span class="post-toc-text">1、业务与功能分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%9B%AE%E6%A0%87-1"><span class="post-toc-text">2、实现目标</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E5%85%AB%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">二十八、基础功能实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%88%BF%E6%BA%90%E4%BF%A1%E6%81%AF%E6%B5%8F%E8%A7%88%E5%8A%9F%E8%83%BD"><span class="post-toc-text">1、房源信息浏览功能</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B9%9D%E6%88%BF%E6%BA%90%E4%BF%A1%E6%81%AF%E8%AF%A6%E6%83%85%E9%A1%B5"><span class="post-toc-text">二十九、房源信息详情页</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E5%8D%81%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%AE%9E%E7%8E%B0-%E4%B8%9A%E5%8A%A1%E4%B8%8E%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90"><span class="post-toc-text">三十、搜索引擎实现-业务与功能分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">搜索引擎实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E5%8D%81%E4%B8%80es%E4%B8%8Emysql%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="post-toc-text">三十一、ES与MySQL技术选型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#elasticsearch%E4%B8%8Emysql%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%AF%B9%E6%AF%94"><span class="post-toc-text">ElasticSearch与MySQL实现搜索对比</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E5%8D%81%E4%BA%8C%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="post-toc-text">三十二、索引结构设计</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E5%8D%81%E4%B8%89%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA-%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91"><span class="post-toc-text">三十三、索引构建-核心逻辑</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B0%E5%BB%BAesconfig%E7%B1%BB"><span class="post-toc-text">1、新建esConfig类</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E5%8D%81%E5%9B%9B%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA-%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%912"><span class="post-toc-text">三十四、索引构建-核心逻辑2</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E5%8D%81%E4%BA%94%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA-%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="post-toc-text">三十五、索引构建-消息中间件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E5%8D%81%E5%85%AD%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA-%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5"><span class="post-toc-text">三十六、索引构建-代码实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%84%B6%E5%90%8E%E8%BF%9B%E8%A1%8Ckafka%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5"><span class="post-toc-text">然后进行kafka的代码实践：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E5%8D%81%E4%B8%83%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">三十七、搜索引擎实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="post-toc-text">搜索功能</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E5%8D%81%E5%85%AB%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="post-toc-text">三十八、中文分词-问题描述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E5%8D%81%E4%B9%9D%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D-ik%E9%85%8D%E7%BD%AE"><span class="post-toc-text">三十九、中文分词-IK配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E5%8D%81search-as-you-type"><span class="post-toc-text">四十、Search-as-you-type</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E5%8D%81%E4%B8%80%E5%B0%8F%E5%8C%BA%E6%88%BF%E6%BA%90%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD"><span class="post-toc-text">四十一、小区房源统计功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E5%8D%81%E4%BA%8C%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96"><span class="post-toc-text">四十二、搜索引擎优化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E5%8D%81%E4%B8%89%E5%9F%BA%E4%BA%8E%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E7%9A%84%E6%89%BE%E6%88%BF%E5%8A%9F%E8%83%BD"><span class="post-toc-text">四十三、基于百度地图的找房功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E4%B8%8E%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="post-toc-text">业务与需求分析：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%9B%AE%E6%A0%87-2"><span class="post-toc-text">实现目标：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8Ees%E7%9A%84%E5%8A%9F%E8%83%BD%E5%BC%80%E5%8F%91"><span class="post-toc-text">基于ES的功能开发：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%9C%B0%E5%9D%80%E8%8E%B7%E5%8F%96%E7%BB%8F%E7%BA%AC%E5%BA%A6%E7%9A%84%E5%BC%80%E5%8F%91"><span class="post-toc-text">基于地址获取经纬度的开发：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8Ees%E7%9A%84%E5%9C%B0%E5%9B%BE%E7%82%B9%E8%81%9A%E5%90%88"><span class="post-toc-text">基于ES的地图点聚合</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">七、搜索引擎实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E4%B8%8E%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90-3"><span class="post-toc-text">1、业务与功能分析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#section"><span class="post-toc-text"></span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%9B%AE%E6%A0%87-3"><span class="post-toc-text">2、实现目标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%AE%9E%E7%8E%B0-1"><span class="post-toc-text">3、搜索引擎实现</span></a></li></ol></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
       
       <div class="post-content__body">
         
@@ -169,39 +177,39 @@
 <h2 id="一es相关技术">一、es相关技术</h2>
 <ul>
 <li><p>强力技术组合技 = ElasticSearch + MySQL + Kafka</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvhjpa9oj215a09ygma.jpg" alt="image-20220704142142250" style="zoom: 33%;" /></p></li>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvhjpa9oj215a09ygma.jpg" alt="image-20220704142142250" style="zoom: 33%;" /></p></li>
 <li><p>强强联合 = ElasticSearch + 百度地图</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvi7pdfoj20xu0fumxu.jpg" alt="image-20220704142238638" style="zoom: 33%;" /></p></li>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvi7pdfoj20xu0fumxu.jpg" alt="image-20220704142238638" style="zoom: 33%;" /></p></li>
 <li><p>ElasticSearch生产环境优化经验</p></li>
 <li><p>负载加安全 = ElasticSearch + Nginx</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvjoo77uj212s08e74r.jpg" alt="image-20220704142403633" style="zoom:33%;" /></p></li>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvjoo77uj212s08e74r.jpg" alt="image-20220704142403633" style="zoom:33%;" /></p></li>
 <li><p>传说中的数据分析神器 ELK = ElasticSearch + Logstash +
 Kibana</p></li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvkx2hywj211809u3yr.jpg" alt="image-20220704142514879" style="zoom:33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvkx2hywj211809u3yr.jpg" alt="image-20220704142514879" style="zoom:33%;" /></p>
 <ul>
 <li>基础核心技术框架 = SpringBoot</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvllo1qfj20jq0ay0t5.jpg" alt="image-20220704142552030" style="zoom:33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvllo1qfj20jq0ay0t5.jpg" alt="image-20220704142552030" style="zoom:33%;" /></p>
 <ul>
 <li>数据库的常青树 = MySQL + Spring Data JPA</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvmr00llj20zs0ak74x.jpg" alt="image-20220704142700158" style="zoom:33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvmr00llj20zs0ak74x.jpg" alt="image-20220704142700158" style="zoom:33%;" /></p>
 <ul>
 <li>前端核心技术框架 = thymeleaf + Bootstrap + jQuery</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvo2191mj215q0eawfk.jpg" alt="image-20220704142815132" style="zoom:33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvo2191mj215q0eawfk.jpg" alt="image-20220704142815132" style="zoom:33%;" /></p>
 <ul>
 <li>项目安全框架 = Spring Security</li>
 <li>图片上传 = 七牛云 + webUpload</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvp9u8vhj20pm08iweq.jpg" alt="image-20220704142925971" style="zoom:33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvp9u8vhj20pm08iweq.jpg" alt="image-20220704142925971" style="zoom:33%;" /></p>
 <ul>
 <li>免注册登陆 = 阿里短信</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvprdcqoj20r40f00tz.jpg" alt="image-20220704142953479" style="zoom:33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvprdcqoj20r40f00tz.jpg" alt="image-20220704142953479" style="zoom:33%;" /></p>
 <h3 id="系统架构">1、系统架构</h3>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvqrifj8j20zo0lyae7.jpg" alt="image-20220704143051510" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uvqrifj8j20zo0lyae7.jpg" alt="image-20220704143051510" style="zoom: 50%;" /></p>
 <h3 id="课程收获">2、课程收获</h3>
 <ul>
 <li>了解一个中度复杂规模的应用开发流程</li>
@@ -230,12 +238,12 @@ Lucene的开源搜索引擎。</p>
 <blockquote>
 <p>ER图</p>
 </blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uwayv4qtj20zc0k0jsi.jpg" alt="image-20220704145015972" style="zoom: 50%;" /></p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3uwb97ci1j211m0m6ac3.jpg" alt="image-20220704145033327" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uwayv4qtj20zc0k0jsi.jpg" alt="image-20220704145015972" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3uwb97ci1j211m0m6ac3.jpg" alt="image-20220704145033327" style="zoom: 50%;" /></p>
 <h3 id="基础表介绍">1、基础表介绍</h3>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h4nyvqn9ekj21e00owq8f.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4nyvqn9ekj21e00owq8f.jpg"
 alt="image-20220729182048729" />
 <figcaption aria-hidden="true">image-20220729182048729</figcaption>
 </figure>
@@ -260,7 +268,7 @@ alt="image-20220729182048729" />
 id="新建config工具包创建jpaconfig类">1、新建config工具包，创建JpaConfig类</h3>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h4nz76jcydj20ia03rmxc.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4nz76jcydj20ia03rmxc.jpg"
 alt="image-20220729183149365" />
 <figcaption aria-hidden="true">image-20220729183149365</figcaption>
 </figure>
@@ -371,19 +379,19 @@ application-dev-properties</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello ,zhiqiang<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;name&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h4s8x24xf9j20ay061dfv.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4s8x24xf9j20ay061dfv.jpg"
 alt="image-20220802111018198" />
 <figcaption aria-hidden="true">image-20220802111018198</figcaption>
 </figure>
 <p>另外，加载一些静态资源：</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h4s8xqywzoj20l80qkmyc.jpg" alt="image-20220802111059762" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4s8xqywzoj20l80qkmyc.jpg" alt="image-20220802111059762" style="zoom: 50%;" /></p>
 <p>按照该目录结构进行部署，并且在WebMvcConfig中需要单独进行配置：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 静态资源加载配置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> &#123;</span><br><span class="line">    registry.addResourceHandler(<span class="string">&quot;/static/**&quot;</span>).addResourceLocations(<span class="string">&quot;classpath:/static/&quot;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>增加处理路径和静态资源绝对路径。意味着我们只要在静态资源里面加入/static/**前缀就会到classpath：/static/路径下找到相关的静态资源文件。</p>
 <h3 id="集成bootstrap">2、集成Bootstrap</h3>
 <h3 id="集成jquery">3、集成jQuery</h3>
 <h2 id="九架构设计与分层">九、架构设计与分层</h2>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h4sf3g2rvpj21480u044k.jpg" alt="image-20220802144402131" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4sf3g2rvpj21480u044k.jpg" alt="image-20220802144402131" style="zoom:50%;" /></p>
 <h3 id="结构分层">结构分层</h3>
 <p>经典的三层架构：</p>
 <p>​ 表示层 ——web</p>
@@ -409,7 +417,7 @@ alt="image-20220802111018198" />
 <p>返回结果如下：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h4sjvoqsvdj20a107974i.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4sjvoqsvdj20a107974i.jpg"
 alt="image-20220802172936208" />
 <figcaption aria-hidden="true">image-20220802172936208</figcaption>
 </figure>
@@ -425,7 +433,7 @@ id="首先为什么要添加异常拦截器">1、首先，为什么要添加异�
 同样是拦截404 403 500等情况。</h4>
 <p>比如我们输入localhost:8000/xxx就会弹出 Whitelabel Error
 Page页面，这个是springboot自带的一个页面。</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h4tggx3534j214c0b4aaw.jpg" alt="image-20220803121706517" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4tggx3534j214c0b4aaw.jpg" alt="image-20220803121706517" style="zoom:50%;" /></p>
 <p>在配置文件中修改并进行优化：</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server.error.whitelabel.enabled</span>=<span class="string">false</span></span><br></pre></td></tr></table></figure>
 <p>并且在base包中新建一个AppErrorController类
@@ -445,7 +453,7 @@ Page页面，这个是springboot自带的一个页面。</p>
 <p>​ 并return ”404“到该页面，等等</p>
 <p>​ 如果什么都没匹配到，就返回index页面。</p>
 <p>}</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h4tlyyvi5yj21mp0u0acc.jpg" alt="image-20220803152731553" style="zoom: 33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4tlyyvi5yj21mp0u0acc.jpg" alt="image-20220803152731553" style="zoom: 33%;" /></p>
 <p>因为在方法上面使用的是requestMapping，所以也要在类上面增加@controller注解。</p>
 <p>以上定义的是web页面的拦截处理，下面定义api的拦截处理：</p>
 <p>除web页面外的错误处理，比如Json/xml等，那么就不需要像web页面拦截器一样声明produces
@@ -495,7 +503,7 @@ http）的。</p>
 <p>http.authorizeRequests().antMatchers("/admin/login").permitAll();</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="meta">@EnableGlobalMethodSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebSecurityConfig</span> <span class="keyword">extends</span> <span class="title class_">WebSecurityConfigurerAdapter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//资源访问权限</span></span><br><span class="line">        http.authorizeRequests()</span><br><span class="line">                .antMatchers(<span class="string">&quot;/admin/login&quot;</span>).permitAll()  <span class="comment">//管理员登录入口</span></span><br><span class="line">                .antMatchers(<span class="string">&quot;/static/**&quot;</span>).permitAll()      <span class="comment">//静态资源访问</span></span><br><span class="line">                .antMatchers(<span class="string">&quot;/user/login&quot;</span>).permitAll()     <span class="comment">//用户登录入口</span></span><br><span class="line">                .antMatchers(<span class="string">&quot;/admin/**&quot;</span>).hasRole(<span class="string">&quot;ADMIN&quot;</span>)</span><br><span class="line">                .antMatchers(<span class="string">&quot;/user/**&quot;</span>).hasAnyRole(<span class="string">&quot;ADMIN&quot;</span>,<span class="string">&quot;USER&quot;</span>)</span><br><span class="line">                .antMatchers(<span class="string">&quot;/admin/user/**&quot;</span>).hasAnyRole(<span class="string">&quot;ADMIN&quot;</span>,<span class="string">&quot;USER&quot;</span>)</span><br><span class="line">                .and()</span><br><span class="line">                .formLogin()</span><br><span class="line">                .loginProcessingUrl(<span class="string">&quot;/login&quot;</span>)</span><br><span class="line">                .defaultSuccessUrl(<span class="string">&quot;/admin/center&quot;</span>,<span class="literal">true</span>).permitAll()</span><br><span class="line">                .failureHandler(authFailHandler())</span><br><span class="line">                .and()</span><br><span class="line">                .logout()</span><br><span class="line">                .logoutUrl(<span class="string">&quot;/logout&quot;</span>)</span><br><span class="line">                .logoutSuccessUrl(<span class="string">&quot;/logout/page&quot;</span>)</span><br><span class="line">                .deleteCookies(<span class="string">&quot;JSESSIONID&quot;</span>)</span><br><span class="line">                .invalidateHttpSession(<span class="literal">true</span>)</span><br><span class="line">                .and()</span><br><span class="line">                .exceptionHandling()</span><br><span class="line">                .authenticationEntryPoint(urlEntryPoint())</span><br><span class="line">                <span class="comment">//无权访问的跳转页面</span></span><br><span class="line">                .accessDeniedPage(<span class="string">&quot;/403&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        http.csrf().disable();<span class="comment">//常用的防御策略 关闭</span></span><br><span class="line">        http.headers().frameOptions().sameOrigin(); <span class="comment">//常用的默认开启同源策略</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>在我们设置了loginProcessingUrl("/login")后，springSecurity默认的登录界面是这样的：</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h4uk1qiza0j20ls09o0sz.jpg" alt="image-20220804110630147" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h4uk1qiza0j20ls09o0sz.jpg" alt="image-20220804110630147" style="zoom:50%;" /></p>
 <p>所以我们需要在controller中去配置/admin/login函数并且return
 /admin/login</p>
 <p>另外我们还需要去关闭两个设置：</p>
@@ -588,7 +596,7 @@ id="十七基于七牛云的图片上传上传到本地">十七、基于七牛�
 <p>这样图片上传就到了我们的本地/Users/zhiqiang/Downloads/zq/tmp/了。</p>
 <h2
 id="十八基于七牛云的图片上传上传到七牛云">十八、基于七牛云的图片上传（上传到七牛云）</h2>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h51nur7z9yj20m30ld769.jpg" alt="image-20220810143709446"  /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h51nur7z9yj20m30ld769.jpg" alt="image-20220810143709446"  /></p>
 <p>配置七牛云服务器直传，需要设置一个Bean类去配置qiniuConfig</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 为七牛云配置华东机房zone0</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Bean</span></span><br><span class="line">   <span class="keyword">public</span> com.qiniu.storage.Configuration <span class="title function_">qiniuConfig</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">com</span>.qiniu.storage.Configuration(Zone.zone1());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>并且设置一个七牛云上传工具管理类，把上面设置的配置类当作参数传入进去。</p>
@@ -596,7 +604,7 @@ id="十八基于七牛云的图片上传上传到七牛云">十八、基于七�
 <p>另外，七牛云新建对象存储后会有30天的临时测试域名。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h51p89puj6j215w0cm0ts.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h51p89puj6j215w0cm0ts.jpg"
 alt="image-20220810152446672" />
 <figcaption aria-hidden="true">image-20220810152446672</figcaption>
 </figure>
@@ -623,7 +631,7 @@ this.auth.uploadToken(bucket,null,3600, putPolicy);</p>
 <p>测试通过，成功上传到七牛云上面。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h52sr9r1c0j21gg0u0wia.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h52sr9r1c0j21gg0u0wia.jpg"
 alt="image-20220811141223495" />
 <figcaption aria-hidden="true">image-20220811141223495</figcaption>
 </figure>
@@ -654,13 +662,13 @@ ApiResponse.ofSuccess的时候，需要定义一个dto来接收，这时候新�
 <p>在新增房源这里我们设定了支持城市下拉的选择：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h53qpzhcenj218u0emabu.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h53qpzhcenj218u0emabu.jpg"
 alt="image-20220812094729522" />
 <figcaption aria-hidden="true">image-20220812094729522</figcaption>
 </figure>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h53qqn8xc5j21z20luwgu.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h53qqn8xc5j21z20luwgu.jpg"
 alt="image-20220812094810146" />
 <figcaption aria-hidden="true">image-20220812094810146</figcaption>
 </figure>
@@ -709,7 +717,7 @@ Util，modelMapper是一个复制bean的。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HouseController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> IAddressService addressService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;address/support/cities&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> ApiResponse <span class="title function_">getSupportCities</span><span class="params">()</span>&#123;</span><br><span class="line">        ServiceMultiResult&lt;SupportAddressDTO&gt; result = addressService.findAllCities();</span><br><span class="line">        <span class="keyword">if</span> (result.getResultSize() == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> ApiResponse.ofSuccess(ApiResponse.Status.NOT_FOUND);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ApiResponse.ofSuccess(result.getResult());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h57jnatbypj20th0eignw.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h57jnatbypj20th0eignw.jpg"
 alt="image-20220815164459062" />
 <figcaption aria-hidden="true">image-20220815164459062</figcaption>
 </figure>
@@ -787,7 +795,7 @@ rapperSubwayDetailInfo类去得到关于地铁的一些信息设置成houseDetai
 <p><strong>测试插入数据：</strong></p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h58wcr1rl6j21410doq5v.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h58wcr1rl6j21410doq5v.jpg"
 alt="image-20220816205011825" />
 <figcaption aria-hidden="true">image-20220816205011825</figcaption>
 </figure>
@@ -797,7 +805,7 @@ alt="image-20220816205011825" />
 <h3 id="多维度排序">3）多维度排序</h3>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h59lmo8693j21it0u0gop.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h59lmo8693j21it0u0gop.jpg"
 alt="image-20220817112443451" />
 <figcaption aria-hidden="true">image-20220817112443451</figcaption>
 </figure>
@@ -822,7 +830,7 @@ id="加一个redissessionconfig配置">1、加一个RedisSessionConfig配置</h3
 <p>然后这样呢在登录的时候就会将session自动的存储到redis中了：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h59qtvrkmvj20mp043mxn.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h59qtvrkmvj20mp043mxn.jpg"
 alt="image-20220817142440167" />
 <figcaption aria-hidden="true">image-20220817142440167</figcaption>
 </figure>
@@ -839,7 +847,7 @@ alt="image-20220817142440167" />
 <p>但是我们就不能用ApiResponse了，因为dataTables有一个固定的格式。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h59vm230kbj21wj0u043e.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h59vm230kbj21wj0u043e.jpg"
 alt="image-20220817171008284" />
 <figcaption aria-hidden="true">image-20220817171008284</figcaption>
 </figure>
@@ -872,7 +880,7 @@ alt="image-20220817171008284" />
 <p>返回的结果界面如下：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5fodvfaa7j21qs0u0zpj.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5fodvfaa7j21qs0u0zpj.jpg"
 alt="image-20220822173105778" />
 <figcaption aria-hidden="true">image-20220822173105778</figcaption>
 </figure>
@@ -899,7 +907,7 @@ Repository继承的是CrudRepository，使用的是findAll方法，用到分页�
 <p>这里，所以在前端发送ajax请求的时候就会把这些预设好的参数传到服务器url。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5gpgt741zj20u60e3mzd.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5gpgt741zj20u60e3mzd.jpg"
 alt="image-20220823145625654" />
 <figcaption aria-hidden="true">image-20220823145625654</figcaption>
 </figure>
@@ -912,14 +920,14 @@ sort: createTime: DESC]</p>
 <p>这里的翻页，就是使用服务器来完成的。然后使用前端html按钮来发送请求。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5gpw3v4g4j22c00tqwjm.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5gpw3v4g4j22c00tqwjm.jpg"
 alt="image-20220823151109688" />
 <figcaption aria-hidden="true">image-20220823151109688</figcaption>
 </figure>
 <h2 id="二十三房源信息浏览功能3">二十三、房源信息浏览功能(3)</h2>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5gpxohml2j21rk0pejvq.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5gpxohml2j21rk0pejvq.jpg"
 alt="image-20220823151240457" />
 <figcaption aria-hidden="true">image-20220823151240457</figcaption>
 </figure>
@@ -944,7 +952,7 @@ criteriaBuilder.or等方法的返回值也为Predicate对象。</p>
 <p>如果添加一些搜索条件找不到的话，显示结果图如下所示：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5gtriepryj22bc0kcad6.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5gtriepryj22bc0kcad6.jpg"
 alt="image-20220823172508134" />
 <figcaption aria-hidden="true">image-20220823172508134</figcaption>
 </figure>
@@ -964,20 +972,20 @@ alt="image-20220823172508134" />
 <p>最后测试，点击编辑按钮，返回页面：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5i56k81zbj21o90u0n05.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5i56k81zbj21o90u0n05.jpg"
 alt="image-20220824204543117" />
 <figcaption aria-hidden="true">image-20220824204543117</figcaption>
 </figure>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5i56yb8igj21rz0u0q72.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5i56yb8igj21rz0u0q72.jpg"
 alt="image-20220824204607629" />
 <figcaption aria-hidden="true">image-20220824204607629</figcaption>
 </figure>
 <p>但是我们点击更新的时候会报如下错误：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5i5ku36fmj21km0rw0v3.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5i5ku36fmj21km0rw0v3.jpg"
 alt="image-20220824205928885" />
 <figcaption aria-hidden="true">image-20220824205928885</figcaption>
 </figure>
@@ -1013,7 +1021,7 @@ alt="image-20220824205928885" />
 <p>才可以正常显示，显示成功的图如下所示：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5j3e1z84cj20u70ratah.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5j3e1z84cj20u70ratah.jpg"
 alt="image-20220825162919557" />
 <figcaption aria-hidden="true">image-20220825162919557</figcaption>
 </figure>
@@ -1030,13 +1038,13 @@ alt="image-20220825162919557" />
 <p>效果图：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5j4zosgsqj21ki0u0gnz.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5j4zosgsqj21ki0u0gnz.jpg"
 alt="image-20220825172443129" />
 <figcaption aria-hidden="true">image-20220825172443129</figcaption>
 </figure>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5j4zwf075j22580r8jvc.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5j4zwf075j22580r8jvc.jpg"
 alt="image-20220825172455963" />
 <figcaption aria-hidden="true">image-20220825172455963</figcaption>
 </figure>
@@ -1073,7 +1081,7 @@ data-cites="PostMapping的区别">@PostMapping的区别</span>？</p>
 <p>最后实现的审核：发布效果如下所示：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5k6k0gwpcj22600rigpt.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5k6k0gwpcj22600rigpt.jpg"
 alt="image-20220826150416712" />
 <figcaption aria-hidden="true">image-20220826150416712</figcaption>
 </figure>
@@ -1093,7 +1101,7 @@ alt="image-20220826150416712" />
 <p>现在点击下架按钮就变为状态：待审核，而不是已出租的状态了。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5kac8a1tsj21b10gpq4h.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5kac8a1tsj21b10gpq4h.jpg"
 alt="image-20220826171519957" />
 <figcaption aria-hidden="true">image-20220826171519957</figcaption>
 </figure>
@@ -1125,7 +1133,7 @@ alt="image-20220826171519957" />
 <p>因为我们的houseServiceImpl中的query并未具体实现，所以先测试一下其他代码，结果如下：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5oztbly0aj21kg0u0why.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5oztbly0aj21kg0u0why.jpg"
 alt="image-20220830185856406" />
 <figcaption aria-hidden="true">image-20220830185856406</figcaption>
 </figure>
@@ -1146,7 +1154,7 @@ alt="image-20220830185856406" />
 <p>但是这里的houses并未把houseDetail的信息添加进去，所以导致了前端页面的错乱：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5r8nws4k3j21l30u0jum.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5r8nws4k3j21l30u0jum.jpg"
 alt="image-20220901173616255" />
 <figcaption aria-hidden="true">image-20220901173616255</figcaption>
 </figure>
@@ -1165,7 +1173,7 @@ alt="image-20220901173616255" />
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 渲染详细信息 及标签</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> houseIds</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> idToHouseMap</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">wrapperHouseList</span><span class="params">(List&lt;Long&gt; houseIds, Map&lt;Long, HouseDTO&gt; idToHouseMap)</span> &#123;</span><br><span class="line">    List&lt;HouseDetail&gt; details = houseDetailRepository.findAllByHouseIdIn(houseIds);</span><br><span class="line">    details.forEach(houseDetail -&gt; &#123;</span><br><span class="line">        <span class="type">HouseDTO</span> <span class="variable">houseDTO</span> <span class="operator">=</span> idToHouseMap.get(houseDetail.getHouseId());</span><br><span class="line">        <span class="type">HouseDetailDTO</span> <span class="variable">houseDetailDTO</span> <span class="operator">=</span> modelMapper.map(houseDetail, HouseDetailDTO.class);</span><br><span class="line">        houseDTO.setHouseDetail(houseDetailDTO);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    List&lt;HouseTag&gt; houseTags = houseTagRepository.findAllByHouseIdIn(houseIds);</span><br><span class="line">    houseTags.forEach(houseTag -&gt; &#123;</span><br><span class="line">        <span class="type">HouseDTO</span> <span class="variable">houseDTO</span> <span class="operator">=</span> idToHouseMap.get(houseTag.getHouseId());</span><br><span class="line">       houseDTO.getTags().add(houseTag.getName());</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>另外：</p>
 <p>对于距离地铁最近的排序，要加一个判断条件，就是如果要按照地铁距离进行排序的话，那么就判断HouseSort.DISTANCE_to_SUBWAY_KEY字段必须大于-1，如果不添加这个判断的话，那么倒排的话，-1始终是在最前面的。</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5y3uabd5dj20zg0u0427.jpg" alt="image-20220907160821320" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5y3uabd5dj20zg0u0427.jpg" alt="image-20220907160821320" style="zoom: 50%;" /></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Specification&lt;House&gt; specification = (root, criteriaQuery, criteriaBuilder) -&gt; &#123;</span><br><span class="line">    Predicate predicate = criteriaBuilder.equal(root.get(&quot;status&quot;), HouseStatus.PASSES.getValue());</span><br><span class="line"></span><br><span class="line">    predicate = criteriaBuilder.and(predicate, criteriaBuilder.equal(root.get(&quot;cityEnName&quot;), rentSearch.getCityEnName()));</span><br><span class="line"></span><br><span class="line">    if (HouseSort.DISTANCE_TO_SUBWAY_KEY.equals(rentSearch.getOrderBy())) &#123;</span><br><span class="line">        predicate = criteriaBuilder.and(predicate, criteriaBuilder.gt(root.get(HouseSort.DISTANCE_TO_SUBWAY_KEY), -1));</span><br><span class="line">    &#125;</span><br><span class="line">    return predicate;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="二十九房源信息详情页">二十九、房源信息详情页</h2>
 <p>上节中我们把房源信息列表查询出来了，那么接下来用户需要点击链接查看详情。</p>
@@ -1183,7 +1191,7 @@ alt="image-20220901173616255" />
 <p>最后的结果如下图所示：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5y7vk496dj21jm0u0dj5.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5y7vk496dj21jm0u0dj5.jpg"
 alt="image-20220907182800817" />
 <figcaption aria-hidden="true">image-20220907182800817</figcaption>
 </figure>
@@ -1209,7 +1217,7 @@ id="elasticsearch与mysql实现搜索对比">ElasticSearch与MySQL实现搜索�
 <p>mysql是做数据存储，来实现数据事务的特性。那么使用mysql构建搜索引擎的困境：</p>
 <p>如果想要复杂查询就需要写很复杂的sql语句去做联表查询：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> house <span class="keyword">as</span> a <span class="keyword">left</span> <span class="keyword">join</span> house_detail <span class="keyword">as</span> b <span class="keyword">on</span> a.id <span class="operator">=</span> b.house_id</span><br><span class="line"><span class="keyword">where</span> a.title <span class="keyword">like</span> <span class="string">&#x27;%国贸%&#x27;</span> <span class="keyword">AND</span> b.round_service <span class="keyword">like</span> <span class="string">&#x27;%故宫%&#x27;</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5yypgk75jj217b0jjgo0.jpg" alt="image-20220908095617560" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h5yypgk75jj217b0jjgo0.jpg" alt="image-20220908095617560" style="zoom:50%;" /></p>
 <p>那么就可以看到我们查询两个条件就需要用到了两个联表查询。非常麻烦。</p>
 <p>如果还有其他条件，比如暖气、路线等等，那么就非常的麻烦了。</p>
 <p>当然可以使用phoneix加mysql来实现搜索，具体的链接可以查看：https://baijiahao.baidu.com/s?id=1708618149251629430&amp;wfr=spider&amp;for=pc</p>
@@ -1249,7 +1257,7 @@ API、协同处理器与自定义过滤器，对于简单查询来说，其性�
 <p>在es-head中查看结果：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h64ycpzt0ej20xd0bxjtb.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h64ycpzt0ej20xd0bxjtb.jpg"
 alt="image-20220913141723776" />
 <figcaption aria-hidden="true">image-20220913141723776</figcaption>
 </figure>
@@ -1329,26 +1337,26 @@ available:</p>
 <p>然后去追踪问题发现：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h66990s1sdj20jc06974n.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h66990s1sdj20jc06974n.jpg"
 alt="image-20220914171955528" />
 <figcaption aria-hidden="true">image-20220914171955528</figcaption>
 </figure>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h669bvajkij20j40bwdh4.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h669bvajkij20j40bwdh4.jpg"
 alt="image-20220914172248936" />
 <figcaption aria-hidden="true">image-20220914172248936</figcaption>
 </figure>
 <p>没有匹配上，所以修改elasticsearch为xunwu，再次尝试。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h669zygi6bj20vd09fq3i.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h669zygi6bj20vd09fq3i.jpg"
 alt="image-20220914174557710" />
 <figcaption aria-hidden="true">image-20220914174557710</figcaption>
 </figure>
 <p>测试成功，总结：</p>
 <p>在mapping中我们定义的是索引的名称：</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h66a1nc5oij20a30dp0t4.jpg" alt="image-20220914174735343"  /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h66a1nc5oij20a30dp0t4.jpg" alt="image-20220914174735343"  /></p>
 <p>然后在代码中去定义索引的类型，这里当然是可以随意输入的，经测试输入house2，然后可以创建。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SearchRequestBuilder</span> <span class="variable">requestBuilder</span> <span class="operator">=</span> <span class="built_in">this</span>.esclient.prepareSearch(INDEX_NAME).setTypes(INDEX_TYPE)</span><br><span class="line">        .setQuery(QueryBuilders.termQuery(HouseIndexKey.HOUSE_ID, houseId));</span><br></pre></td></tr></table></figure>
 <p>哦对了，在test中因为我们使用的是application-test.properties
@@ -1371,7 +1379,7 @@ alt="image-20220914174557710" />
 <p><strong>另外对于SearchServiceImpl中</strong></p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h66eoos3h0j20ki07vgm8.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h66eoos3h0j20ki07vgm8.jpg"
 alt="image-20220914202807798" />
 <figcaption aria-hidden="true">image-20220914202807798</figcaption>
 </figure>
@@ -1390,7 +1398,7 @@ false虽然没办法走下面的代码逻辑，但是前端返回值仍然是发
 其默认是自动开放2181端口的。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/zookeeper-server-start.sh config/zookeeper.properties </span><br></pre></td></tr></table></figure>
 <p>启动后的结果：</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h67f2c95dbj20wa0ki7ab.jpg" alt="image-20220915172632829" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h67f2c95dbj20wa0ki7ab.jpg" alt="image-20220915172632829" style="zoom:50%;" /></p>
 <p>当然我们可以使用命令在后台运行。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./bin/zookeeper-server-start.sh config/zookeeper.peoperties &amp;		</span><br></pre></td></tr></table></figure>
 <p>然后</p>
@@ -1399,9 +1407,9 @@ false虽然没办法走下面的代码逻辑，但是前端返回值仍然是发
 <p>然后就是启动kafka，启动一个单实例</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-server-start.sh config/server.properties</span><br></pre></td></tr></table></figure>
 <p>结果图如下：</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6juiu9z5sj20u00yx7f6.jpg" alt="image-20220916094227465" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6juiu9z5sj20u00yx7f6.jpg" alt="image-20220916094227465" style="zoom:50%;" /></p>
 <p>我们可以查看server.properties的详情：</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h687dgh918j20u00yg7bw.jpg" alt="image-20220916094616488" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h687dgh918j20u00yg7bw.jpg" alt="image-20220916094616488" style="zoom:50%;" /></p>
 <p>其中broker.id在整个集群中是唯一值， （broker：经纪人、掮客）</p>
 <p>另外还有，如果想让外网访问的话，可以把listeners=PLAINTEXT://localhost:9092打开，然后把localhost换成自己的外网ip即可。</p>
 <p>advertised.listeners=PLAINTEXT://localhost:9092中的localhost也替换。</p>
@@ -1417,7 +1425,7 @@ false虽然没办法走下面的代码逻辑，但是前端返回值仍然是发
 <p>然后我们同时启动生产消息和消费消息，界面如下：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h68ex9wh0vj21050as76i.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h68ex9wh0vj21050as76i.jpg"
 alt="image-20220916140729770" />
 <figcaption aria-hidden="true">image-20220916140729770</figcaption>
 </figure>
@@ -1476,7 +1484,7 @@ objectMapper.writeValueAsString(message));</p>
 <li>​ ES与MySQL结合</li>
 </ul>
 <p>正常情况下是通过mysql去查出相关信息的，但是在关键词搜索框中，需要通过es去查询出相关的信息，再通过mysql查询出更多详细的信息进行展示。</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6f3kg3ijqj218s090t98.jpg" alt="image-20220918123354761" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6f3kg3ijqj218s090t98.jpg" alt="image-20220918123354761" style="zoom:50%;" /></p>
 <p>首先去定义一下我们的接口ISearchService</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询房源接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> rentSearch</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">ServiceMultiResult&lt;Long&gt; <span class="title function_">query</span><span class="params">(RentSearch rentSearch)</span>;</span><br></pre></td></tr></table></figure>
 <p>然后，就定义实现类：</p>
@@ -1528,10 +1536,10 @@ house的变量了，</p>
 <p>然后增加一些内容进去：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST http<span class="punctuation">:</span><span class="comment">//localhost:9200/test/house</span></span><br><span class="line">Content-Type<span class="punctuation">:</span> application/json</span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你从中学到了什么&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <p>等等</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6d5fc9nqsj20oq05a74w.jpg" alt="image-20220920162642558" style="zoom:67%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6d5fc9nqsj20oq05a74w.jpg" alt="image-20220920162642558" style="zoom:67%;" /></p>
 <h2 id="三十九中文分词-ik配置">三十九、中文分词-IK配置</h2>
 <p>下载elasticSearch-IK放置在es文件夹的plugins目录下：</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6f3k6dey0j21f20niabz.jpg" alt="image-20220920163116793" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6f3k6dey0j21f20niabz.jpg" alt="image-20220920163116793" style="zoom: 50%;" /></p>
 <p>或者当版本大于5.5.1的时候，可以直接执行命令进行安装。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analusis-ik/releases/download/v5.6.1/elasticsearch-analysisi-ik-5.6.1.zip</span><br></pre></td></tr></table></figure>
 <p>注意，一定要选择对应的版本。</p>
@@ -1550,7 +1558,7 @@ house的变量了，</p>
 </blockquote>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6d6eg0bd5j20jd0c1wf9.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6d6eg0bd5j20jd0c1wf9.jpg"
 alt="image-20220920170025078" />
 <figcaption aria-hidden="true">image-20220920170025078</figcaption>
 </figure>
@@ -1575,7 +1583,7 @@ alt="image-20220920170025078" />
 <p>来监控“house_build" 这个topic内容，发现：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6d97rysorj20g90ab0uj.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6d97rysorj20g90ab0uj.jpg"
 alt="image-20220920183750153" />
 <figcaption aria-hidden="true">image-20220920183750153</figcaption>
 </figure>
@@ -1592,7 +1600,7 @@ alt="image-20220920183750153" />
 <p>我们简单定义了一个controller的接口：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自动补全接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;rent/house/autocomplete&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> ApiResponse <span class="title function_">autocomplete</span><span class="params">(<span class="meta">@RequestParam(value = &quot;prefix&quot;)</span> String prefix)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(prefix.isEmpty())&#123;</span><br><span class="line">        <span class="keyword">return</span> ApiResponse.ofStatus(ApiResponse.Status.NOT_FOUND);</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;String&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    result.add(<span class="string">&quot;超棒&quot;</span>);</span><br><span class="line">    result.add(<span class="string">&quot;志强&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> ApiResponse.ofSuccess(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>显示的效果如下：</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6f3ju1q8cj21uw0mojsa.jpg" alt="image-20220921091903028" style="zoom: 33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6f3ju1q8cj21uw0mojsa.jpg" alt="image-20220921091903028" style="zoom: 33%;" /></p>
 <p>在ISearchService中新建suggest，然后在impl中去新建：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> ServiceResult&lt;List&lt;String&gt;&gt; <span class="title function_">suggest</span><span class="params">(String prefix)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当然在执行任何操作之前，我们需要对suggest新建一个专门的类：</p>
@@ -1660,7 +1668,7 @@ index</p>
 <p>最终的效果图如下：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6gd5hrdwnj21ma0e0q4b.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6gd5hrdwnj21ma0e0q4b.jpg"
 alt="image-20220923111040881" />
 <figcaption aria-hidden="true">image-20220923111040881</figcaption>
 </figure>
@@ -1671,7 +1679,7 @@ alt="image-20220923111040881" />
 <h2 id="四十一小区房源统计功能">四十一、小区房源统计功能</h2>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6gdqduo9ej21jy0pcwgq.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6gdqduo9ej21jy0pcwgq.jpg"
 alt="image-20220923113046846" />
 <figcaption aria-hidden="true">image-20220923113046846</figcaption>
 </figure>
@@ -1686,7 +1694,7 @@ alt="image-20220923113046846" />
 结果拿出来，就是我们定义了agg_district这样一个聚合字段，然后get(HouseIndexKey.AGG_DISTRICT)
 拿出来，然后terms.getBucketByKey(district).getDocCount()把这个数量取出来。</p>
 <p>最终效果如下：</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6gl0i1gqtj21iu0u0778.jpg" alt="image-20220923154242836" style="zoom:80%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6gl0i1gqtj21iu0u0778.jpg" alt="image-20220923154242836" style="zoom:80%;" /></p>
 <h2 id="四十二搜索引擎优化">四十二、搜索引擎优化</h2>
 <p>当我们搜索的时候</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;from&quot;</span> <span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;size&quot;</span> <span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;query&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;bool&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;must&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;multi_match&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;query&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;融泽嘉园&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;fields&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">              <span class="string">&quot;district^1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="string">&quot;roundService^1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="string">&quot;subwayLineName^1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="string">&quot;subwayStationName^1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="string">&quot;title^1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="string">&quot;traffic^1.0&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;best_fields&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;operator&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;OR&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;slop&quot;</span> <span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;prefix_length&quot;</span> <span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;max_expansions&quot;</span> <span class="punctuation">:</span> <span class="number">50</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;lenient&quot;</span> <span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;zero_terms_query&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;NONE&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;boost&quot;</span> <span class="punctuation">:</span> <span class="number">1.0</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;filter&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;term&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;cityEnName&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">              <span class="attr">&quot;value&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;bj&quot;</span><span class="punctuation">,</span></span><br><span class="line">              <span class="attr">&quot;boost&quot;</span> <span class="punctuation">:</span> <span class="number">1.0</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;disable_coord&quot;</span> <span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;adjust_pure_negative&quot;</span> <span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;boost&quot;</span> <span class="punctuation">:</span> <span class="number">1.0</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sort&quot;</span> <span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;lastUpdateTime&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;order&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;desc&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -1738,7 +1746,7 @@ id="四十三基于百度地图的找房功能">四十三、基于百度地图�
 <p>对AK值做一个替换：</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6io025ecpj20wm0qqn0k.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h6io025ecpj20wm0qqn0k.jpg"
 alt="image-20220925105711798" />
 <figcaption aria-hidden="true">image-20220925105711798</figcaption>
 </figure>

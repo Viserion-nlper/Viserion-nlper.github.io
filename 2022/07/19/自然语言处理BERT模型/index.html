@@ -193,14 +193,14 @@
 <li>输入输出都很直观，其核心架构就是中间的网络设计了</li>
 </ul>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h884nz6dxkj30ng05yaa6.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h884nz6dxkj30ng05yaa6.jpg" /></p>
 <p>对比传统的RNN网络：</p>
 <p>计算时有什么问题？</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h884pbn9wgj315d0dimy5.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h884pbn9wgj315d0dimy5.jpg" /></p>
 <p>是依次串行处理的，现在处理的需要依赖上一步处理后的数据。</p>
 <p>而Self-Attention机制来进行并行计算（得益于QKV的矩阵），在输入和输出都相同，输出结果是同时被计算出来的，现在基本已经取代RNN了。</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h884sbjayej30xm0l40tv.jpg" alt="image-20221117145723293" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h884sbjayej30xm0l40tv.jpg" alt="image-20221117145723293" style="zoom:50%;" /></p>
 <p>传统的word2vec</p>
 <ul>
 <li>表示向量时有什么问题？</li>
@@ -222,20 +222,20 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vx
 <li>怎样组合在一起？</li>
 </ul>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8859gwec0j315z0n1djr.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8859gwec0j315z0n1djr.jpg" /></p>
 <h3 id="attention是什么意思呢">Attention是什么意思呢？</h3>
 <p>对于输入的数据，所关注的点是什么？不同的句子有不同的关注点。</p>
 <p>那么如何才能让计算机关注到这些有用的信息呢？</p>
 <h3 id="self-attention是什么">Self-attention是什么？</h3>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h885yjha1cj30n103jaaj.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h885yjha1cj30n103jaaj.jpg" /></p>
 <p>在上面的句子中，不同的情景下it所代指的是不一样的。</p>
 <p>self-attention实质上就是当前词自己self，融合了该词所在句子中其他单词的含义，只不过对不同的词添加了不同的权重。</p>
 <blockquote>
 <p>所谓的各种模型，实际上都是在进行加权平均</p>
 </blockquote>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h885ued8naj30fj0endge.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h885ued8naj30fj0endge.jpg" /></p>
 <h3 id="self-attention如何计算">self-attention如何计算？</h3>
 <p>考虑如何获得一个句子中不同的单词对该词自身selt的影响，考虑添加一个query、key、value矩阵来，在开始的时候初始化，不断的训练中会改变，其实质上就是一个权重参数矩阵。</p>
 <ol type="1">
@@ -243,33 +243,33 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vx
 <li>想得到当前词语上下文的关系，可以当作是是加权</li>
 <li>构建三个矩阵分别来查询当前词跟其他词的关系，以及特征向量的表达。</li>
 </ol>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8862zxd7yj31320ncdgw.jpg" alt="image-20221117154213948" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8862zxd7yj31320ncdgw.jpg" alt="image-20221117154213948" style="zoom:50%;" /></p>
 <p>三个需要训练的矩阵：</p>
 <p>Q：query ，要去查询的</p>
 <p>K：key，等着被查询的</p>
 <p>V：value，实际的特征信息</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dwrlsu6hj30kb0mj74y.jpg" alt="image-20221122145315126" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dwrlsu6hj30kb0mj74y.jpg" alt="image-20221122145315126" style="zoom: 50%;" /></p>
 <p>首先：</p>
 <p>q与k的内积表示有多匹配，向量垂直，内积为0、相近的话内积接近于1。</p>
 <p>输入了两个向量，得到一个分值。q、k。得到的是两个矩阵查询出来的结果。</p>
 <p>其中k代表了等着被查的，v代表了q*k后的实际的特征信息。</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dwwx0j59j30ss0ggq3m.jpg" alt="image-20221122145824269" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dwwx0j59j30ss0ggq3m.jpg" alt="image-20221122145824269" style="zoom:50%;" /></p>
 <p>在Q *
 K转制后也就是得到了一个实际的内积值，因为多个计算结果不同的值之间方差比较大，所以我们去除以了根号下k的维度，然后做了一个softmax，结果可能是：</p>
 <p>【0.2、0.12、0.34、0.37 。。】</p>
 <p>这实际上对应的是当前词和和不同词之间的相关度（这里使用概率值来表示）然后和V矩阵相乘后得到z矩阵，也就是当前词根据上下文信息后得到的综合向量embedding。</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dx3rw1q2j30ob0c274i.jpg" alt="image-20221122150458880" style="zoom:33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dx3rw1q2j30ob0c274i.jpg" alt="image-20221122150458880" style="zoom:33%;" /></p>
 <p>最终的得分值经过softmax就是最终上下文结果</p>
 <p>除以根号的原因在于，不能让其分值随着向量维度的增大而增加，所以这里做了一个缩小除法。</p>
 <p>softmax公式回忆：</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dx66pirbj30s609z0tp.jpg" alt="image-20221122150719368" style="zoom:33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dx66pirbj30s609z0tp.jpg" alt="image-20221122150719368" style="zoom:33%;" /></p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dx76lquij308f02o0sm.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dx76lquij308f02o0sm.jpg" /></p>
 <p>把一些输入映射为0-1之间的实数，并且归一化保证和为1。</p>
 <h3 id="每个词的attention计算">每个词的Attention计算</h3>
 <ul>
 <li>每个词的Q会跟整个序列中每一个K计算得分，然后基于得分再分配特征。<img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dxb16vpvj30mi09imxm.jpg" /></li>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dxb16vpvj30mi09imxm.jpg" /></li>
 </ul>
 <h3 id="attention整体计算流程">Attention整体计算流程</h3>
 <ul>
@@ -278,7 +278,7 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vx
 <li>此时每个词看的不只是它前面的序列而是整个输入序列</li>
 <li>会在同一时间计算出所有词的表示结果</li>
 </ul>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dxf3ytzxj30pj0pzt9t.jpg" alt="image-20221122151553690" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dxf3ytzxj30pj0pzt9t.jpg" alt="image-20221122151553690" style="zoom:50%;" /></p>
 <p>首先是输入文本，然后转换成embedding，然后新建Q、K、V三个矩阵并随机初始化，然后q1*k1、q2*k2等等得到一个相关内积，然后除以k矩阵的维度，再经过softmax后得到概率值，然后和v矩阵相乘，就得到了如：</p>
 <p>Z1 = 0.88v1 + 0.12 v2 这样的表示方式。</p>
 <h3 id="multi-headed机制">Multi-headed机制</h3>
@@ -287,26 +287,26 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vx
 <li>我们设想类似cnn中的filter，能不能提取多种特征呢？</li>
 <li>多头注意力机制类似于我们从不同的视角去分析问题，对于selt-attention的信息抽取同样是包含这种思想在里面的。</li>
 </ul>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dy5np243j30j10cc74m.jpg" alt="image-20221122154124438" style="zoom: 67%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dy5np243j30j10cc74m.jpg" alt="image-20221122154124438" style="zoom: 67%;" /></p>
 <p>实质上就是借鉴了：</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dyh4hhm5j30we07y3zv.jpg" alt="image-20221122155225292" style="zoom: 33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dyh4hhm5j30we07y3zv.jpg" alt="image-20221122155225292" style="zoom: 33%;" /></p>
 <p>通过不同的head得到了多个特征表示
 ，然后将所有特征拼接在一起，然后再进经过一层全链接来降维：</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dyijc607j30u00wb0tz.jpg" alt="image-20221122155346655" style="zoom: 33%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dyijc607j30u00wb0tz.jpg" alt="image-20221122155346655" style="zoom: 33%;" /></p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dyiwz6mmj31yi0oyjuw.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dyiwz6mmj31yi0oyjuw.jpg" /></p>
 <h3 id="multi-headed结果">Multi-headed结果</h3>
 <blockquote>
 <p>不同注意力的结果，得到的特征向量表达也不相同。</p>
 </blockquote>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dyjyx3pqj30yu0u0afl.jpg" alt="image-20221122155509768" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dyjyx3pqj30yu0u0afl.jpg" alt="image-20221122155509768" style="zoom: 50%;" /></p>
 <h3 id="堆叠多层">堆叠多层</h3>
 <p>一层不够，需要堆叠多层。计算方法都是相同的。</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dym8v26wj30wr0k5gmz.jpg" alt="image-20221122155721316" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dym8v26wj30wr0k5gmz.jpg" alt="image-20221122155721316" style="zoom: 50%;" /></p>
 <h3 id="位置信息表达">位置信息表达</h3>
 <p>在上文描述的self-attention中每个词都会考虑整个序列的加权，所以其出现位置对结果并不会产生什么影响，相当于放在哪里都是无所谓的，但是这就跟实际有些不相符了，所以希望模型对位置信息有一些额外的认识，于是引入了位置变量。</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dyqf7xxoj30n0088mxf.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8dyqf7xxoj30n0088mxf.jpg" /></p>
 <p>在Encoder层和Decoder层中都用到了Add&amp;Norm操作，即残差连接和层归一化操作。</p>
 <h3 id="什么是残差连接呢">什么是残差连接呢？</h3>
 <blockquote>
@@ -327,7 +327,7 @@ w22+w23+w24+w31+w32+w33+w34)/12，同理会得到LN2，最终得到[LN1,LN2]两�
 <p>如果是在做InstanceNorm（IN）的话，则会进如下计算：IN1=(w11+w12+w13+w14)/4，同理会得到IN2，IN3，IN4，IN5，IN6，六个mean，[[IN1，IN2，IN3],[IN4，IN5，IN6]]
 下图完美的揭示了，这几种Norm</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8e24bu8drj311t0ahacj.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8e24bu8drj311t0ahacj.jpg" /></p>
 <ol type="1">
 <li>通过解决ICS（<a
 target="_blank" rel="noopener" href="http://www.baidu.com/link?url=NzFNnRmBgJpmycgNhEUB2zE2KdI-YD7F5gT7Q-8mKmZvRU9ojcu3ioiHRRRUovkT">内部协变量偏移</a>）的问题，使得每一层神经网络的输入分布稳定，在这个基础上可以使用较大的学习率，加速了模型的训练速度</li>
@@ -335,7 +335,7 @@ target="_blank" rel="noopener" href="http://www.baidu.com/link?url=NzFNnRmBgJpmy
 <li>使得数据不落入饱和性激活函数（如sigmoid，tanh等）饱和区间，避免梯度消失的问题。</li>
 </ol>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8e2k7r6lsj31q50u0448.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8e2k7r6lsj31q50u0448.jpg" /></p>
 <hr />
 <h3 id="decoder">Decoder</h3>
 <p>Attention计算不同</p>
@@ -343,9 +343,9 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vx
 <h3 id="最终的输出结果">最终的输出结果</h3>
 <p>得出最终预测结果</p>
 <p>损失函数使用cross-entropy即可</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8e2z0jgvtj30hb0c3dg7.jpg" alt="image-20221122182800177" style="zoom: 67%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8e2z0jgvtj30hb0c3dg7.jpg" alt="image-20221122182800177" style="zoom: 67%;" /></p>
 <h3 id="整体梳理一下">整体梳理一下</h3>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8ewkskjmcj30ge0oqq4t.jpg" alt="img" style="zoom:67%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8ewkskjmcj30ge0oqq4t.jpg" alt="img" style="zoom:67%;" /></p>
 <p>首先输入Embedding和positional
 Encoding，然后输入到Self-attention，并且使用multi-head多层堆叠，位置编码，然后使用Add
 &amp; Norm 残差连接和归一化，并且使用多个transformer块进行训练。</p>
@@ -354,12 +354,12 @@ Encoding，然后输入到Self-attention，并且使用multi-head多层堆叠，
 attention，
 用原博中的两个gif就能解释，首先通过最末尾的一个encoder保留KV，初始化Q得到decoder的第一个输出</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8ewkmb050j30n30d23z9.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8ewkmb050j30n30d23z9.jpg" /></p>
 <p>图示中的I就是decoder的第一个输出，
 接下来这个输出当做下一个decoder的Q，然后再获取之前的encoder的KV，继续做self
 attention 如下图所示：</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8evrbaucnj30oz0d3wfh.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8evrbaucnj30oz0d3wfh.jpg" /></p>
 <p>这样一来就能够通过transformer得到对应的一个不带位置编码的输出
 一句话总结就是： <strong>encoder-decoder
 attention中，Q来自于decoder的上一个输出，KV来自于encoder的输出</strong>。</p>
@@ -367,7 +367,7 @@ attention中，Q来自于decoder的上一个输出，KV来自于encoder的输出
 <h2 id="pre-trained-models">Pre-trained models</h2>
 <p>预训练的模型包含如下：</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8f1va35f6j310h07aabq.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8f1va35f6j310h07aabq.jpg" /></p>
 <p>README中介绍.zip包含3大块：</p>
 <ul>
 <li>A TensorFlow checkpoint (<code>bert_model.ckpt</code>) containing

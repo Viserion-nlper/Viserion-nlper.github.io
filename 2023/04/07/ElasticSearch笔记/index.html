@@ -147,17 +147,30 @@
     <div class="body">
       
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner--toc">
       <div class="post-content__head">
         <div class="post-title">elasticSearch笔记</div>
         <div class="post-info">
           
-  <a href="/tags/elasticSearch/" class="post-tag">#elasticSearch</a>
+  <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="post-tag">#大数据</a><a href="/tags/elasticSearch/" class="post-tag">#elasticSearch</a>
 
 
-          <span class="post-date">2022-04-07</span>
+          <span class="post-date">2023-04-07</span>
         </div>
       </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#elasticsearch%E9%A1%B6%E5%B0%96%E9%AB%98%E6%89%8B%E7%B3%BB%E5%88%97%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B"><span class="post-toc-text">ElasticSearch顶尖高手系列——基础课程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%AF%87"><span class="post-toc-text">核心知识篇</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%AB%98%E6%89%8B%E8%BF%9B%E9%98%B6%E7%AF%87"><span class="post-toc-text">高手进阶篇</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%A7%E5%9E%8B%E9%9B%86%E7%BE%A4%E8%BF%90%E7%BB%B4%E4%BC%98%E5%8C%96%E7%AF%87"><span class="post-toc-text">大型集群运维优化篇</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E7%AF%87"><span class="post-toc-text">大型项目架构篇</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#elk%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E7%AF%87"><span class="post-toc-text">ELK深入浅出篇</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%80%E4%BB%80%E4%B9%88%E6%98%AFelasticsearch"><span class="post-toc-text">一、什么是elasticSearch</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%90%9C%E7%B4%A2"><span class="post-toc-text">1、什么是搜索？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E6%9E%9C%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E5%81%9A%E6%90%9C%E7%B4%A2%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7"><span class="post-toc-text">2、如果用数据库做搜索会怎么样？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%E5%92%8Clucene"><span class="post-toc-text">3、什么是全文检索和Lucene？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFelasticsearch"><span class="post-toc-text">4、什么是Elasticsearch？</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BA%8Celasticsearch%E7%9A%84%E5%8A%9F%E8%83%BD%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E4%BB%A5%E5%8F%8A%E7%89%B9%E7%82%B9%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">二、elasticsearch的功能、应用场景以及特点介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#elasticsearch%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="post-toc-text">elasticsearch的功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#elasticsearch%E7%9A%84%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text">elasticsearch的适用场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#elasticsearch%E7%9A%84%E7%89%B9%E7%82%B9"><span class="post-toc-text">elasticsearch的特点</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%89%E6%89%8B%E5%B7%A5%E7%94%BB%E5%9B%BE%E5%89%96%E6%9E%90elasticsearch%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5nrt%E7%B4%A2%E5%BC%95%E5%88%86%E7%89%87%E5%89%AF%E6%9C%AC%E7%AD%89"><span class="post-toc-text">三、手工画图剖析elasticsearch的核心概念：NRT、索引、分片、副本等</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#lucene%E5%92%8Celasticsearch%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F"><span class="post-toc-text">1、lucene和elasticsearch的前世今生</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#elasticsearch%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="post-toc-text">2、elasticsearch的核心概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#elasticsearch%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5-vs.-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="post-toc-text">3、elasticsearch核心概念
+vs. 数据库核心概念</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%89%E5%AE%89%E8%A3%85%E5%92%8C%E5%90%AF%E5%8A%A8elasticsearch"><span class="post-toc-text">三、安装和启动elasticsearch</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9B%9B%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E7%BD%91%E7%AB%99%E9%9B%86%E7%BE%A4%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5%E6%96%87%E6%A1%A3crud"><span class="post-toc-text">四、快速入门案例实战之电商网站集群健康检查、文档CRUD</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#document%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="post-toc-text">1、document数据格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%94%B5%E5%95%86%E7%BD%91%E7%AB%99%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86%E6%A1%88%E4%BE%8B%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">2、电商网站商品管理案例背景介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86"><span class="post-toc-text">3、简单的集群管理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%95%86%E5%93%81%E7%9A%84crud%E6%93%8D%E4%BD%9C"><span class="post-toc-text">4、 商品的CRUD操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BA%94%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E7%BD%91%E7%AB%99%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86%E5%A4%9A%E7%A7%8D%E6%90%9C%E7%B4%A2%E6%96%B9%E5%BC%8F"><span class="post-toc-text">五、快速入门案例实战之电商网站商品管理：多种搜索方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#query-string-search"><span class="post-toc-text">1、query string search</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#query-dsl"><span class="post-toc-text">2、query DSL</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#query-filter"><span class="post-toc-text">3、query filter</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#full-text-search%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2"><span class="post-toc-text">4、full-text search全文检索</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#phrase-search%E7%9F%AD%E8%AF%AD%E6%90%9C%E7%B4%A2"><span class="post-toc-text">5、phrase search（短语搜索）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#highlight-search%E9%AB%98%E4%BA%AE%E6%90%9C%E7%B4%A2"><span class="post-toc-text">6、highlight search（高亮搜索）</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%AD%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98%E4%B9%8B%E7%94%B5%E5%95%86%E7%BD%91%E7%AB%99%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86%E8%81%9A%E5%90%88%E5%B5%8C%E5%A5%97%E4%B8%8B%E9%92%BB%E5%88%86%E6%9E%90%E8%81%9A%E5%90%88%E5%88%86%E6%9E%90"><span class="post-toc-text">六、快速入门案例实战之电商网站商品管理：聚合嵌套、下钻分析、聚合分析</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%83%E6%89%8B%E5%B7%A5%E7%94%BB%E5%9B%BE%E5%89%96%E6%9E%90es%E7%9A%84%E5%9F%BA%E7%A1%80%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84"><span class="post-toc-text">七、手工画图剖析es的基础分布式架构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#elasticsearch%E5%AF%B9%E5%A4%8D%E6%9D%82%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%BA%E5%88%B6%E7%9A%84%E9%80%8F%E6%98%8E%E9%9A%90%E8%97%8F%E7%89%B9%E6%80%A7"><span class="post-toc-text">1、elasticsearch对复杂分布式机制的透明隐藏特性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#elasticsearch%E7%9A%84%E5%9E%82%E7%9B%B4%E6%89%A9%E5%AE%B9%E4%B8%8E%E6%B0%B4%E5%B9%B3%E6%89%A9%E5%AE%B9"><span class="post-toc-text">2、elasticsearch的垂直扩容与水平扩容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A2%9E%E5%8A%A0%E6%88%96%E5%87%8F%E5%B0%91%E8%8A%82%E7%82%B9%E6%97%B6%E7%9A%84%E6%95%B0%E6%8D%AErebalance"><span class="post-toc-text">3、增加或减少节点时的数据rebalance</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#master%E8%8A%82%E7%82%B9"><span class="post-toc-text">4、master节点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86es%E9%9B%86%E7%BE%A4%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE"><span class="post-toc-text">管理es集群的元数据：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%8A%82%E7%82%B9%E5%B9%B3%E7%AD%89%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84"><span class="post-toc-text">5、节点平等的分布式架构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%8A%82%E7%82%B9%E5%AF%B9%E7%AD%89%E6%AF%8F%E4%B8%AA%E8%8A%82%E7%82%B9%E9%83%BD%E8%83%BD%E6%8E%A5%E6%94%B6%E6%89%80%E6%9C%89%E7%9A%84%E8%AF%B7%E6%B1%82"><span class="post-toc-text">（1）节点对等，每个节点都能接收所有的请求。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%87%AA%E5%8A%A8%E8%AF%B7%E6%B1%82%E8%B7%AF%E7%94%B1"><span class="post-toc-text">（2）自动请求路由</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%93%8D%E5%BA%94%E6%94%B6%E9%9B%86"><span class="post-toc-text">（3）响应收集</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%ABshardreplica%E6%9C%BA%E5%88%B6%E5%86%8D%E6%AC%A1%E6%A2%B3%E7%90%86%E4%BB%A5%E5%8F%8A%E5%8D%95node%E8%8A%82%E7%82%B9%E4%B8%AD%E5%88%9B%E5%BB%BAindex%E5%9B%BE%E8%A7%A3"><span class="post-toc-text">八、shard&amp;replica机制再次梳理以及单node节点中创建index图解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#shardreplica%E6%9C%BA%E5%88%B6%E5%86%8D%E6%AC%A1%E6%A2%B3%E7%90%86"><span class="post-toc-text">1、shard&amp;replica机制再次梳理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%BE%E8%A7%A3%E5%8D%95node%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%88%9B%E5%BB%BAindex%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E5%AD%90"><span class="post-toc-text">2、图解单node环境下创建index是什么样子</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B9%9D%E5%9B%BE%E8%A7%A32%E4%B8%AAnode%E7%8E%AF%E5%A2%83%E4%B8%8Breplica-shard%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%86%E9%85%8D%E7%9A%84"><span class="post-toc-text">九、图解2个node环境下replica
+shard是如何分配的</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B9%9D%E5%88%86%E5%B8%83%E5%BC%8F%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3%E6%A8%AA%E5%90%91%E6%89%A9%E5%AE%B9%E8%BF%87%E7%A8%8B%E5%A6%82%E4%BD%95%E8%B6%85%E5%87%BA%E6%89%A9%E5%AE%B9%E6%9E%81%E9%99%90%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E5%AE%B9%E9%94%99%E6%80%A7"><span class="post-toc-text">九、分布式原理：图解横向扩容过程，如何超出扩容极限，以及如何提升容错性</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%81%E5%9B%BE%E8%A7%A3elastic%E7%9A%84%E5%AE%B9%E9%94%99%E6%9C%BA%E5%88%B6master%E9%80%89%E4%B8%BEreplica%E5%AE%B9%E9%94%99-%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D"><span class="post-toc-text">十、图解elastic的容错机制：master选举，replica容错，
+数据恢复</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90document%E6%A0%B8%E5%BF%83%E5%85%83%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E5%9B%BE%E8%A7%A3%E5%89%96%E6%9E%90index%E5%88%9B%E5%BB%BA%E8%8C%83%E4%BE%8B"><span class="post-toc-text">十、初步解析document核心元数据以及图解剖析index创建范例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#index%E5%85%83%E6%95%B0%E6%8D%AE"><span class="post-toc-text">1、_index元数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#type%E5%85%83%E6%95%B0%E6%8D%AE"><span class="post-toc-text">2、_type元数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#id%E5%85%83%E6%95%B0%E6%8D%AE"><span class="post-toc-text">3、_id元数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%80document%E4%B8%ADid%E7%9A%84%E6%89%8B%E5%8A%A8%E6%8C%87%E5%AE%9A%E5%92%8C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E4%B8%A4%E7%A7%8D%E7%AD%96%E7%95%A5%E8%A7%A3%E6%9E%90"><span class="post-toc-text">十一、document中id的手动指定和自动生成两种策略解析</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%81%E4%BA%8Cdocument%E7%9A%84source%E5%85%83%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E5%AE%9A%E5%88%B6%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E8%A7%A3%E6%9E%90"><span class="post-toc-text">十二、document的source元数据以及定制返回结果解析</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%89document%E7%9A%84%E5%85%A8%E9%87%8F%E6%9B%BF%E6%8D%A2%E5%BC%BA%E5%88%B6%E5%88%9B%E5%BB%BA%E5%88%A0%E9%99%A4"><span class="post-toc-text">十三、document的全量替换、强制创建、删除</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#document%E7%9A%84%E5%85%A8%E9%87%8F%E6%9B%BF%E6%8D%A2"><span class="post-toc-text">1、document的全量替换</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#document%E7%9A%84%E5%BC%BA%E5%88%B6%E5%88%9B%E5%BB%BA"><span class="post-toc-text">2、document的强制创建</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%81%E5%85%AB%E4%B8%8A%E6%9C%BA%E5%8A%A8%E6%89%8B%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83%E5%9F%BA%E4%BA%8Eexternal-version%E8%BF%9B%E8%A1%8C%E4%B9%90%E8%A7%82%E9%94%81%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="post-toc-text">十八、上机动手实战演练基于external
+version进行乐观锁并发控制</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%81%E4%B9%9D%E5%9B%BE%E8%A7%A3partial-update%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E5%8A%A8%E6%89%8B%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83"><span class="post-toc-text">十九、图解partial
+update实现原理以及动手实战演练</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFpartial-update"><span class="post-toc-text">1、什么是partial update？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A3%E7%A0%81%E6%BC%94%E7%BB%83"><span class="post-toc-text">2、代码演练</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%8A%E6%9C%BA%E5%8A%A8%E6%89%8B%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83%E5%9F%BA%E4%BA%8Egroovy%E8%84%9A%E6%9C%AC%E8%BF%9B%E8%A1%8Cpartial-update"><span class="post-toc-text">二十、上机动手实战演练基于groovy脚本进行partial
+update</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE"><span class="post-toc-text">1、创建数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%86%85%E7%BD%AE%E8%84%9A%E6%9C%AC"><span class="post-toc-text">2、内置脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%96%E9%83%A8%E8%84%9A%E6%9C%AC"><span class="post-toc-text">3、外部脚本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9C%80%E8%A6%81%E5%85%88%E5%B0%86%E8%84%9A%E6%9C%ACpost%E5%88%B0es%E7%9A%84%E5%BA%93%E4%B8%AD"><span class="post-toc-text">1.需要先将脚本post到es的库中</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B9%E6%8D%AEid%E6%9D%A5%E8%B0%83%E7%94%A8"><span class="post-toc-text">2.根据id来调用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%94%A8%E8%84%9A%E6%9C%AC%E6%9D%A5%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3"><span class="post-toc-text">4、用脚本来删除文档</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B0%86%E8%84%9A%E6%9C%ACpost%E5%88%B0es%E7%9A%84%E5%BA%93%E4%B8%AD"><span class="post-toc-text">1、将脚本post到es的库中</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B9%E6%8D%AEid%E6%9D%A5%E8%B0%83%E7%94%A8-1"><span class="post-toc-text">2、根据id来调用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#upsert%E6%93%8D%E4%BD%9C"><span class="post-toc-text">5、upsert操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E4%B8%80%E5%9B%BE%E8%A7%A3partial-update%E5%86%85%E7%BD%AE%E4%B9%90%E8%A7%82%E9%94%81%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="post-toc-text">二十一、图解partial
+update内置乐观锁并发控制原理及相关操作</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BA%8C%E5%8D%81%E4%BA%8C%E4%B8%8A%E6%9C%BA%E5%8A%A8%E6%89%8B%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83%E4%B9%8Bmget%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2api"><span class="post-toc-text">二十二、上机动手实战演练之mget批量查询api</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="post-toc-text">1、批量查询的好处：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mget%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="post-toc-text">2、mget的语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E6%9E%9C%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%98%AF%E4%B8%80%E4%B8%AA_index%E4%B8%8B%E4%B8%8D%E5%90%8C_type%E7%9A%84%E8%AF%9D%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E4%BB%A5%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="post-toc-text">3、如果查询的是一个_index下不同_type的话可以使用以下的语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A6%82%E6%9E%9C%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%98%AF%E4%B8%80%E4%B8%AA_index%E4%B8%8B%E7%9B%B8%E5%90%8C_type%E7%9A%84%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E4%BB%A5%E4%B8%8B%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="post-toc-text">4、如果查询的是一个_index下相同_type的可以使用以下的语法：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mget%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="post-toc-text">5、mget的重要性</span></a></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
       
       <div class="post-content__body">
         
@@ -222,12 +235,8 @@ query，shard分配定制，es插件开发，等等高级的知识点，这些�
 <li>最后需要真正深入重点讲解logstash和kibana两门技术，并结合es技术，采用elk技术栈，实现大型企业级的日志采集和检索平台。</li>
 <li>学完课程后，应该可以彻底惊精通ELK技术栈，并能够使用ELK技术栈快速搭建日志检索平台，以及数据的可视化平台。</li>
 </ol>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h58yfqcfoij20dc074jrq.jpg"
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h58yfqcfoij20dc074jrq.jpg" /></p>
 <h1 id="一什么是elasticsearch">一、什么是elasticSearch</h1>
 <h2 id="什么是搜索">1、什么是搜索？</h2>
 <p>百度：如果我们想要寻找任何想要感兴趣的相关信息，</p>
@@ -250,12 +259,8 @@ alt="img" />
 <p>lucene
 ：就是一个jar包，里面包含了封装好的各种建立倒排索引，以及进行搜索的代码，包括各种算法。我们就用java开发的时候，引入lucene
 jar，然后基于lucene的api进行曲开发就可以了，用lucene，我们可以去将已有的数据建立索引，lucene会在本地磁盘上面给我们组织索引的数据结构。另外的话，我们也可以用lucene提供的一些功能和api来针对磁盘上的索引数据，进行搜索。</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0pojz1n76j21k40u00xr.jpg"
-alt="image-20220328163318688" />
-<figcaption aria-hidden="true">image-20220328163318688</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0pojz1n76j21k40u00xr.jpg" /></p>
 <h2 id="什么是elasticsearch">4、什么是Elasticsearch？</h2>
 <p>elasticsearch是把lucene封装起来了，当数据部署在单台机器上的时候，如果数据量很大需要部署在多台机器上如果遇到高可用、数据备份、高性能的建立索引、或者跟多台机器进行通信的时候就会特别麻烦，如果必须使用多台机器去进行数据存储和搜索，如果我们自己去实现这些的话，会很麻烦，于是elasticsearch就是做这个工作的。</p>
 <p>es本身实现了一些性能的优化，以及分布式的东西，以及提供了很多lucene不能提供的东西：</p>
@@ -264,12 +269,8 @@ alt="image-20220328163318688" />
 <li>自动维护数据的冗余副本，保证说，一些机器宕机了，不会丢失任何的数据。</li>
 <li>封装了更多的高级功能，以给我们提供更多高级的支持，让我们快速的开发应用；开发更加复杂的代码；复杂的搜索功能；聚合分析的功能，基于地理位置的搜素（距离我当前位置1公里以内的烤肉店）</li>
 </ol>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0pqq6e8blj21m30u0gqv.jpg"
-alt="image-20220328174828393" />
-<figcaption aria-hidden="true">image-20220328174828393</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0pqq6e8blj21m30u0gqv.jpg" /></p>
 <h1
 id="二elasticsearch的功能应用场景以及特点介绍">二、elasticsearch的功能、应用场景以及特点介绍</h1>
 <h2 id="elasticsearch的功能">elasticsearch的功能</h2>
@@ -366,12 +367,8 @@ product_id，product_name，product_desc，category_id，category_name，<strong
 <li><p>shard（分片）：单台机器无法存储大量数据，es可以将一个索引中的数据切分为多个shard，分布在多台服务器上存储。有了shard就可以横向扩展存储更多的数据了，让搜索和分析等操作分布到多台服务器上进行执行，提升吞吐量和性能。每个shard都是一个lucene
 index。</p></li>
 </ul>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0qqlk50w8j22100s044g.jpg"
-alt="image-20220329142933593" />
-<figcaption aria-hidden="true">image-20220329142933593</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0qqlk50w8j22100s044g.jpg" /></p>
 <ul>
 <li>replica（副本）：
 任何一个服务器随时可能出现故障或者宕机，此时shard可能就会丢失，因此可以为每个shard创建多个replica副本。replica可以在shard故障时提供备用服务，保证数据的不丢失。多个replica可以提升搜索操作的吞吐量和性能。primary
@@ -599,23 +596,15 @@ shard负载均衡：假设现在有3个节点，总共有25个shard要分配到3
 <p>​ 请求路由：</p>
 <p>​ 集群扩容：</p>
 <p>​ shard重分配：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0s71hjtcqj20zm0n2myc.jpg"
-alt="image-20220330204401601" />
-<figcaption aria-hidden="true">image-20220330204401601</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0s71hjtcqj20zm0n2myc.jpg" /></p>
 <p>​</p>
 <h2
 id="elasticsearch的垂直扩容与水平扩容">2、elasticsearch的垂直扩容与水平扩容</h2>
 <p>垂直扩容：采购更强大服务器，成本非常昂贵，有瓶颈</p>
 <p>水平扩容：业内常常采用的方案，采购越来越多普通的服务器，性能比较一般但是很多普通服务器组合在一起就能构成强大的计算和存储能力。</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0s7rihy95j21hi0qun08.jpg"
-alt="image-20220330210904478" />
-<figcaption aria-hidden="true">image-20220330210904478</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0s7rihy95j21hi0qun08.jpg" /></p>
 <h2
 id="增加或减少节点时的数据rebalance">3、增加或减少节点时的数据rebalance</h2>
 <p>增加或减少节点时的重新负载均衡</p>
@@ -630,12 +619,8 @@ id="节点对等每个节点都能接收所有的请求">（1）节点对等，�
 <h3 id="自动请求路由">（2）自动请求路由</h3>
 <p>​
 当通过对等节点进行请求时，会通过这个对等节点自动的请求路由到合适的shard上去进行搜索。</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0syzagbiej21l00pyjvx.jpg"
-alt="image-20220331125043195" />
-<figcaption aria-hidden="true">image-20220331125043195</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0syzagbiej21l00pyjvx.jpg" /></p>
 <h3 id="响应收集">（3）响应收集</h3>
 <h1
 id="八shardreplica机制再次梳理以及单node节点中创建index图解">八、shard&amp;replica机制再次梳理以及单node节点中创建index图解</h1>
@@ -658,12 +643,8 @@ shard放在同一个节点上，否则节点宕机，primary
 shard和副本都会丢失，起不到容错的作用，但是可以和其他primary
 shard的replica shard放在同一个节点上。</li>
 </ul>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0t1dctceuj21w80p0diy.jpg"
-alt="image-20220331141325653" />
-<figcaption aria-hidden="true">image-20220331141325653</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0t1dctceuj21w80p0diy.jpg" /></p>
 <h2
 id="图解单node环境下创建index是什么样子">2、图解单node环境下创建index是什么样子</h2>
 <ul>
@@ -675,21 +656,13 @@ shard分配到仅有的一个node上去，另外3个replica
 shard是无法分配的。</p></li>
 <li><p>集群可以正常进行工作，但是一旦出现了节点宕机，那么数据就会全部丢失，而且集群不可用，无法承接任何的需求。</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PUT /test_index</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;number_of_shards&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;number_of_replicas&quot;</span><span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0t3d5n9eij20yk0d0dg7.jpg"
-alt="image-20220331152227016" />
-<figcaption aria-hidden="true">image-20220331152227016</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0t3d5n9eij20yk0d0dg7.jpg" /></p>
 <h1
 id="九图解2个node环境下replica-shard是如何分配的">九、图解2个node环境下replica
 shard是如何分配的</h1>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0t3i4unr0j212w0ny75p.jpg"
-alt="image-20220331152713652" />
-<figcaption aria-hidden="true">image-20220331152713652</figcaption>
-</figure></li>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0t3i4unr0j212w0ny75p.jpg" /></p></li>
 <li><p>​ replica shard分配： 3个primary shard， 3个replica
 shard，1个node节点</p></li>
 <li><p>primary shard 与 replica shard 同步
@@ -699,12 +672,8 @@ shard，1个node节点</p></li>
 </ul>
 <h1
 id="九分布式原理图解横向扩容过程如何超出扩容极限以及如何提升容错性">九、分布式原理：图解横向扩容过程，如何超出扩容极限，以及如何提升容错性</h1>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0t3ngtykqj21gm09g3z0.jpg"
-alt="image-20220331153221034" />
-<figcaption aria-hidden="true">image-20220331153221034</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0t3ngtykqj21gm09g3z0.jpg" /></p>
 <p>6个shard被平均分配到3个node上
 对于每一份数据都会存储在不同的node上，如p0与r0
 ，如果出现某一台节点宕机，并不会影响。尽量保证每个shard上面有相同的节点数量。</p>
@@ -717,7 +686,7 @@ alt="image-20220331153221034" />
 <li><p>这里的这些知识点，综合起来，就是说，一方面告诉你扩容的原理，怎么扩容，怎么提升系统整体的吞吐量；另一方面要考虑到系统的容错性，怎么保证提高容错性，让尽可能多的服务器宕机，保证数据尽可能的不丢失。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0t6t2vysvj21q80pmgq1.jpg"
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0t6t2vysvj21q80pmgq1.jpg"
 alt="image-20220331172132565" />
 <figcaption aria-hidden="true">image-20220331172132565</figcaption>
 </figure></li>
@@ -735,7 +704,7 @@ replica到该node，使用原有的shard并同步宕机后的修改，green状�
 </blockquote>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0t7agjm14j21f80dc757.jpg"
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0t7agjm14j21f80dc757.jpg"
 alt="image-20220331173815548" />
 <figcaption aria-hidden="true">image-20220331173815548</figcaption>
 </figure>
@@ -747,7 +716,7 @@ shard提升为primary shard，此时cluster status会变为yellow。</p>
 master，会将缺失的副本都copy一份到该node上去，而且该node会使用之前已有的shard数据，只是同步一下宕机之后发生过的修改。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0t7a9usplj21mg0pwjvv.jpg"
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0t7a9usplj21mg0pwjvv.jpg"
 alt="image-20220331173514618" />
 <figcaption aria-hidden="true">image-20220331173514618</figcaption>
 </figure>
@@ -757,7 +726,7 @@ id="十初步解析document核心元数据以及图解剖析index创建范例">�
 <h2 id="index元数据">1、_index元数据</h2>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0u0mqju7kj21rq0ryjxh.jpg"
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0u0mqju7kj21rq0ryjxh.jpg"
 alt="image-20220401103322149" />
 <figcaption aria-hidden="true">image-20220401103322149</figcaption>
 </figure>
@@ -807,7 +776,7 @@ key。</p>
 </ul>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0u2x2qj2cj21f60nsgo2.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0u2x2qj2cj21f60nsgo2.jpg"
 alt="image-20220401115233015" />
 <figcaption aria-hidden="true">image-20220401115233015</figcaption>
 </figure>
@@ -838,7 +807,7 @@ id存在，那么就是全量替换操作，替换document的json串内容。</l
 </ul>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h0v6zhe8wzj217m0pyabx.jpg"
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0v6zhe8wzj217m0pyabx.jpg"
 alt="image-20220402105847047" />
 <figcaption aria-hidden="true">image-20220402105847047</figcaption>
 </figure>
@@ -847,7 +816,7 @@ alt="image-20220402105847047" />
 <li><p>创建文档与全量替换的语法是一样的，有时我们只是想创建文档，而不想替换文档，如果强制进行创建呢？</p></li>
 <li><p>``` PUT /test_index/test_type/1?_create<br />
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure> PUT /test_index/test_type/1?op_type=create <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  &gt; **这里在7.16版本中不行，未做解决。**</span><br><span class="line"></span><br><span class="line">## 3、document的删除</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-PUT /test_index/test_type/1?op_type=create <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">并不会物理删除，而是标记为deleted ，只有当数据越来越多的时候，在后台自动删除</span><br><span class="line"></span><br><span class="line"># 十四、深度图解剖析elasticsearch并发冲突问题</span><br><span class="line"></span><br><span class="line">&gt; 举例子：电商场景下，假设我们有个程序，工作流程是如下：</span><br><span class="line">&gt;</span><br><span class="line">&gt; 1、读取商品信息（包含了商品库存）</span><br><span class="line">&gt;</span><br><span class="line">&gt; 2、用户下单购买</span><br><span class="line">&gt;</span><br><span class="line">&gt; 3、更新商品信息（主要讲库存减1）</span><br><span class="line"></span><br><span class="line">比如我们的程序是多线程，所以可以能有多个线程并发的去执行上述的3步操作。</span><br><span class="line"></span><br><span class="line">又一个牙膏，库存100件，现在同时有两个人都过来读取了牙膏的数据，然后下单购买了该管牙膏，此时两个线程并发的服务于两个人，同时再进行商品库存数据的修改/</span><br><span class="line"></span><br><span class="line">![image-20220402135058407](https://tva1.sinaimg.cn/large/e6c9d24ely1h0vbyltpn0j21wa0rcwlp.jpg)</span><br><span class="line"></span><br><span class="line"># 十五、深度剖析乐观锁与悲观锁两种并发控制方案</span><br><span class="line"></span><br><span class="line">悲观锁并发控制方案，就是在各种情况下，都上锁。都上锁之后就只有一个线程可以操作这一条数据了，当然不同的场景下，上的锁不同，有行级锁、表级锁、读锁、写锁。</span><br><span class="line"></span><br><span class="line">![image-20220402155415715](https://tva1.sinaimg.cn/large/e6c9d24ely1h0vfiw2ocfj21zw0r2n55.jpg)</span><br><span class="line"></span><br><span class="line">1、悲观锁的优点：方便，直接加锁，对应用程序来说，透明不需要做额外的操作；缺点，并发能力很弱，同一时间只能有一条线程操作数据。</span><br><span class="line"></span><br><span class="line">2、乐观锁的优点：并发能力很高，不给数据加锁，大量线程并发操作；缺点：麻烦，每次更新的时候都要先对比版本号，然后可能需要重新</span><br><span class="line"></span><br><span class="line"># 十六、图解elasticsearch内部如何基于_version进行乐观锁并发控制</span><br><span class="line"></span><br><span class="line">第一次创建document的时候，它的_version内部版本号就是1；以后每次对这个document执行修改或者删除操作，都会对这个version版本号自动加1，哪怕是删除，也会对这条数据的版本号加1</span><br><span class="line"></span><br><span class="line">在删除一个document之后，从侧面验证他不是立即物理删除掉的，因为她的一些版本号信息还是保留着的，先删除一个document，然后再创建这个条document，其实会在delete version的基础上，再把version+1</span><br><span class="line"></span><br><span class="line">![image-20220402173716684](https://tva1.sinaimg.cn/large/e6c9d24ely1h0vii2divoj21sm0pe0xi.jpg)</span><br><span class="line"></span><br><span class="line"># 十七、上机器动手实战演练基于_vesion进行乐观锁并发控制</span><br><span class="line"></span><br><span class="line">- 先构造一条数据出来</span><br><span class="line"></span><br><span class="line">```json</span><br><span class="line">PUT /test_index/test_type/7</span><br><span class="line">&#123;</span><br><span class="line">  &quot;test_field&quot;:&quot;test test&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
+PUT /test_index/test_type/1?op_type=create <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">并不会物理删除，而是标记为deleted ，只有当数据越来越多的时候，在后台自动删除</span><br><span class="line"></span><br><span class="line"># 十四、深度图解剖析elasticsearch并发冲突问题</span><br><span class="line"></span><br><span class="line">&gt; 举例子：电商场景下，假设我们有个程序，工作流程是如下：</span><br><span class="line">&gt;</span><br><span class="line">&gt; 1、读取商品信息（包含了商品库存）</span><br><span class="line">&gt;</span><br><span class="line">&gt; 2、用户下单购买</span><br><span class="line">&gt;</span><br><span class="line">&gt; 3、更新商品信息（主要讲库存减1）</span><br><span class="line"></span><br><span class="line">比如我们的程序是多线程，所以可以能有多个线程并发的去执行上述的3步操作。</span><br><span class="line"></span><br><span class="line">又一个牙膏，库存100件，现在同时有两个人都过来读取了牙膏的数据，然后下单购买了该管牙膏，此时两个线程并发的服务于两个人，同时再进行商品库存数据的修改/</span><br><span class="line"></span><br><span class="line">![image-20220402135058407](https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0vbyltpn0j21wa0rcwlp.jpg)</span><br><span class="line"></span><br><span class="line"># 十五、深度剖析乐观锁与悲观锁两种并发控制方案</span><br><span class="line"></span><br><span class="line">悲观锁并发控制方案，就是在各种情况下，都上锁。都上锁之后就只有一个线程可以操作这一条数据了，当然不同的场景下，上的锁不同，有行级锁、表级锁、读锁、写锁。</span><br><span class="line"></span><br><span class="line">![image-20220402155415715](https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0vfiw2ocfj21zw0r2n55.jpg)</span><br><span class="line"></span><br><span class="line">1、悲观锁的优点：方便，直接加锁，对应用程序来说，透明不需要做额外的操作；缺点，并发能力很弱，同一时间只能有一条线程操作数据。</span><br><span class="line"></span><br><span class="line">2、乐观锁的优点：并发能力很高，不给数据加锁，大量线程并发操作；缺点：麻烦，每次更新的时候都要先对比版本号，然后可能需要重新</span><br><span class="line"></span><br><span class="line"># 十六、图解elasticsearch内部如何基于_version进行乐观锁并发控制</span><br><span class="line"></span><br><span class="line">第一次创建document的时候，它的_version内部版本号就是1；以后每次对这个document执行修改或者删除操作，都会对这个version版本号自动加1，哪怕是删除，也会对这条数据的版本号加1</span><br><span class="line"></span><br><span class="line">在删除一个document之后，从侧面验证他不是立即物理删除掉的，因为她的一些版本号信息还是保留着的，先删除一个document，然后再创建这个条document，其实会在delete version的基础上，再把version+1</span><br><span class="line"></span><br><span class="line">![image-20220402173716684](https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h0vii2divoj21sm0pe0xi.jpg)</span><br><span class="line"></span><br><span class="line"># 十七、上机器动手实战演练基于_vesion进行乐观锁并发控制</span><br><span class="line"></span><br><span class="line">- 先构造一条数据出来</span><br><span class="line"></span><br><span class="line">```json</span><br><span class="line">PUT /test_index/test_type/7</span><br><span class="line">&#123;</span><br><span class="line">  &quot;test_field&quot;:&quot;test test&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p></li>
 <li><p>模拟两个客户端，都获取到了同一条数据</p></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET test_index/test_type/7</span><br></pre></td></tr></table></figure>
@@ -920,7 +889,7 @@ update实现原理以及动手实战演练</h1>
 <p>看起来好像方便了很多，每次只需要传递几个发生修改的field即可，不需要将全量的document数据发送过去。</p>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h103r3y8toj21py0r2n24.jpg"
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h103r3y8toj21py0r2n24.jpg"
 alt="image-20220406165443906" />
 <figcaption aria-hidden="true">image-20220406165443906</figcaption>
 </figure>
@@ -989,7 +958,7 @@ id="二十一图解partial-update内置乐观锁并发控制原理及相关操�
 update内置乐观锁并发控制原理及相关操作</h1>
 <figure>
 <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h10hictuw8j21cs0q8n05.jpg"
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h10hictuw8j21cs0q8n05.jpg"
 alt="image-20220407005044569" />
 <figcaption aria-hidden="true">image-20220407005044569</figcaption>
 </figure>
@@ -1056,7 +1025,7 @@ id="如果查询的是一个_index下相同_type的可以使用以下的语法">
     
     <div class="post-nav">
   
-    <a class="post-nav-item-left" href="/2022/05/16/%E9%9D%92%E5%B2%9B%E4%BA%A4%E7%AE%A1-%E6%99%BA%E5%B7%A1%E9%AD%94%E6%96%B9/">
+    <a class="post-nav-item-left" href="/2023/07/23/%E5%87%A0%E7%A7%8D%E5%A4%9A%E6%A8%A1%E6%80%81%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2%E5%BC%95%E6%93%8EFaiss%20%E3%80%81milvus%E3%80%81Proxima%E3%80%81vearch%E3%80%81Jina%E7%AD%89/">
       <div class="text-align">
         <svg t="1670570876164"
              class="icon"
@@ -1067,12 +1036,12 @@ id="如果查询的是一个_index下相同_type的可以使用以下的语法">
         </svg>
         <span class="text-small">上一篇</span>
       </div>
-      <div>交管-智巡魔方</div>
+      <div>几种多模态向量检索引擎的了解与思考</div>
     </a>
   
   <div class="vhr"></div>
   
-    <a class="post-nav-item-right" href="/2022/03/26/Neo4j%E5%9B%BE%E5%BD%A2%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <a class="post-nav-item-right" href="/2022/12/12/%E5%AE%9E%E7%8E%B0%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E6%BA%90%E4%B8%AD%E5%B0%8F%E5%8C%BA%E4%BF%A1%E6%81%AF%E7%9A%84%E5%87%86%E7%A1%AE%E5%BD%92%E4%B8%80%E5%8C%96/">
       <div class="text-align">
         <span class="text-small">下一篇</span>
         <svg t="1670570876164"
@@ -1084,7 +1053,7 @@ id="如果查询的是一个_index下相同_type的可以使用以下的语法">
           <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
         </svg>
       </div>
-      Neo4j图形化数据库
+      实现复杂数据源中小区信息的准确归一化
     </a>
   
 </div>
