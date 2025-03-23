@@ -183,7 +183,7 @@ id="数据智能在二手车业务场景中的探索与沉淀---业务标签挖�
 <h2 id="背景"><strong>背景</strong></h2>
 <p>当下全连接的信息场景，所有对于有助于连接转化效率提升的内容和考虑尤为重要，这就要求我们在实际业务场景中，结合用户行为的每个关键的行为节点进行深入的分析和思考。通过用户全链路的分析并结合平台用户业务数据的不断沉淀，在不同的行为环节进行辅助和提效，我们将feed（信息流）场景中用户的关键行为分拆为4个阶段：1流量的接入、2检索、3点击、4电话，首先来整体看下，我们在用户的四个关键行为节点都做了哪些内容？（内容摘要参考图1）</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szdv1xi2j30w30ct76c.jpg" />
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szdv1xi2j30w30ct76c.jpg" />
 （图 1 - 关键节点的技术内容摘要)</p>
 <ol type="1">
 <li>在流量的接入环节，我们希望具备两种能力：一种是对用户身份的预估与分层，另一种是我们需要对已有历史行为的用户进行相对准确的兴趣描述。用户身份的预估是后续多个业务场景策略干预的基础，兴趣的准确描述是提供准确召回能力的基础。</li>
@@ -210,7 +210,7 @@ id="为什么要挖掘业务品类的标签"><strong>为什么要挖掘业务品
 <h3
 id="我们先来整体了解标签与业务场景的结合点如下图"><strong>1、我们先来整体了解标签与业务场景的结合点：如下图</strong></h3>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szebdul1j30w70mo41c.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szebdul1j30w70mo41c.jpg" /></p>
 <p>​ （图 2 - 标签与业务场景的结合方式）</p>
 <p>场景：</p>
 <ol type="1">
@@ -240,7 +240,7 @@ id="处理阶段语料的处理---词向量---关联关系---实验"><strong>2�
 <h3
 id="二手车标签工程详细流程展开如下"><strong>3、二手车标签工程详细流程展开如下：</strong></h3>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szf191qrj30ty0cxmzu.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szf191qrj30ty0cxmzu.jpg" /></p>
 <p>​ （图 3 - 二手车标签工程整体流程）</p>
 <p>流程描述：</p>
 <p>阶段1 - 语料的收集</p>
@@ -266,7 +266,7 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vx
 <p>关于分词部分，大体经历了三个阶段的迭代「语料 -
 宝马品牌业务口碑数据」，如下图4描述：</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8t086ucqlj30wm0lrtbv.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8t086ucqlj30wm0lrtbv.jpg" /></p>
 <p>​ （图 4 - 分词的迭代）</p>
 <p>第一版的分词实验是按词性进行的，观测结果并不理想，分词效果如下：</p>
 <p>「颜/ 值/ ，/ 还是/ 颜/ 值/ 。/ 新/ X3/ 的/ 前/ 脸/ 很/ 凌厉/ ，/
@@ -283,12 +283,12 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vx
 <p>从分词的效果来看，如“新X3”、“开宝马”、“高速时”等这类的领域词汇没有被标注出来，从而认为降低了分词的效果。</p>
 <p>分词效果的提升是个不断迭代的过程，在标准模型的基础上加大人工标注的投入，分阶段筛选出可用词条，做有放回的语料补充，或通过词性做词组的扩展。在hanlp的基础上我们新加了chelib（车型库）中的品牌车系和汽车的专用词库，并对不影响句子整体表达的副词、连词等词性的分词做了过滤，同时也增加了对负面词语的判定逻辑，在分词质量上有了较大的提升。</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szif2llmj30tv072tbc.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szif2llmj30tv072tbc.jpg" /></p>
 <p>​ （图 5 - 业务品类的标签词）</p>
 <h3 id="关于分词与工程部分的结合流程如下图6"><strong>5.
 关于分词与工程部分的结合流程，如下图6：</strong></h3>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szj66tjgj30ma0lc0uy.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szj66tjgj30ma0lc0uy.jpg" /></p>
 <p>​ （图 6 - 与工程部分的结合的流程）</p>
 <p>说明：</p>
 <ol type="1">
@@ -309,17 +309,17 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vx
 </ol>
 <p>【词向量的生成过程】：</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szsjism3j30vo05jdga.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szsjism3j30vo05jdga.jpg" /></p>
 <p>​ （图 7 - 词向量的生成）</p>
 <p>前面提到词向量可以理解为：目标词条在当前语料中的空间位置，以“我”字为例在我们语料中训练后100维的词向量可表示为如下：</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8t08w1cw8j30sj03mjte.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8t08w1cw8j30sj03mjte.jpg" /></p>
 <p>​ （图 8）训练后的词向量</p>
 <p>通过词向量扩展标签的召回能力：</p>
 <p>通过对已选标签词向量的计算，生成词向量矩阵，这可以帮助我们发现当前语料基础上的相似标签，以扩展标签的召回能力，如下图9：标签3与标签2、标签4词向量接近，那么我们可以认识车型2、车型3、车型6也在标签3的召回能力中，当然这个过程也需要介入一定量的人力查验的工作，check相关车系、车型的符合度，进而调整标签同车、车型的映射关系。</p>
 <figure>
 <img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szzuk0yjj30py08rjs9.jpg"
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8szzuk0yjj30py08rjs9.jpg"
 alt="image-20221205160828746" />
 <figcaption aria-hidden="true">image-20221205160828746</figcaption>
 </figure>
@@ -331,18 +331,18 @@ alt="image-20221205160828746" />
 | name | 车型ids | 车系ids | 品牌ids
 可以发现标签的召回顺序依次是车型、车系、品牌，在后来的实际应用中，可以认定准确描述车型级别的标签很少，并且不具备良好的召回能力和泛化能力，所有我们目前考虑的召回层级只到车系这一级别。如图10:</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8t00i3bdaj30vj0aimyv.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8t00i3bdaj30vj0aimyv.jpg" /></p>
 <p>​ （图 10 - 标签库的层级关系）</p>
 <p>标签库本身是个不断迭代和自我学习的过程，清晰的层级映射服务于线上的召回场景，并结合线上效果的反馈提升和优化标签子集，主要参考的指标仍然是召回能力和准确率，本身用户的行为就是一个很好的反馈，所以标签库的实验也是一个ctr和质量提升相互促进的过程。另外目前二手车标签挖掘的内容相对比较基础，初步搭建工程的同时实现了关于上面全流程的几个核心的节点，但可参考的指标还没有明显的提升，后续如果资源允许，我们也考虑加大这部分的投入，将这部分配置工具化，提供给产品同学可操作与观察的配置平台，这这部分实验的工作快速有效的流程化进行。</p>
 <p><img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8t027w1j5j30u608raar.jpg" /></p>
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8t027w1j5j30u608raar.jpg" /></p>
 <p>​ （图 11 - 标签库的更新）</p>
 <h3
 id="从场景标签服务用户模型三个模块来简单说明目前我们线上标签召回的时序"><strong>8、从场景、标签服务、用户模型三个模块来简单说明目前我们线上标签召回的时序：</strong></h3>
 <p>用户的基础行为topN会映射为标签，通过相似度扩展标签的范围，这样我们将人和info通过标签建立关联，标签映射ses查询条件，直接用于相关info的召回，召回时序如下图12：</p>
 <figure>
 <img
-src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8t02y6qsmj30v60q1tas.jpg"
+src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h8t02y6qsmj30v60q1tas.jpg"
 alt="image-20221205161129149" />
 <figcaption aria-hidden="true">image-20221205161129149</figcaption>
 </figure>

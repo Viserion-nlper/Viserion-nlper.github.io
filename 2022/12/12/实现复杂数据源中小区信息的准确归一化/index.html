@@ -199,7 +199,7 @@ id="实现复杂数据源中小区信息的准确归一化">实现复杂数据�
 小区名里还会夹杂很多标点符号，干扰我们的分析，我们会首先清除掉这些标点，只对中文字符进行匹配分析</p>
 <h2 id="归一化算法">归一化算法</h2>
 <p>小区信息归一化流程如下图所示：</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h911au0xnbj30ia0ccgm2.jpg" alt="image-20221212145109222" style="zoom:67%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h911au0xnbj30ia0ccgm2.jpg" alt="image-20221212145109222" style="zoom:67%;" /></p>
 <p>主要的思路是先利用前缀匹配算法匹配小区得到近似小区树，然后在同一个近似小区树里面筛选掉不适合的小区，然后在小区树之间根据相似度算法匹配，接着合并同义小区树，得到最终的归一化小区树，在每一棵小区树中可以使用模式匹配识别父子小区。下面重点介绍前四步。</p>
 <h2 id="前缀匹配聚集小区">前缀匹配聚集小区</h2>
 <p>前面提到同一个父小区的大多数子小区都拥有相同的前缀。我们以这个作为切入点来识别近似的小区，具体方法如下：
@@ -208,18 +208,18 @@ id="实现复杂数据源中小区信息的准确归一化">实现复杂数据�
 <li>如果是能够判断出本小区的名称是子小区或者楼栋的，直接抽取出父小区名，如果没有同名的父小区则新建一个父小区名，然后搜索所有以该父小区名为前缀的小区，构成一棵以父小区为根的近似小区树；判断一个小区名代表的是不是子小区或者小区楼栋的方法是通过前文阐释的小区名进行正则匹配完成。</li>
 <li>如果存在其他小区以本小区为前缀，那么认为本小区是一个父小区，并且把以本小区为前缀的所有小区都聚集在一起。下图展示了1、2两种情况的例子，其中蓝色是父小区，红色是楼栋地址，黄色是子小区：</li>
 </ol>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h9115sovylj30u011b76q.jpg" alt="image-20221212145319426" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h9115sovylj30u011b76q.jpg" alt="image-20221212145319426" style="zoom: 50%;" /></p>
 <ol start="3" type="1">
 <li>对于其他的小区，那么前缀长度的确定有以下原则：以该长度为前缀的小区不超过20（除去重复的小区，以及市、区和小区名完全一样的小区）。一般来说一个小区的子小区不会太多，一个父小区的子小区数量超过20个是非常少见的。举例来说，如下图，小区“翡翠城木兰苑”无法被识别为子小区或者楼栋地址，依靠前缀得到了它的近似小区树，树的数量小于20，停止前缀增长。</li>
 </ol>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h9116oh1apj30p00mo760.jpg" alt="image-20221212145410948" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h9116oh1apj30p00mo760.jpg" alt="image-20221212145410948" style="zoom:50%;" /></p>
 <p>对于每一个小区都做这样一个操作，就会得到每个小区对应的前缀树，也称为小区树（使用前缀树实现），这个小区称为小区树的根。容易知道一个小区可能在多个小区树中。在这个过程中也能够识别一部分小区楼栋、子小区和父小区。
 本质上讲，这一步是文本聚类的过程。如下图所示，文本聚类通常对文本分词，然后使用TF-IDF(Term
 Frequency-Inverse Document
 Frequency，词频-逆文本频率)统计出词频、设置词语权重，构建VSM(Vector
 Space Model，向量空间模型),
 为每个文本构建等长向量，最后设置度量标准（欧氏距离、余弦相似度等），使用聚类算法对文本聚类。</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h91178aqg5j30pc0a03z0.jpg" alt="image-20221212145443034" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h91178aqg5j30pc0a03z0.jpg" alt="image-20221212145443034" style="zoom:50%;" /></p>
 <p>这种方法不太适合我们的场景：1.
 这种方法通常是针对具有多个特征词的文档进行聚类，然而小区名称短，很难提取出有效的特征词；2.
 小区名称有一个特征比较明显，即父子小区以及楼栋号的名称按照顺序是有层级关系的，然而这个特征却不能在文本向量化聚类算法中体现并利用；3.
@@ -229,10 +229,10 @@ Space Model，向量空间模型),
 <h2 id="近似小区再聚集">近似小区再聚集</h2>
 <p>并不是所有的同义小区都有相同的后缀。所以，我们也通过文本相似度，来补充一些被遗漏的同义小区：
 计算近似树前缀的编辑距离和gps距离，对于gps距离小于1km，而且相似度大于2的近似树可以合并为一棵同义小区树，其中相似度的计算如下：</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h91198gm1kj30om03ojrj.jpg" alt="image-20221212145551158" style="zoom:67%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h91198gm1kj30om03ojrj.jpg" alt="image-20221212145551158" style="zoom:67%;" /></p>
 <p>其中a和b分别是两棵小区树的根小区的名称，max(a,b)是a和b的长度最大值，LevenshteinDistance(a,
 b)是编辑距离，similarity(a, b)越大表示a和b越相似。</p>
-<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h9118y0awuj31280a8t9r.jpg" alt="image-20221212145621821" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h9118y0awuj31280a8t9r.jpg" alt="image-20221212145621821" style="zoom: 50%;" /></p>
 <p>如上图所示，“西溪风情”不是“大华西溪风情”的前缀，所以在第一步的前缀匹配聚集中，没有被加入到“大华西溪风情”的近似小区树。针对这种前缀覆盖不到的情况，我们计算“西溪风情”和“大华西溪风情”的相似度为3，这个相似度表示文本总长度是文本差异的倍数，越大说明相对差别越小。当这个相似度大于2时，我们把两棵相似树合并。</p>
 <h2 id="归一化">归一化</h2>
 <p>在以每个小区为根，聚集得到相应的小区树之后，小区树之间会有很多重叠。这一步把有交集的小区树合并得到最终的小区归一化结果。合并后的小区树中的小区可以认为是同义的小区，这一步可以说是最终的小区归一化。</p>
