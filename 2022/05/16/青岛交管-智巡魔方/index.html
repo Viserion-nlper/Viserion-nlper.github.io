@@ -147,7 +147,7 @@
     <div class="body">
       
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner--toc">
       <div class="post-content__head">
         <div class="post-title">交管-智巡魔方</div>
         <div class="post-info">
@@ -155,9 +155,16 @@
   <a href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/" class="post-tag">#路径规划</a><a href="/tags/%E4%BA%A4%E8%AD%A6/" class="post-tag">#交警</a>
 
 
-          <span class="post-date">2022-05-19</span>
+          <span class="post-date">2022-05-16</span>
         </div>
       </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BA%A4%E7%AE%A1-%E6%99%BA%E5%B7%A1%E9%AD%94%E6%96%B9"><span class="post-toc-text">交管-智巡魔方</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E4%B8%9A%E5%8A%A1%E9%9C%80%E6%B1%82"><span class="post-toc-text">一、业务需求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E9%9C%80%E6%B1%82-%E7%8E%B0%E7%8A%B6%E4%B8%8E%E9%97%AE%E9%A2%98"><span class="post-toc-text">业务需求-现状与问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%B7%A1%E9%80%BB%E8%AD%A6%E5%8A%9B%E8%A7%84%E6%A8%A1-6%E8%BE%86%E8%AD%A6%E8%BD%A624h"><span class="post-toc-text">巡逻警力规模： 6辆警车（24h）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BE%86%E9%93%81%E9%AA%918-19"><span class="post-toc-text">12辆铁骑（8-19）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%BE%86%E6%9C%BA%E5%85%B3%E8%BD%A61830---2030"><span class="post-toc-text">8辆机关车（18:30 - 20:30）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E7%93%B6%E9%A2%88%E9%97%AE%E9%A2%98"><span class="post-toc-text">业务瓶颈问题：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E9%9C%80%E6%B1%82-%E5%BB%BA%E8%AE%BE%E6%80%9D%E8%B7%AF"><span class="post-toc-text">业务需求-建设思路</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E9%9C%80%E6%B1%82-%E5%85%B3%E9%94%AE%E9%97%AE%E9%A2%98"><span class="post-toc-text">业务需求-关键问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8D%95%E4%BD%8D%E5%B7%A1%E5%8C%BA%E6%9C%80%E4%BC%98%E8%AD%A6%E5%8A%9B%E5%88%86%E9%85%8D---%E6%80%9D%E8%B7%AF"><span class="post-toc-text">单位巡区最优警力分配 -
+思路：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="post-toc-text">二、解决方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="post-toc-text">解决方案-需求分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-%E5%85%B3%E9%94%AE%E6%80%A7%E5%9C%BA%E6%99%AF"><span class="post-toc-text">解决方案-需求分析-关键性场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90-%E5%85%B3%E9%94%AE%E6%80%A7%E5%9C%BA%E6%99%AF-1"><span class="post-toc-text">解决方案-需求分析-关键性场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88---%E6%80%BB%E4%BD%93%E6%96%B9%E6%A1%88"><span class="post-toc-text">解决方案 - 总体方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88---%E5%BB%BA%E8%AE%BE%E5%86%85%E5%AE%B9"><span class="post-toc-text">解决方案 - 建设内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-%E7%B3%BB%E7%BB%9F%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="post-toc-text">解决方案-系统逻辑架构设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88---%E5%9C%B0%E5%9B%BE%E5%8F%AF%E8%A7%86%E5%8C%96%E7%AE%A1%E7%90%86"><span class="post-toc-text">解决方案 - 地图可视化管理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88---%E7%89%87%E5%8C%BA%E8%A7%84%E5%88%92"><span class="post-toc-text">解决方案 - 片区规划</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88---%E8%AD%A6%E7%94%A8%E7%BB%88%E7%AB%AF"><span class="post-toc-text">解决方案 - 警用终端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88---%E5%B7%A1%E5%8C%BA%E7%BC%96%E8%BE%91"><span class="post-toc-text">解决方案 - 巡区编辑</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88---%E9%A2%84%E6%A1%88%E7%BC%96%E8%BE%91"><span class="post-toc-text">解决方案 - 预案编辑</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E9%A2%84%E6%9C%9F%E6%88%90%E6%95%88"><span class="post-toc-text">三、预期成效</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#section"><span class="post-toc-text"></span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9B%E5%AE%9E%E6%96%BD%E8%AE%A1%E5%88%92---%E5%BB%BA%E8%AE%BE%E5%86%85%E5%AE%B9"><span class="post-toc-text">四、实施计划 - 建设内容</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%96%B0%E5%A2%9E%E5%8A%A0"><span class="post-toc-text">新增加：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%97%B6%E9%97%B4%E8%8A%82%E7%82%B9"><span class="post-toc-text">时间节点：</span></a></li></ol></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
       
       <div class="post-content__body">
         
@@ -211,85 +218,43 @@ id="单位巡区最优警力分配---思路"><strong>单位巡区最优警力分
 <h2 id="二解决方案">二、解决方案</h2>
 <h3 id="解决方案-需求分析">解决方案-需求分析</h3>
 <p>​ <img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abp6zy1jj21oh0u07an.jpg"
-alt="image-20220516162529679" /></p>
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2abp6zy1jj21oh0u07an.jpg" /></p>
 <h3 id="解决方案-需求分析-关键性场景">解决方案-需求分析-关键性场景</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abrgntk8j21pd0u00wz.jpg"
-alt="image-20220516162754719" />
-<figcaption aria-hidden="true">image-20220516162754719</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2abrgntk8j21pd0u00wz.jpg" /></p>
 <h3
 id="解决方案-需求分析-关键性场景-1">解决方案-需求分析-关键性场景</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abt7faa4j21oh0u0wk7.jpg"
-alt="image-20220516162935285" />
-<figcaption aria-hidden="true">image-20220516162935285</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2abt7faa4j21oh0u0wk7.jpg" /></p>
 <h3 id="解决方案---总体方案">解决方案 - 总体方案</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abuplyomj21pg0tq42s.jpg"
-alt="image-20220516163102399" />
-<figcaption aria-hidden="true">image-20220516163102399</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2abuplyomj21pg0tq42s.jpg" /></p>
 <h3 id="解决方案---建设内容">解决方案 - 建设内容</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abwwsdvvj21lj0u042c.jpg"
-alt="image-20220516163308955" />
-<figcaption aria-hidden="true">image-20220516163308955</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2abwwsdvvj21lj0u042c.jpg" /></p>
 <h3 id="解决方案-系统逻辑架构设计">解决方案-系统逻辑架构设计</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2abxqsyccj21jt0u0jvy.jpg"
-alt="image-20220516163356986" />
-<figcaption aria-hidden="true">image-20220516163356986</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2abxqsyccj21jt0u0jvy.jpg" /></p>
 <h3 id="解决方案---地图可视化管理">解决方案 - 地图可视化管理</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2ac9i3finj21l10u0n69.jpg"
-alt="image-20220516164514621" />
-<figcaption aria-hidden="true">image-20220516164514621</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2ac9i3finj21l10u0n69.jpg" /></p>
 <h3 id="解决方案---片区规划">解决方案 - 片区规划</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2acawfhx9j21o60tg416.jpg"
-alt="image-20220516164636193" />
-<figcaption aria-hidden="true">image-20220516164636193</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2acawfhx9j21o60tg416.jpg" /></p>
 <h3 id="解决方案---警用终端">解决方案 - 警用终端</h3>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2ace8y902j214s0u0jut.jpg" alt="image-20220516164948863" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2ace8y902j214s0u0jut.jpg" alt="image-20220516164948863" style="zoom: 50%;" /></p>
 <h3 id="解决方案---巡区编辑">解决方案 - 巡区编辑</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2acilanh4j21jr0u0q99.jpg"
-alt="image-20220516165358766" />
-<figcaption aria-hidden="true">image-20220516165358766</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2acilanh4j21jr0u0q99.jpg" /></p>
 <h3 id="解决方案---预案编辑">解决方案 - 预案编辑</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2acolnenfj21jq0u0tfl.jpg"
-alt="image-20220516165945388" />
-<figcaption aria-hidden="true">image-20220516165945388</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2acolnenfj21jq0u0tfl.jpg" /></p>
 <h3 id="三预期成效">三、预期成效</h3>
-<h4 id="image-20220516175344078"><img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2ae8r7r5kj21eq0u0104.jpg"
-alt="image-20220516175344078" /></h4>
+<h4 id="section"><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2ae8r7r5kj21eq0u0104.jpg" /></h4>
 <h3 id="四实施计划---建设内容">四、实施计划 - 建设内容</h3>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2ae9uxqjkj21oy0ts7ax.jpg"
-alt="image-20220516175448088" />
-<figcaption aria-hidden="true">image-20220516175448088</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2ae9uxqjkj21oy0ts7ax.jpg" /></p>
 <h1 id="新增加">新增加：</h1>
 <ul>
 <li><p>重点部位的临时添加、突发情况</p></li>
@@ -346,7 +311,7 @@ alt="image-20220516175448088" />
     
     <div class="post-nav">
   
-    <a class="post-nav-item-left" href="/2022/05/20/%E5%9F%BA%E4%BA%8E%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
+    <a class="post-nav-item-left" href="/2022/05/19/%E7%99%BE%E5%BA%A6%E4%BA%8B%E4%BB%B6%E5%9B%BE%E8%B0%B1%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/">
       <div class="text-align">
         <svg t="1670570876164"
              class="icon"
@@ -357,12 +322,12 @@ alt="image-20220516175448088" />
         </svg>
         <span class="text-small">上一篇</span>
       </div>
-      <div>基于知识图谱的推荐系统综述</div>
+      <div>百度事件图谱技术与应用</div>
     </a>
   
   <div class="vhr"></div>
   
-    <a class="post-nav-item-right" href="/2022/05/19/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%9C%A8%E5%B0%8F%E7%B1%B3%E7%9A%84%E5%BA%94%E7%94%A8%E4%B8%8E%E6%8E%A2%E7%B4%A2/">
+    <a class="post-nav-item-right" href="/2022/04/07/ElasticSearch%E7%AC%94%E8%AE%B0/">
       <div class="text-align">
         <span class="text-small">下一篇</span>
         <svg t="1670570876164"
@@ -374,7 +339,7 @@ alt="image-20220516175448088" />
           <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
         </svg>
       </div>
-      知识图谱在小米的应用与探索
+      elasticSearch笔记
     </a>
   
 </div>
