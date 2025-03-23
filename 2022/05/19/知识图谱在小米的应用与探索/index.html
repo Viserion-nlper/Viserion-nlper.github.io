@@ -101,7 +101,7 @@
 
     
     
-    <div class=head>
+    <div class=head--sticky>
       <div class="nav">
         <a href='/' class="nav-logo">
           <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
@@ -147,7 +147,7 @@
     <div class="body">
       
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner--toc">
       <div class="post-content__head">
         <div class="post-title">知识图谱在小米的应用与探索</div>
         <div class="post-info">
@@ -158,6 +158,12 @@
           <span class="post-date">2022-05-19</span>
         </div>
       </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%9C%A8%E5%B0%8F%E7%B1%B3%E7%9A%84%E5%BA%94%E7%94%A8%E4%B8%8E%E6%8E%A2%E7%B4%A2"><span class="post-toc-text">知识图谱在小米的应用与探索</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BD%AD%E5%8A%9B-%E5%B0%8F%E7%B1%B3"><span class="post-toc-text">彭力 小米</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B0%8F%E7%B1%B3%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">01、小米知识图谱介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94"><span class="post-toc-text">1、应用场景：智能问答</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E6%99%BA%E8%83%BD%E5%AE%A2%E6%9C%8D"><span class="post-toc-text">2、应用场景：智能客服</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E5%B0%8F%E7%B1%B3%E5%95%86%E5%9F%8E%E6%B8%B8%E6%88%8F%E4%B8%AD%E5%BF%83"><span class="post-toc-text">3、应用场景：小米商城&amp;游戏中心</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AFai%E8%99%9A%E6%8B%9F%E5%8A%A9%E6%89%8B"><span class="post-toc-text">4、应用场景：AI虚拟助手</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B0%8F%E7%B1%B3%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF"><span class="post-toc-text">02、小米知识图谱关键技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B0%8F%E7%B1%B3%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E8%B5%8B%E8%83%BD%E5%90%84%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF"><span class="post-toc-text">1、小米知识图谱赋能各业务场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5"><span class="post-toc-text">2、关键技术：实体链接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E8%9E%8D%E5%90%88"><span class="post-toc-text">3、关键技术：知识融合</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5%E5%9B%BE%E8%B0%B1"><span class="post-toc-text">4、关键技术：概念图谱</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E6%8A%80%E6%9C%AF"><span class="post-toc-text">5、关键技术：自动化构建技术</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B0%8F%E7%B1%B3%E8%A1%8C%E4%B8%9A%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8E%A2%E7%B4%A2"><span class="post-toc-text">03、小米行业知识图谱探索</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%95%86%E5%93%81%E5%9B%BE%E8%B0%B1"><span class="post-toc-text">1. 商品图谱</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8A%E4%BD%8D%E8%AF%8D"><span class="post-toc-text">2、上位词</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%8C%E4%B9%89%E8%AF%8D"><span class="post-toc-text">3、同义词</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%91%E8%9E%8D%E5%9B%BE%E8%B0%B1"><span class="post-toc-text">4、金融图谱</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-text">04、总结</span></a>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
       
       <div class="post-content__body">
         
@@ -669,7 +675,7 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d
                  height="20px"
                  width="20px"
                  src="/images/logo-zh.svg" />
-            <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/people/shuo-hao-jin-ye-bu-dian-yan">Mundooo</a>
+            <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/people/shuo-hao-jin-ye-bu-dian-yan">点烟侠</a>
           </div>
         
       
