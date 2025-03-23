@@ -147,7 +147,7 @@
     <div class="body">
       
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner--toc">
       <div class="post-content__head">
         <div class="post-title">基于用户的协同过滤算法（UserCF）原理以及代码实践</div>
         <div class="post-info">
@@ -155,9 +155,15 @@
   <a href="/tags/UserCF/" class="post-tag">#UserCF</a>
 
 
-          <span class="post-date">1984-01-24</span>
+          <span class="post-date">2022-06-09</span>
         </div>
       </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%96%87%E6%A1%A3"><span class="post-toc-text">推荐系统文档</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%94%A8%E6%88%B7%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E7%AE%97%E6%B3%95usercf%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5"><span class="post-toc-text">1、基于用户的协同过滤算法（UserCF）原理以及代码实践</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="post-toc-text">算法原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="post-toc-text">算法工作流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B8%E4%BC%BC%E5%BA%A6%E7%AE%97%E6%B3%95%E6%94%B9%E8%BF%9B"><span class="post-toc-text">相似度算法改进</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5"><span class="post-toc-text">代码实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%AD%E7%BB%83%E9%98%B6%E6%AE%B5"><span class="post-toc-text">训练阶段</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E5%BB%BA%E7%AB%8Buser-item%E8%A1%A8"><span class="post-toc-text">数据预处理，建立User-Item表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BB%BA%E7%AB%8Bitem-user%E5%80%92%E6%8E%92%E8%A1%A8"><span class="post-toc-text">建立Item-User倒排表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BB%BA%E7%AB%8B%E7%94%A8%E6%88%B7%E7%89%A9%E5%93%81%E4%BA%A4%E9%9B%86%E7%9F%A9%E9%98%B5"><span class="post-toc-text">建立用户物品交集矩阵</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BB%BA%E7%AB%8B%E7%94%A8%E6%88%B7%E7%9B%B8%E4%BC%BC%E5%BA%A6%E7%9F%A9%E9%98%B5"><span class="post-toc-text">建立用户相似度矩阵</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8E%A8%E8%8D%90%E9%98%B6%E6%AE%B5"><span class="post-toc-text">推荐阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="post-toc-text">完整代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-text">参考</span></a></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
       
       <div class="post-content__body">
         
@@ -192,20 +198,12 @@ filtering）是一种在推荐系统中广泛使用的技术。该技术通过�
 <p>上述是UserCF算法的基本思路，方便读者形成对UserCF算法的整体印象。也许你看了上述文字依然没有思路，没关系，且继续往下看。</p>
 <p>首先，根据算法的步骤1，我们自然而然就会提出一个问题，那就是如何度量两个用户之间的相似度？试想一下，我们在现实生活中如何判断两个人是否兴趣相似呢？比如你喜欢打LOL，恰巧你室友也喜欢，那显然你们的共同话题会比较多，因为你们有共同的兴趣爱好。我们刚好可以利用这一点来计算用户之间的相似度。</p>
 <p>对于用户u和用户v，令N(u)代表用户u喜欢的物品合集，令N(v)代表用户v喜欢的物品合集。N(u)∩N(v)代表的是用户u和用户v都喜欢的物品，N(u)∪N(v)代表的是用户u和用户v喜欢的物品的合集，那么可以利用以下公式来简单计算相似度:</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvfinphsj206h02g744.jpg"
-alt="image-20220607184729577" />
-<figcaption aria-hidden="true">image-20220607184729577</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvfinphsj206h02g744.jpg" /></p>
 <p>上述公式叫做Jaccard公式，直观上理解就是，将用户u与用户v都喜欢的物品的数量除以他们喜欢物品的总和，如果u和v喜欢的物品是一模一样的，则u和v的相似度为1。</p>
 <p>还有另外一种余弦相似度计算公式:</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvfvghe1j206902n744.jpg"
-alt="image-20220607184750666" />
-<figcaption aria-hidden="true">image-20220607184750666</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvfvghe1j206902n744.jpg" /></p>
 <p>上述公式的分母部分代表的是u喜欢的物品的数量与v喜欢的物品的数量的乘积，而不再是他们之间的交集。</p>
 <p>举个简单例子来表明如何计算用户u和v之间的相似度，假如用户u和用户v喜欢的游戏如下表：</p>
 <table>
@@ -227,57 +225,32 @@ alt="image-20220607184750666" />
 </tbody>
 </table>
 <p>利用余弦相似度计算公式可以得到如下结果：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvg8rkjfj20h302pq32.jpg"
-alt="image-20220607184812653" />
-<figcaption aria-hidden="true">image-20220607184812653</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvg8rkjfj20h302pq32.jpg" /></p>
 <p>故，我们可以计算得到用户u和用户v之间的相似度为：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvghyxulj201401l0o6.jpg"
-alt="image-20220607184827258" />
-<figcaption aria-hidden="true">image-20220607184827258</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvghyxulj201401l0o6.jpg" /></p>
 <p>至此，我们已经可以计算任意两个用户之间的相似度了，下一步要做的事情是建立一张用户相似度表，此表中保存了任意两个用户之间的相似度，方便后续挑选出与用户u最相似的若干个用户。</p>
 <p>当用户相似度表建立起来了之后，UserCF算法就可以给用户推荐与他兴趣最相似的K个用户喜欢的物品了。那此时又会出现一个问题，假如我们要给用户w进行推荐，并且在用户相似度表中找到了与他最相似的K个用户，这K个用户喜欢的物品有很多，我们怎么知道要推荐哪些物品给用户w呢？此时就涉及到了用户对物品的感兴趣程度，我们当然会把用户最感兴趣的物品推荐给他。故使用以下公式来度量用户u对物品i的感兴趣程度：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvgs99ntj207w02amwz.jpg"
-alt="image-20220607184843946" />
-<figcaption aria-hidden="true">image-20220607184843946</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvgs99ntj207w02amwz.jpg" /></p>
 <p>乍一看感觉很复杂，其实不然。 其中<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvhqfvojj201u00p3y9.jpg"
-alt="image-20220607184933500" /> 代表的是与用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvin6zanj200f00j0d0.jpg"
-alt="image-20220607185031080" />最相似的K个用户，将与用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zviun6lrj200f00j0d0.jpg"
-alt="image-20220607185043332" />相似的用户列表按照相似度进行排序就可以得到。<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvj7d3lzj201700t0oa.jpg"
-alt="image-20220607185102551" />代表的是对喜欢物品i的用户集合，<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvjj17zij201d00s0mt.jpg"
-alt="image-20220607185121848" />代表的是用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvin6zanj200f00j0d0.jpg"
-alt="image-20220607185031080" />和用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvkb86m2j200i00k0by.jpg"
-alt="image-20220607185209749" />之间的相似度，这个也可以直接从用户相似度表中得到。<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvkkid5jj201000p0k5.jpg"
-alt="image-20220607185224784" />代表用户v对物品i的兴趣，因为使用的是单一行为的隐反馈数据，所以所有的<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvkueka8j201y00o0q4.jpg"
-alt="image-20220607185240033" />。</p>
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvhqfvojj201u00p3y9.jpg" />
+代表的是与用户<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvin6zanj200f00j0d0.jpg" />最相似的K个用户，将与用户<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zviun6lrj200f00j0d0.jpg" />相似的用户列表按照相似度进行排序就可以得到。<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvj7d3lzj201700t0oa.jpg" />代表的是对喜欢物品i的用户集合，<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvjj17zij201d00s0mt.jpg" />代表的是用户<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvin6zanj200f00j0d0.jpg" />和用户<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvkb86m2j200i00k0by.jpg" />之间的相似度，这个也可以直接从用户相似度表中得到。<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvkkid5jj201000p0k5.jpg" />代表用户v对物品i的兴趣，因为使用的是单一行为的隐反馈数据，所以所有的<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvkueka8j201y00o0q4.jpg" />。</p>
 <p>对于与用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvluu9tyj200f00j0d0.jpg"
-alt="image-20220607185031080" />最相似的K个用户，我们分别计算用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvin6zanj200f00j0d0.jpg"
-alt="image-20220607185031080" />与这K个用户喜欢的物品集合<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvljkeavj204u00vq2p.jpg"
-alt="image-20220607185318344" />之间的感兴趣程度，得到用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvin6zanj200f00j0d0.jpg"
-alt="image-20220607185031080" />对这N个物品的感兴趣程度列表，然后将其逆序排序，取前m个物品推荐给用户<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvin6zanj200f00j0d0.jpg"
-alt="image-20220607185031080" />，至此UserCF算法结束。</p>
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvluu9tyj200f00j0d0.jpg" />最相似的K个用户，我们分别计算用户<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvin6zanj200f00j0d0.jpg" />与这K个用户喜欢的物品集合<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvljkeavj204u00vq2p.jpg" />之间的感兴趣程度，得到用户<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvin6zanj200f00j0d0.jpg" />对这N个物品的感兴趣程度列表，然后将其逆序排序，取前m个物品推荐给用户<img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zvin6zanj200f00j0d0.jpg" />，至此UserCF算法结束。</p>
 <hr />
 <h2 id="算法工作流程">算法工作流程</h2>
 <p>接下来，我们用一个简单例子演示一下UserCF的具体工作流程。
@@ -391,7 +364,7 @@ alt="" />)|，所以我们的目的就是为了快速地求出任意用户之间
 </tbody>
 </table>
 <p>其中W[u][v]代表的含义是用户u和用户v都喜爱的物品个数，即<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zkpewkkfj202s00pa9t.jpg"
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zkpewkkfj202s00pa9t.jpg"
 alt="image-20220607123616571" />。比如用户A、C都喜欢物品b，所以W[A][C]=1。用户A、B除了喜欢物品a以外，还共同喜欢物品d，因此W[A][B]=2。
 由于用户A、B之间的交集和用户B、A之间的交集是一样的，所以此矩阵是一个对称矩阵。
 其实这里的W就是相似度计算公式中的分子部分，而每个用户的喜爱列表从之前的User-Item列表中就已经可以得到了，因此我们就可以计算出用户相似度矩阵了，结果如下：</p>
@@ -449,15 +422,10 @@ alt="image-20220607123616571" />。比如用户A、C都喜欢物品b，所以W[A
 <h3 id="相似度算法改进">相似度算法改进</h3>
 <p>上述算法使用的是余弦相似度计算公式，但是这个公式过于粗糙，原因是余弦相似度只是简单地计算了用户u和用户v共同喜欢的物品在他们总共喜欢物品中占据的比例。
 比如，两个用户都购买了时下热门物品，这并不能说明他们兴趣相似，因为热门物品是绝大多数人都会买的东西。换句话说，两个用户对冷门物品采用过相同的行为更能说明他们兴趣的相似度。因此John.S.Breese提出了以下相似度计算公式：</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zkq425uzj208002jglh.jpg"
-alt="image-20220607123704284" />
-<figcaption aria-hidden="true">image-20220607123704284</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zkq425uzj208002jglh.jpg" /></p>
 <p>相比余弦相似度公式，这里的分子<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h2zkqkrpsaj203p01mwe9.jpg"
-alt="image-20220607123729289" />惩罚了用户u和用户v共同喜欢的热门物品对他们相似度的影响。
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h2zkqkrpsaj203p01mwe9.jpg" />惩罚了用户u和用户v共同喜欢的热门物品对他们相似度的影响。
 在下一节的代码实践中，分别实现了基于这两种相似度计算的UserCF算法。</p>
 <hr />
 <h2 id="代码实践">代码实践</h2>
@@ -556,7 +524,7 @@ target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https%3A%2F
     
     <div class="post-nav">
   
-    <a class="post-nav-item-left" href="/1984/01/24/%E5%9F%BA%E4%BA%8E%E7%89%A9%E5%93%81%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E7%AE%97%E6%B3%95%EF%BC%88ItemCF%EF%BC%89%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5%E7%9A%84%E5%89%AF%E6%9C%AC/">
+    <a class="post-nav-item-left" href="/2022/06/10/Pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E9%85%8D%E7%BD%AESSH%E3%80%81%E9%85%8D%E7%BD%AEpy%E7%8E%AF%E5%A2%83/">
       <div class="text-align">
         <svg t="1670570876164"
              class="icon"
@@ -567,12 +535,12 @@ target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https%3A%2F
         </svg>
         <span class="text-small">上一篇</span>
       </div>
-      <div>推荐系统之评估方法和评价指标PR、ROC、AUC</div>
+      <div>Pycharm远程连接服务器、配置SSH、配置py环境</div>
     </a>
   
   <div class="vhr"></div>
   
-    <a class="post-nav-item-right" href="/1984/01/24/%E6%99%BA%E6%85%A7%E7%AC%94%E5%BD%95%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF%E6%96%87%E6%A1%A3/">
+    <a class="post-nav-item-right" href="/2022/06/08/%E5%9F%BA%E4%BA%8E%E7%89%A9%E5%93%81%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E7%AE%97%E6%B3%95%EF%BC%88ItemCF%EF%BC%89%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E4%BB%A3%E7%A0%81%E5%AE%9E%E8%B7%B5/">
       <div class="text-align">
         <span class="text-small">下一篇</span>
         <svg t="1670570876164"
@@ -584,7 +552,7 @@ target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https%3A%2F
           <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
         </svg>
       </div>
-      基于询问笔录的智慧化辅助办案系统
+      基于物品的协同过滤算法（ItemCF）原理以及代码实践
     </a>
   
 </div>
