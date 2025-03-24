@@ -147,17 +147,23 @@
     <div class="body">
       
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner--toc">
       <div class="post-content__head">
         <div class="post-title">Pycharm远程连接服务器、配置SSH、配置py环境</div>
         <div class="post-info">
           
-  <a href="/tags/%E5%B7%A5%E5%85%B7/" class="post-tag">#工具</a>
+  <a href="/tags/%E5%B7%A5%E5%85%B7/" class="post-tag">#工具</a><a href="/tags/pycharm/" class="post-tag">#pycharm</a><a href="/tags/ssh/" class="post-tag">#ssh</a>
 
 
           <span class="post-date">2022-06-10</span>
         </div>
       </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEssh%E9%85%8D%E7%BD%AEpy%E7%8E%AF%E5%A2%83"><span class="post-toc-text">Pycharm远程连接服务器、配置SSH、配置py环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AEssh"><span class="post-toc-text">1 配置SSH</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="post-toc-text">2 新建项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%85%8D%E7%BD%AE"><span class="post-toc-text">3 设置远程连接配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="post-toc-text">4 配置远程服务器的虚拟环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="post-toc-text">5 使用虚拟环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%90%8C%E6%AD%A5%E4%BB%A3%E7%A0%81"><span class="post-toc-text">6 同步代码</span></a></li></ol></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
       
       <div class="post-content__body">
         
@@ -171,50 +177,38 @@ id="pycharm远程连接服务器配置ssh配置py环境">Pycharm远程连接服�
 <h2 id="配置ssh">1 配置<a
 target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=SSH&amp;spm=1001.2101.3001.7020">SSH</a></h2>
 <p>输入ip、port、账号、密码</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h333xx6lhij215m0u0tby.jpg" alt="image-20220610135817289" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h333xx6lhij215m0u0tby.jpg" alt="image-20220610135817289" style="zoom:50%;" /></p>
 <h2 id="新建项目">2 新建项目</h2>
 <p>新建你想要的项目名称</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h333yn0cklj21400u0n0m.jpg" alt="image-20220610135923520" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h333yn0cklj21400u0n0m.jpg" alt="image-20220610135923520" style="zoom:50%;" /></p>
 <p>在<code>previously configured interpreter</code>右边的‘…’新建SSH
 Interpreter。</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h333zxjmqfj219r0u0taz.jpg" alt="image-20220610140037859" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h333zxjmqfj219r0u0taz.jpg" alt="image-20220610140037859" style="zoom:50%;" /></p>
 <p>先使用默认的python环境</p>
-<p><img src="https://img-blog.csdnimg.cn/087849741a584a21b55aa28bd8460046.png#pic_center" alt="在这里插入图片描述" style="zoom:50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://img-blog.csdnimg.cn/087849741a584a21b55aa28bd8460046.png#pic_center" alt="在这里插入图片描述" style="zoom:50%;" /></p>
 <p>确认后改一下remote project location</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3341bc5kcj20z00a675a.jpg" alt="image-20220610140158018" style="zoom: 67%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3341bc5kcj20z00a675a.jpg" alt="image-20220610140158018" style="zoom: 67%;" /></p>
 <p>在这里我设置的是<code>/usr/local/testSSH</code></p>
 <h2 id="设置远程连接配置">3 设置<a
 target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=远程连接&amp;spm=1001.2101.3001.7020">远程连接</a>配置</h2>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3353rfmccj21fo0u0dmt.jpg"
-alt="image-20220610143854374" />
-<figcaption aria-hidden="true">image-20220610143854374</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3353rfmccj21fo0u0dmt.jpg" /></p>
 <p>点一下autodetect，设置自己的根目录</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3354i9ew2j20zq0u0408.jpg" alt="image-20220610143937733" style="zoom: 67%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3354i9ew2j20zq0u0408.jpg" alt="image-20220610143937733" style="zoom: 67%;" /></p>
 <p>Mappings也改一下：</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h33551nb8qj20zq0u0taf.jpg" alt="image-20220610144009512" style="zoom:67%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h33551nb8qj20zq0u0taf.jpg" alt="image-20220610144009512" style="zoom:67%;" /></p>
 <p>browse remote host可以帮助我们查看远程服务器的状态：</p>
-<p><img src="https://img-blog.csdnimg.cn/8e3e5a53690841fab0eabbf5c98de505.png#pic_center" alt="在这里插入图片描述" style="zoom:67%;" /></p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h33572qry4j20d80akjrp.jpg"
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img src="https://image.baidu.com/search/down?url=https://img-blog.csdnimg.cn/8e3e5a53690841fab0eabbf5c98de505.png#pic_center" alt="在这里插入图片描述" style="zoom:67%;" /></p>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h33572qry4j20d80akjrp.jpg" /></p>
 <h2 id="配置远程服务器的虚拟环境">4 配置远程服务器的<a
 target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=虚拟环境&amp;spm=1001.2101.3001.7020">虚拟环境</a></h2>
 <p>使用start SSH <a
 target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=session&amp;spm=1001.2101.3001.7020">session</a></p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h33589t2ioj20m60s2gnj.jpg" alt="image-20220610144305804" style="zoom: 50%;" /></p>
+<p><img src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h33589t2ioj20m60s2gnj.jpg" alt="image-20220610144305804" style="zoom: 50%;" /></p>
 <p>随后弹出的窗口，我们就很熟悉了</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3358sno1ij20t20ga3zd.jpg"
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3358sno1ij20t20ga3zd.jpg" /></p>
 <p>随后就是正常的conda创建虚拟环境的方法，文末给出一个参考文献。</p>
 <blockquote>
 <p>//一些常用的方法 //创建虚拟环境 conda create -n tfEnvi python=3.6
@@ -222,52 +216,28 @@ alt="在这里插入图片描述" />
 tensorflow==2.1.0</p>
 </blockquote>
 <p>虚拟环境会在自己的源目录下，<code>.conda/envs</code></p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3359j918cj20do0a2aag.jpg"
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3359j918cj20do0a2aag.jpg" /></p>
 <h2 id="使用虚拟环境">5 使用虚拟环境</h2>
 <p>Add…</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h3359xck8mj21h40j60vf.jpg"
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h3359xck8mj21h40j60vf.jpg" /></p>
 <p>老样子，SSH Interpreter-〉Existing server
 configuration，这次Interptreter使用自己创建的环境，还有更改Sync
 folders。</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h335a4dpx1j21ba0ecgne.jpg"
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h335a4dpx1j21ba0ecgne.jpg" /></p>
 <p>Apply-》ok。</p>
 <h2 id="同步代码">6 同步代码</h2>
 <p>在你本地写好代码后，如果你要同步代码。</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h335ay4rboj21aa0t2aet.jpg"
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h335ay4rboj21aa0t2aet.jpg" /></p>
 <p>按下按钮，成功上传至远程服务器。</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h335b1iy0fj21rp0u0agu.jpg"
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h335b1iy0fj21rp0u0agu.jpg" /></p>
 <p>最后，快乐的运行代码吧。</p>
-<figure>
-<img
-src="https://tva1.sinaimg.cn/large/e6c9d24ely1h335bd23k4j21hf0u00x3.jpg"
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img
+src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/e6c9d24ely1h335bd23k4j21hf0u00x3.jpg" /></p>
 
       </div>
     </div>
