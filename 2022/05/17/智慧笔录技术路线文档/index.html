@@ -59,7 +59,7 @@
     
     
   <link rel="stylesheet" type="text/css" href="/css/post.css"/>
-  
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"/>
 
   <meta name="generator" content="Hexo 7.3.0"></head>
   <body>
@@ -446,6 +446,8 @@ Fine-tune）判断模板类型，判断结果为否的话支持手动选择模�
 
     
     
+      <div id="gitalk-container"></div>
+    
   </div>
 
     </div>
@@ -620,6 +622,15 @@ Fine-tune）判断模板类型，判断结果为否的话支持手动选择模�
     
     <script src="/js/copy-code.js"></script>
     
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  const param = JSON.parse('{"enable":true,"owner":"Viserion-nlper","admin":null,"repo":"https://viserion-nlper.github.io/","clientID":"383d8abfdbdb7adac4cc","clientSecret":"753a2f01ea61c8eadec056ab8a209cacb6a0a4e9","distractionFreeMode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN"}')
+  let title = location.pathname.substr(0, 50); 
+  param.id = title
+  const gitalk = new Gitalk(param)
+  gitalk.render('gitalk-container')
+</script>
+
   
 
   </body>
