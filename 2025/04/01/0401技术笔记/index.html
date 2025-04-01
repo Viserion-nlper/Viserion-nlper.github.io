@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        【基于知识图谱的RAG】四月初的技术笔记 | 思想放牧之地
+      
+    </title>
+    <meta name="description" content="有情有颜 有才缺钱" />
+    <meta name="keywords" content="" />
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png" />
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png" />
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color="" />
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/normal.ttf);
+        font-weight: normal;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css' />
+    
+      <script>
+        var _hmt = _hmt || [];
+        (function () {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?7734a31ee089554d530a91a62612b95c";
+          var s = document.getElementsByTagName("script")[0];
+          s
+            .parentNode
+            .insertBefore(hm, s);
+        })();
+      </script>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"/>
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    
+      <div id="search-mask" style="display:none">
+  <div class="search-main" id="search-main">
+    <div class="search__head">
+      <div class="search-form">
+        <svg t="1706347533072"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             p-id="7828"
+             width="20"
+             height="20">
+          <path d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z" fill="#000000" p-id="7829">
+          </path>
+        </svg>
+        <input id="search-input" placeholder="搜索文章">
+        <svg t="1706361500528"
+             id="search-clear"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             p-id="4351"
+             width="20"
+             height="20">
+          <path d="M512 562.688l-264.2944 264.2944-50.688-50.688L461.312 512 197.0176 247.7056l50.688-50.688L512 461.312l264.2944-264.2944 50.688 50.688L562.688 512l264.2944 264.2944-50.688 50.688L512 562.688z" fill="#00" p-id="4352">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <div class="search__body" id="search-result"></div>
+    <div class="search__foot"></div>
+  </div>
+</div>
+
+    
+    
+    <div class=head--sticky>
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox" />
+        <div class="nav-right">
+          
+            <div class="search-outer">
+  <div class="search" id="search-btn">
+    <svg t="1706347533072"
+         class="icon"
+         viewBox="0 0 1024 1024"
+         version="1.1"
+         xmlns="http://www.w3.org/2000/svg"
+         p-id="7828"
+         width="20"
+         height="20">
+      <path d="M685.6 660.336l155.152 155.168a16 16 0 0 1 0 22.624l-11.312 11.328a16 16 0 0 1-22.624 0l-158.528-158.544a289.792 289.792 0 0 1-165.152 51.36C322.336 742.256 192 611.904 192 451.12 192 290.336 322.336 160 483.136 160c160.784 0 291.12 130.336 291.12 291.136 0 82.112-33.984 156.272-88.672 209.2z m-202.464 33.92c134.272 0 243.12-108.848 243.12-243.12C726.256 316.848 617.408 208 483.136 208 348.848 208 240 316.848 240 451.136c0 134.272 108.848 243.12 243.136 243.12z" fill="#000000" p-id="7829">
+      </path>
+    </svg>
+    <span>搜索</span>
+    <span class="search-shortcut-key">Ctrl K</span>
+  </div>
+</div>
+
+          
+          <div class="nav-menu">
+            
+              
+                <a class="nav-menu-item" href="/AI">AI大模型</a>
+              
+                <a class="nav-menu-item" href="/photograph">拍摄摄影</a>
+              
+                <a class="nav-menu-item" href="/live">生活随记</a>
+              
+                <a class="nav-menu-item" target="_blank" rel="noopener" href="https://bbs.hanlp.com/">社区维护</a>
+              
+            
+            <a class="nav-menu-item" href='/cv/'>简历</a>
+          </div>
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">【基于知识图谱的RAG】四月初的技术笔记</div>
+        <div class="post-info">
+          
+  <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="post-tag">#技术笔记</a>
+
+
+          <span class="post-date">2025-04-01</span>
+        </div>
+      </div>
+      
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <img src="http://su1jo29bd.hd-bkt.clouddn.com/static/images/1742604563096.jpg">
+<h2
+id="kagrag已经不够了知识增强生成才是王道提升朴素rag一倍性能">KAG：RAG已经不够了，知识增强生成才是王道，提升朴素RAG一倍性能</h2>
+<p>KAG: Boosting LLMs in Professional Domains via Knowledge Augmented
+Generation</p>
+<blockquote>
+<p>新推出的检索增强生成 (RAG)
+技术虽能高效构建领域应用，但受限于模糊检索、通用语言模型的“幻觉”问题及复杂系统中的级联损失，专业知识服务效果受阻。在科学计算、医学和法律等领域，知识精准、信息完整及规则逻辑严密尤为关键。为此，我们推出知识增强生成
+(KAG) 框架，通过双向增强大型语言模型 (LLM) 和知识图谱
+(KG)，提升生成与推理能力，涵盖五大关键增强：LLM
+友好的知识语义表示、知识图谱与原始块的相互索引、逻辑形式引导的混合推理、基于语义推理的知识对齐及
+KAG 模型。多跳问答测试显示，KAG 显著超越现有 RAG 方法，F1 提升 19.6% 至
+33.4%。应用于蚂蚁集团的电子政务与电子健康问答，专业性大幅提升。即将在开源
+KG 引擎 OpenSPG 上原生支持
+KAG，助力开发者轻松构建严谨知识决策或便捷信息检索服务。</p>
+</blockquote>
+<h3 id="为什么要提出kag框架">1. 为什么要提出KAG框架</h3>
+<p>检索增强生成（RAG）技术得到广泛运用，利用外部检索系统，显著提升大语言模型的时效性，并大幅减少模型幻觉。</p>
+<p>为了进一步提升RAG在多跳任务、跨段落任务的性能，作者引入了知识图谱，包括GraphRAG、DALK、SUGRE、ToG
+2.0 和 HippoRAG 等。</p>
+<p>尽管 RAG
+及其优化方案已经解决了因知识缺乏和更新导致的大部分幻觉问题，但生成的文本仍然缺乏连贯性和逻辑性，难以产生正确且有价值的答案，尤其是在法律、医学和科学等需要分析推理的专业领域：</p>
+<p>•
+首先，真实场景的业务流程一般需要基于知识片段之间特定关系的推理来收集与回答问题相关的信息。但RAG
+通常依赖于文本或向量的相似性来检索参考信息，会可能导致搜索结果不完整和重复。</p>
+<p>•
+其次，真实场景往往涉及逻辑或数值推理，例如确定一组数据在时间序列中的增减情况，而语言模型使用的下一个标记预测机制在处理这类问题上仍然显得力不从心。</p>
+<p>为了解决以上问题，本篇论文作者提出了知识增强生成（Knowledge Augmented
+Generation，KAG）。</p>
+<h3 id="kag框架">2. KAG框架</h3>
+<p>KAG框架充分利用知识图谱和RAG技术的互补优势。不仅将图结构整合到知识库，还将知识图谱的语义类型、关系以及知识图谱问答（KGQA）整合到KAG中。</p>
+<p><img
+src="https://arxiv.org/html/2409.13731v3/extracted/5882540/figures/kag-frame.jpg" /></p>
+<p>如上图所示，KAG 架构由三大核心组成：KAG-Builder、KAG-Solver 和
+KAG-Model。</p>
+<p>• KAG-Builder
+负责构建离线索引，此模块提出了一个与大语言模型兼容的知识表示框架，并实现了知识结构与文本片段之间的互索引机制。</p>
+<p>• KAG-Solver
+引入了一个以逻辑形式为指导的混合推理引擎，整合了大型语言模型推理、知识推理和数学逻辑推理。利用语义推理进行知识对齐，以增强
+KAG-Builder 和 KAG-Solver 在知识表示和检索方面的准确性。</p>
+<p>• KAG-Model
+则基于通用语言模型，针对每个模块所需的特定能力进行优化，从而全面提升模块性能。</p>
+<h4 id="知识表示框架-lmfrispg">2.1 知识表示框架 LMFriSPG</h4>
+<p>为了定义一个对大型语言模型更友好的知识语义表达方式，作者对 SPG
+进行了三大方面的升级：深化文本上下文意识、动态属性和知识分层，并将其命名为
+LLMFriSPG。</p>
+<p>SPG：Semantic-enhanced Programmable
+Graph，语义增强可编程知识图谱。</p>
+<p><img
+src="https://arxiv.org/html/2409.13731v3/extracted/5882540/figures/llmspg.png" />
+上图展示了
+LLMFriSPG：一个专为大型语言模型（LLM）设计的友好型知识表示框架。</p>
+<p>LLMFriSPG将实例与概念区分开来，通过概念实现与 LLMs 的对接。</p>
+<p>SPG
+的属性被划分为知识区和信息区，也就是静态区和动态区，分别与具有严格模式约束的决策专业知识以及具有开放信息表示的文档检索索引知识相兼容。</p>
+<p>图中的红色虚线描绘了从信息提炼为知识的融合与挖掘过程。增强的文档块表示方法为
+LLMs 提供了可追溯且易于解读的文本上下文。</p>
+<p>ℳ = {𝒯, ρ, 𝒞, ℒ} 1 其中 ℳ 代表 LLMFriSPG 定义的所有类型</p>
+<p>𝒯
+代表所有实体类型（EntityType）（例如上图中的“人”）、事件类型类（EventType）以及所有与
+LPG 语法声明兼容的预定义属性。</p>
+<p>𝒞
+代表所有概念类型类（ConceptType）、概念及其关系，每个概念树的根节点是一个与
+LPG
+语法兼容的概念类型类（如上图中的“人的概念分类”），每个概念节点都有一个独特的概念类型类。</p>
+<p>ρ 代表从实例到概念的归纳关系。</p>
+<p>ℓ 代表定义在逻辑关系和逻辑概念上的可执行规则全集。</p>
+<p>• 对于每一个类型，所有属性和关系包括：</p>
+<p>• 领域专家预先设定的部分</p>
+<p>• 临时添加的内容</p>
+<p>• 系统预设的属性，比如：</p>
+<p>支持块（supporting_chunks）、描述（description）、摘要（summary）和归属（belongTo）。</p>
+<p>• 对于每一个实例，所有类型包括：</p>
+<p>• 支持块（supporting_chunks）：</p>
+<p>指包含该实例的所有文本块，块生成策略和最大长度由用户来定义。</p>
+<p>• 描述（description）：</p>
+<p>指针对该实例的所有类型的通用描述信息。</p>
+<p>这种描述能够有效地辅助大型语言模型（LLM）把握特定实例或类型的确切含义，并可用于信息提取、实体识别和摘要生成等任务。</p>
+<p>• 摘要（summary）：</p>
+<p>指实例或关系在原始文档上下文中的概要。</p>
+<p>• 归属（belongTo）：</p>
+<p>反映了从实例到概念的归纳语义。</p>
+<p>每个实体类型或事件类型都可以通过归属与概念类型相关联。</p>
+<p>如上图，作者将知识和信息表示分为三个层次：</p>
+<p>• 知识层定义为 KGcs（KG constraint， cs应该是 constraint
+的缩写），包括遵循领域模式约束、经过提炼、整合和评估的领域知识。</p>
+<p>• 信息层定义为KGfr（KG schema
+free，fr应该是free的缩写），代表通过信息提取得到的实体和关系等图数据。</p>
+<p>• 原始块层（RC，Raw
+Chunks）则是指经过语义分割处理后的原始文档片段。</p>
+<p>•
+知识层（KGcs）严格遵循SPG语义规范，支持在严格的模式约束下构建知识体系和定义逻辑规则，确保了知识的高准确性和逻辑的严密性。然而，这种依赖于人工标注的构建方式，使得其构建成本较高，且信息的完整性有待提高。</p>
+<p>•
+图信息层（KGfr）与知识层（KGcs）共享实体类型、事件类型和概念体系，并为KGcs提供了有效的信息补充。</p>
+<p>•
+图信息层（KGfr）与原始块层（RC）之间构建的支撑块、摘要和描述边，形成了基于图结构的倒排索引，极大地提高了RC的信息完整性，使其成为KGf
+r的有力原始文本上下文补充。</p>
+<p>如上图右侧所示，在特定领域应用中，R(KGcs)、R(KGf
+r)和R(RC)分别代表了它们在解决目标领域问题时的知识覆盖范围。</p>
+<p>•
+如果应用对知识准确性和逻辑严密性有更高的要求，则需要构建更多的领域结构化知识，并投入更多的专家资源以扩大R(KGcs)的覆盖范围。</p>
+<p>•
+如果应用更注重检索效率，并对信息的一定损失或错误有一定的容忍度，则应扩大R(KGfr)的覆盖范围，充分利用KAG的自动化知识构建能力，减少专家资源的消耗。</p>
+<p>2.2 互索引（Mutual Indexing） KAG
+构建器（KAG-Builder）包括三个紧密相连的流程：结构化信息获取、知识语义对齐和图存储写入。主要目标包括：</p>
+<p>•
+1）在图结构与文本块之间构建互索引，为图结构提供更丰富的描述性上下文；</p>
+<p>•
+2）利用概念语义图对不同粒度的知识进行对齐，减少噪声，增强图的连通性。</p>
+<p>上图展示了 KAG 构建器处理领域非结构化文档的流水线。流程从左至右：</p>
+<p>• 首先，通过信息抽取获取短语和三元组；</p>
+<p>• 接着，通过语义对齐进行消歧和整合；</p>
+<p>• 最终，生成的知识图谱被存储起来。</p>
+<p>上图是一个 KAG Builder 的示例。</p>
+<p>2.2.1 语义分块（ Semantic Chunking）
+基于文档的结构层次和段落间的内在逻辑联系，利用系统内置提示实现了语义分块过程。产生的文本块既符合长度限制（特别是为了适应
+LLM
+的上下文窗口大小限制），又保持了语义连贯性，确保每个块的内容在主题上紧密相关。</p>
+<p>在 RC 中定义了“块实体类型”，包含
+id、摘要和主文本等字段。语义分割后得到的每个块将被写入一个“块”实例，其中
+id 是一个由 articleID、paraCode、idInPara
+通过连接器#拼接而成的复合字段，这样做是为了确保连续的块在 id
+空间中是相邻的。</p>
+<p>• articleID 代表全局唯一的文章 ID</p>
+<p>• paraCode 代表文章中的段落代码</p>
+<p>• idInPara 是段落中每个块的顺序代码</p>
+<p>内容上的邻接关系在它们的标识符上也表现为顺序上的邻接。</p>
+<p>原始文档与其分割出的块之间建立了双向关系，便于在文档内容的不同粒度间进行导航和理解上下文。这种结构化的分割方法不仅优化了与大型语言模型的兼容性，还保留了并增强了文档的内在语义结构和关联性。</p>
+<p>2.2.2 信息提取与更丰富的描述性上下文
+在给定数据集的基础上，采用大语言模型来提取实体、事件、概念和关系，构建知识图谱
+KGf。</p>
+<p>采用的大语言模型可以是无需微调的大型语言模型（LLM）（如
+GPT-3.5、DeepSeek、QWen 等）或微调的小尺寸大模型 Hum。</p>
+<p>然后，构建 KGfr 与 RC
+之间的互索引结构，实现跨文档的实体和关系链接。分为三个步骤：</p>
+<p>• 首先，逐块提取实体集 E={e1, e2, e3, …}；</p>
+<p>• 其次，提取与所有实体相关联的事件集 EV={ev1, ev2, ev3,
+…}，并迭代提取实体集 E 中所有实体之间的关系集 R={r1, r2, r3, …}；</p>
+<p>• 最后，完成实例与其 spgClass 之间的所有上位关系。</p>
+<p>为了后续的知识对齐阶段提供便利，并解决 Wikidata和
+ConceptNet等知识短语识别度低的问题，在实体提取阶段，使用 LLMs 为每个实例
+e 生成内置属性描述、摘要、semanticType、spgClass、描述
+semanticType，根据 e.description、e.summary 的结构将它们存储在 e
+实例存储中，并按照&lt;e, belongTo, semanticType&gt;和&lt;e, hasClass,
+spgClass&gt;的结构进行组织。</p>
+<p>2.2.3 领域知识注入和约束
+当开放信息抽取（openIE）应用于专业领域时，可能会引入不相关的噪声。这些噪声和不相关的语料库可能会显著降低
+LLMs 的性能。因此将提取的信息与领域知识对齐是一个难题。</p>
+<p>KAG 中的领域知识对齐能力包括：</p>
+<p>• 1）领域术语和概念注入。采用迭代提取方法：</p>
+<p>• 首先将领域概念和术语及其描述存储在 KG 存储中。</p>
+<p>• 然后，通过 openIE
+提取文档中的所有实例，执行向量检索以获得所有可能的概念和术语集。</p>
+<p>•
+最后，将概念和术语集添加到提取提示中，并进行另一次提取，以获得与领域知识大部分对齐的集合。</p>
+<p>•
+2）模式约束提取。在垂直专业领域中，如药品说明书、体检报告、政务、在线订单数据、结构化数据表等，文档之间的数据结构具有强烈的一致性，更适合采用模式约束进行信息提取，结构化提取也便于知识管理和质量提升。对于同一实体类型，如
+Person，可以预定义属性和关系，如 name、gender、placeOfBirth、(Person,
+hasFather, Person)、(Person, hasFriend, Person)，也可以直接通过 openIE
+提取三元组，如(Jay Chou, spgClass, Person)、(Jay Chou, constellation,
+Capricorn)、(Jay Chou, record company, Universal Music Group)。</p>
+<p>•
+3）按文档类型预定义知识结构。专业文件如药品说明书、政务文件和法律定义通常具有相对标准化的文档结构。每种类型的文档可以定义为一个实体类型，不同的段落代表实体的不同属性。</p>
+<p>• 以政务为例，可以预定义 GovernmentAffair EntityType
+及其属性，如行政区划、服务程序、所需材料、服务地点和目标群体。</p>
+<p>划分的块是不同属性的值。</p>
+<p>如果用户询问“在西湖区申请住房公积金需要哪些材料？</p>
+<p>”，可以直接提取对应属性所需材料的块来回答这个问题，避免 LLM
+重新生成可能引起的幻觉。</p>
+<p>2.2.4 文本块向量与知识结构的互索引 KAG 的互索引机制遵循 LLMFriSPG
+的语义表示，是一套知识管理和存储方案。涵盖四个核心数据结构：</p>
+<p>• 1、共享模式，作为项目层面预设的 SPG
+类别，囊括了实体类型、概念类型和事件类型，它们作为高层分类，例如人物、组织、地理位置、日期、生物、作品、事件。</p>
+<p>• 2、实例图，囊括了 KGcs 和 KGfr
+中的所有事件和实体实例，无论是通过无模式的开放信息抽取还是通过模式约束的结构化抽取得到的实例，均存储于
+KG 存储中。</p>
+<p>• 3、文本块，是一种特殊的实体节点，符合块实体类型的定义。</p>
+<p>•
+4、概念图，作为知识对齐的核心，由一系列概念及其关系构成，概念节点代表了实例的细粒度类型。通过关系预测，实例节点能够与概念节点相连，从而获得其细粒度的语义类型。</p>
+<p>此外，还有两种存储结构：</p>
+<p>• 1、KG 存储，将 KG 数据结构存储于 LPG（Labeled Property Graph）
+数据库中，例如 TuGraph、Neo4J。</p>
+<p>• 2、向量存储，将文本和向量存储于向量存储引擎中，如
+ElasticSearch、Milvus，或是 LPG 引擎内置的向量存储。</p>
+
+      </div>
+    </div>
+    
+      <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script>
+      <script>
+        if (window.mermaid) {
+          mermaid.initialize({"startOnload":true});
+        }
+      </script>
+    
+  </article>
+  <div class="post__foot">
+    
+      <div class="like-author">
+  <input type="checkbox" id="likeCode" />
+  <div class="author-face">
+    <img height="100px"
+         width="100px"
+         id="front-face"
+         alt="author face"
+         src="/images/author-face.jpg" />
+    <img height="100px"
+         width="100px"
+         id="back-face"
+         alt="like code"
+         src="/images/pay-code.jpg" />
+  </div>
+  <div class="like-text">“给作者倒杯卡布奇诺”</div>
+  <label for="likeCode" class="like-btn">
+    <svg viewBox="0 0 1024 1024"
+         width="20px"
+         style="margin-right: 10px"
+         height="20px">
+      <path d="M466.88 908.96L113.824 563.296a270.08 270.08 0 0 1 0-387.392c108.8-106.56 284.896-106.56 393.696 0 1.504 1.472 2.976 2.944 4.448 4.48 1.472-1.536 2.944-3.008 4.448-4.48 108.8-106.56 284.896-106.56 393.696 0a269.952 269.952 0 0 1 34.016 347.072l-387.392 385.6a64 64 0 0 1-89.92 0.384z" p-id="13650" fill="#ee4242" />
+    </svg>
+    喜欢作者
+  </label>
+</div>
+
+    
+    <div class="post-nav">
+  
+    <div class="post-nav-item-left"></div>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2025/03/26/%E5%8F%AE%E5%8F%AE%E9%93%9B%E9%93%9B/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
+        </svg>
+      </div>
+      赠尔只铃铛 一步一响 一步一想
+    </a>
+  
+</div>
+
+    
+    
+      <div id="gitalk-container"></div>
+    
+  </div>
+
+    </div>
+    <div class="foot">
+  <div class="foot-inner">
+    <div class="foot__head">
+      
+        <div class="foot-line">
+          <div class="matts">今</div><div class="matts">夜</div><div class="matts">无</div><div class="matts">眠</div>
+        </div>
+      
+        <div class="foot-line">
+          <div class="matts">睡</div><div class="matts">意</div><div class="matts">全</div><div class="matts">无</div>
+        </div>
+      
+    </div>
+    <div class="foot__body">
+      
+        <div class="foot-item">
+          <div class="foot-item__head">朋友</div>
+          <div class="foot-item__body">
+            
+            
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-link.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://moyanxinxu.github.io/unlock-hf/">unlock-hf</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-link+.svg" />
+            <a class="foot-link" href="mailto:873101411@qq.com?subject=申请http://example.com的友链">申请友链</a>
+          </div>
+        
+      
+        
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+          </div>
+        </div>
+      
+      
+        <div class="foot-item">
+          <div class="foot-item__head">账号</div>
+          <div class="foot-item__body">
+            
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-github.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/viserion-nlper">viserion-nlper</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-wx.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Fq9ZIUwZvMNx2kSahz8zEw">HanLP.com</a>
+          </div>
+        
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/logo-zh.svg" />
+            <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/people/shuo-hao-jin-ye-bu-dian-yan">点烟侠</a>
+          </div>
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+          </div>
+        </div>
+      
+      <div class="foot-item">
+        <div class="foot-item__head">联系</div>
+        <div class="foot-item__body">
+          
+
+
+  
+  
+    <div class="foot-link-group">
+      
+        
+        
+          <div class="text">
+            <img alt="link"
+                 height="20px"
+                 width="20px"
+                 src="/images/icon/icon-email.svg" />
+            <a class="foot-link" href="mailto:873101411@qq.com">873101411@qq.com</a>
+          </div>
+        
+      
+        
+        
+      
+        
+        
+      
+        
+        
+      
+    </div>
+  
+
+
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <a href="http://example.com">思想放牧之地</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+      <svg width="20" height="20" viewBox="0 0 725 725">
+        <path fill-rule="evenodd" fill="rgb(221, 221, 221)" d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+        <path fill-rule="evenodd" fill="rgb(159, 159, 159)" d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+        <path fill-rule="evenodd" fill="rgb(0, 0, 0)" d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+      </svg>
+      <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+    </div>
+  </div>
+</div>
+
+    
+    
+      <script src="/js/search.js"></script>
+      <script>searchInitialize("/search.json")</script>
+    
+    <script src="/js/copy-code.js"></script>
+    
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  const param = JSON.parse('{"enable":true,"owner":"Viserion-nlper","admin":"Viserion-nlper","repo":"Viserion-nlper.github.io","clientID":"383d8abfdbdb7adac4cc","clientSecret":"753a2f01ea61c8eadec056ab8a209cacb6a0a4e9","distractionFreeMode":false,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN"}')
+  let title = location.pathname.substr(0, 50); 
+  param.id = title
+  const gitalk = new Gitalk(param)
+  gitalk.render('gitalk-container')
+</script>
+
+  
+
+  </body>
+</html>
