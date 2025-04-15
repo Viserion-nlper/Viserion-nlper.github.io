@@ -32,6 +32,18 @@ const ap = new APlayer({
         artist: '赵雷',
         url: 'https://music.163.com/song/media/outer/url?id=29567193.mp3',
         cover: 'http://p1.music.126.net/c5NVKUIAUcyN4BQUDbGnEg==/109951163221157827.jpg?param=130y130',
+      },
+      {
+        name: '窗外小雨',
+        artist: '四熹丸子',
+        url: 'http://music.163.com/song/media/outer/url?id=2625929157.mp3',
+        cover: 'http://p1.music.126.net/c5NVKUIAUcyN4BQUDbGnEg==/109951163221157827.jpg?param=130y130',
+      },
+      {
+        name: '喀什噶尔胡杨',
+        artist: '刀郎',
+        url: 'https://a.xmcdn.com/storages/015a-audiofreehighqps/67/20/GKwRIRwLyr8KAFy-TQOSbpIL.m4a?sign=bb9b0fdaf54c5663ea1fc5b8b5b6b3f7&buy_key=web_0ef16e36-94678670:0&timestamp=1744736403952000&token=2360&duration=375',
+        cover: 'http://p1.music.126.net/c5NVKUIAUcyN4BQUDbGnEg==/109951163221157827.jpg?param=130y130',
       }
     ]
 });
