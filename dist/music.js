@@ -44,6 +44,18 @@ const ap = new APlayer({
         artist: '刀郎',
         url: 'https://a.xmcdn.com/storages/015a-audiofreehighqps/67/20/GKwRIRwLyr8KAFy-TQOSbpIL.m4a?sign=bb9b0fdaf54c5663ea1fc5b8b5b6b3f7&buy_key=web_0ef16e36-94678670:0&timestamp=1744736403952000&token=2360&duration=375',
         cover: 'http://p1.music.126.net/c5NVKUIAUcyN4BQUDbGnEg==/109951163221157827.jpg?param=130y130',
-      }
+      },
+ 	{
+        name: '人海',
+        artist: '燕池',
+        url: 'http://music.163.com/song/media/outer/url?id=32272267.mp3',
+        cover: 'http://p1.music.126.net/c5NVKUIAUcyN4BQUDbGnEg==/109951163221157827.jpg?param=130y130',
+      },
+{
+        name: '岛歌',
+        artist: '汤旭',
+        url: 'http://music.163.com/song/media/outer/url?id=293649.mp3',
+        cover: 'http://p1.music.126.net/Ws9dXmRTdl5oV-LaQivaYQ==/46179488378962.jpg?param=300x300',
+      },
     ]
 });
