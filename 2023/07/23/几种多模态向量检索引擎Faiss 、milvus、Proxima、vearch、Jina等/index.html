@@ -571,8 +571,12 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vx
 <p>案例 2：vearch
 可提供实时在线相似性图片搜索服务，比如在电商平台可以用来搜同款。详细流程如图
 7 所示：</p>
-<p><img
-src="https://image.baidu.com/search/down?url=http://blog.cxiangnet.cn/wp-content/uploads/2022/01/wpsDA5F.tmp_-1-1.png" /></p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/Viserion-nlper/picgo/v2-8019585902fab42fb005f0090a2f31ae_1440w.jpg"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>案例 3：海量重复图片去重，在目前已经应用到了京东重复铺货检测，如图 8
 所示：</p>
 <p><img
@@ -597,13 +601,21 @@ src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vx
 <p><img
 src="https://image.baidu.com/search/down?url=https://tva1.sinaimg.cn/large/008vxvgGly1h869tolt8ij30u40guq5r.jpg" /></p>
 <p>贝壳找房整体架构分三层，网关层、应用层和引擎层。</p>
-<p><img
-src="http://blog.cxiangnet.cn/wp-content/uploads/2022/01/wpsDA84.tmp_-1-1.png" /></p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/Viserion-nlper/picgo/v2-aee4ce33e37ea02ccb0fb3c5da054a25_1440w.jpg"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <h3 id="应用案例二58同城向量检索平台架构实践"><strong>7
 应用案例二：58同城向量检索平台架构实践</strong></h3>
 <p>为了满足业务上对向量检索的需求，降低学习成本，提高开发效率，我们开发并上线了向量检索平台。我们支持了Faiss算法库，实现了几种常用索引的全量索引构建、实时增量索引、实时在线检索，旨在帮助用户更快更好的使用海量高维向量相似性检索功能。</p>
-<p><img
-src="http://blog.cxiangnet.cn/wp-content/uploads/2022/01/wpsDA85.tmp_-1-1.png" /></p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/Viserion-nlper/picgo/v2-c52e3a989f1355cf744244804b03269b_1440w.jpg"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>平台基于Facebook的Faiss进行向量索引的构建，目前支持三种比较具有代表性的索引全量构建，分别是IndexFlatL2（基于欧氏距离的暴力索引）、IndexIVFFlat（加聚类的倒排索引，支持欧式距离和向量内积两种距离算法）、IndexIVFPQ（加聚类、加量化的倒排索引），并且支持分布式索引（支持大规模数据的分布式索引构建）。</p>
 <p>分布式索引构建Faiss本身只是一个能够单机运行的向量检索基础算法库，不支持分布式。在海量数据的场景下，向量数据集达到百亿级及以上时，单机构建索引会产生如下问题：</p>
 <p>1、 单机处理数据量，构建索引耗时较长</p>
