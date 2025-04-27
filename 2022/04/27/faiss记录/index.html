@@ -169,14 +169,14 @@
   <a href="/tags/faiss/" class="post-tag">#faiss</a><a href="/tags/%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2/" class="post-tag">#向量检索</a>
 
 
-          <span class="post-date">2025-04-27</span>
+          <span class="post-date">2022-04-27</span>
         </div>
       </div>
       
         <aside class="toc-outer">
           <div class="toc-title">目录</div>
           <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80indexflatl2"><span class="post-toc-text">一、IndexFlatL2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7"><span class="post-toc-text">1、核心特性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text">2、使用场景</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8Cindexivfflat"><span class="post-toc-text">二、IndexIVFFlat</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="post-toc-text">2.1 核心原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AE%8B%E5%B7%AE%E4%BC%98%E5%8C%96"><span class="post-toc-text">2.2 残差优化</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89indexivfpq"><span class="post-toc-text">三、IndexIVFPQ</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9Bhnswhierarchical-navigable-small-world"><span class="post-toc-text">四、HNSW（Hierarchical
-Navigable Small World）</span></a></li></ol>
+Navigable Small World）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E8%A7%A3%E9%87%8A"><span class="post-toc-text">‌一句话解释：‌</span></a></li></ol></li></ol></li></ol>
           <a href="#" class="toc-top">回到顶部</a>
         </aside>
       
@@ -252,6 +252,60 @@ Navigable Small World）</h2>
 <li><strong><code>M</code></strong>‌：每层图的连接数，越大精度越高但内存消耗增加（建议16-64）。</li>
 <li>‌<strong><code>efSearch</code></strong>‌：搜索时维护的候选队列大小，直接影响查询时间与精度。</li>
 </ul>
+<h4 id="一句话解释">‌<strong>一句话解释：</strong>‌</h4>
+<p>HNSW像建一座「多层交通枢纽」：</p>
+<ul>
+<li>‌<strong>高层（稀疏）</strong>‌：相当于‌<strong>高速公路</strong>‌，用少量关键连接快速跨区域导航（如北京→上海）</li>
+<li>‌<strong>底层（密集）</strong>‌：相当于‌<strong>城市道路</strong>‌，用密集连接精细搜索目标点（如上海浦东→某街道）</li>
+</ul>
+<p>‌<strong>运作过程：</strong>‌</p>
+<ol type="1">
+<li>‌<strong>建造逻辑</strong>‌
+<ul>
+<li>‌<strong>随机分层</strong>‌：每个数据点随机分配到不同层（高层概率低，底层概率高）</li>
+<li>‌<strong>层级连接</strong>‌：高层仅保留强关联节点（类似交通枢纽），底层保留所有细节路径</li>
+</ul></li>
+<li>‌<strong>搜索逻辑</strong>‌
+<ul>
+<li>‌<strong>从高层切入</strong>‌：像坐飞机快速跨省（跳过无关区域）</li>
+<li>‌<strong>逐层降落</strong>‌：每降一层增加连接密度，像换乘高铁→汽车→步行</li>
+<li>‌<strong>动态修正路径</strong>‌：每层用最近邻连接修正方向，避免绕远</li>
+</ul></li>
+</ol>
+<p>‌<strong>优势对比：</strong>‌</p>
+<table>
+<thead>
+<tr>
+<th>结构</th>
+<th>搜索方式</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单层稠密图</td>
+<td>逐点遍历</td>
+<td>O(N)</td>
+</tr>
+<tr>
+<td>跳表</td>
+<td>固定层级跳跃</td>
+<td>O(logN)</td>
+</tr>
+<tr>
+<td>‌<strong>HNSW</strong>‌</td>
+<td>‌<strong>动态跨层导航</strong>‌</td>
+<td>‌<strong>O(logN)</strong>‌（更稳定）</td>
+</tr>
+</tbody>
+</table>
+<p>‌<strong>典型案例：</strong>‌ 假设在10亿人脸库中找人：</p>
+<ul>
+<li>高层：先对比「性别-年龄组」（快速排除90%数据）</li>
+<li>中层：筛选「发型-脸型」</li>
+<li>底层：精细比对「五官细节」</li>
+</ul>
+<p>这种结构让搜索像「漏斗过滤」，越到底层越精准，总体速度比暴力搜索快100-1000倍。</p>
 
       </div>
     </div>
@@ -295,11 +349,23 @@ Navigable Small World）</h2>
     
     <div class="post-nav">
   
-    <div class="post-nav-item-left"></div>
+    <a class="post-nav-item-left" href="/2022/05/16/%E9%9D%92%E5%B2%9B%E4%BA%A4%E7%AE%A1-%E6%99%BA%E5%B7%A1%E9%AD%94%E6%96%B9/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>交管-智巡魔方</div>
+    </a>
   
   <div class="vhr"></div>
   
-    <a class="post-nav-item-right" href="/2025/04/26/%E5%81%87%E6%9C%9F%E5%A6%82%E6%A2%A6/">
+    <a class="post-nav-item-right" href="/2022/03/26/Neo4j%E5%9B%BE%E5%BD%A2%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93/">
       <div class="text-align">
         <span class="text-small">下一篇</span>
         <svg t="1670570876164"
@@ -311,7 +377,7 @@ Navigable Small World）</h2>
           <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
         </svg>
       </div>
-      假期如梦
+      Neo4j图形化数据库
     </a>
   
 </div>
