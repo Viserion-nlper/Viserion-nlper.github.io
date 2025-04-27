@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <title>
       
-        假期如梦 | 思想放牧之地
+        faiss记录 | 思想放牧之地
       
     </title>
     <meta name="description" content="有情有颜 有才缺钱" />
@@ -161,17 +161,24 @@
     <div class="body">
       
   <article class="post-content">
-    <div class="post-inner">
+    <div class="post-inner--toc">
       <div class="post-content__head">
-        <div class="post-title">假期如梦</div>
+        <div class="post-title">faiss记录</div>
         <div class="post-info">
           
-  <a href="/tags/%E5%81%87%E6%9C%9F%E5%A6%82%E6%A2%A6/" class="post-tag">#假期如梦</a>
+  <a href="/tags/faiss/" class="post-tag">#faiss</a><a href="/tags/%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2/" class="post-tag">#向量检索</a>
 
 
-          <span class="post-date">2025-04-26</span>
+          <span class="post-date">2025-04-27</span>
         </div>
       </div>
+      
+        <aside class="toc-outer">
+          <div class="toc-title">目录</div>
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#indexflatl2"><span class="post-toc-text">IndexFlatL2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7"><span class="post-toc-text">1、核心特性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text">2、使用场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#indexivfflat"><span class="post-toc-text">IndexIVFFlat</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="post-toc-text">1、核心原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AE%8B%E5%B7%AE%E4%BC%98%E5%8C%96"><span class="post-toc-text">2、残差优化</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#indexivfpq"><span class="post-toc-text">IndexIVFPQ</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hnswhierarchical-navigable-small-world"><span class="post-toc-text">HNSW（Hierarchical
+Navigable Small World）</span></a></li></ol>
+          <a href="#" class="toc-top">回到顶部</a>
+        </aside>
       
       <div class="post-content__body">
         
@@ -179,19 +186,71 @@
             
           </div>
         
-        <h2 id="记录">记录</h2>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/Viserion-nlper/picgo/164e35fae6cd7b89d883c027012442a7d8330e74%5B1%5D.jpg"
-alt="鲤鱼跃龙门" />
-<figcaption aria-hidden="true">鲤鱼跃龙门</figcaption>
-</figure>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/Viserion-nlper/picgo/65cfc9177f3e6709ff66ca7937c79f3df9dc559f.jpg"
-alt="老传统" />
-<figcaption aria-hidden="true">老传统</figcaption>
-</figure>
+        <h2 id="indexflatl2">IndexFlatL2</h2>
+<h4 id="核心特性">1、核心特性</h4>
+<ul>
+<li><strong>暴力检索：</strong>遍历计算查询向量和索引中所有向量的欧氏距离，返回相似度最高的那个结果，确保结果精确度但效率较低。</li>
+<li><strong>无预处理优化：</strong>不进行聚类、量化或压缩等优化处理，直接存储原始向量数据，内存占用和存储成线性关系。</li>
+<li><strong>支持高维度：</strong>适用于任意维度的向量数据，例如文本嵌入、图像特征等</li>
+</ul>
+<h3 id="使用场景">2、使用场景</h3>
+<ul>
+<li><strong>小规模数据集：</strong>数据量在百万级别以下的时候，计算开销可以接受。</li>
+<li><strong>精度优先任务：</strong>算法基准测试，召回率验证等需要精确结果场景。</li>
+<li><strong>其他索引参照基准baseline：</strong>常作为对比对象，验证其他近似索引（如<code>IndexIVFFlat</code>、<code>IndexIVFPQ</code>）的精度损失程度</li>
+</ul>
+<p>如果需要在IndexFlatL2基础上提升效果，可以做：</p>
+<ol type="1">
+<li>用主成分分析PCA做数据降维</li>
+<li>混合检索，通过数据量灵活切换IndexIVFFlat或者IndexIVFPQ</li>
+<li>GPU进行加速，并行计算</li>
+</ol>
+<h2 id="indexivfflat">IndexIVFFlat</h2>
+<p>聚类+倒排索引</p>
+<p>中大规模数据</p>
+<h4 id="核心原理">1、核心原理</h4>
+<ul>
+<li><h5 id="倒排索引结构">倒排索引结构</h5>
+<ul>
+<li>通过k均值对全量数据进行一个粗聚类，生成nlist个簇中心。</li>
+<li>查询时仅计算查询向量与最近nprobe个簇内的向量距离，大幅度减少计算量。</li>
+</ul></li>
+</ul>
+<h4 id="残差优化">2、残差优化</h4>
+<p>​
+计算向量与中心节点的残差（即向量减去簇中心），存储残差相对位置而非原始向量。大幅度减少计算量。</p>
+<blockquote>
+<p>残差优化可以理解为一种相对位置存储的策略，让距离计算更快。</p>
+<p>具体过程如下：</p>
+<p>1、聚类分群：</p>
+<p>​ 所有向量通过聚类算法k均值分到不同的簇，每个簇都有一个中心点。</p>
+<p>2、存储相对位置：</p>
+<p>​ 假设某向量属于“簇A”，它的坐标是 <code>[100, 200]</code>，簇A的中心是
+<code>[90, 190]</code>。这时不直接存储原始坐标
+<code>[100, 200]</code>，而是存储它和中心点的‌<strong>相对位置</strong>‌（残差）：<code>[100-90, 200-190] = [10, 10]</code>。</p>
+<p>3、查询时快速计算：</p>
+<p>​ 计算相对位置的差异比计算从原点开始开始算，减少重复计算。</p>
+</blockquote>
+<h5 id="为什么更快呢">为什么更快呢？</h5>
+<ol type="1">
+<li>减少重复计算，查询时，大部分计算集中在簇中心和相对位置上，而不是所有原始数据。</li>
+<li>数值更小，计算更高效：残差通常比原始向量数值更小，计算时可能更快（尤其是涉及浮点运算时）。</li>
+</ol>
+<p>​ <strong>类比理解：</strong>‌ ​ 想象你在一个大型停车场找车：</p>
+<ul>
+<li><p><strong>无残差优化</strong>‌：记住每辆车的绝对坐标（如“东经XXX，北纬XXX”），每次找车都要从地球原点开始算距离。</p></li>
+<li><p>‌<strong>残差优化</strong>‌：先记住你的车停在“A区”，然后记录它距离A区标志牌的位置（如“向北10米”）。找车时先定位到A区，再根据相对位置快速找到车。</p></li>
+</ul>
+<h2 id="indexivfpq">IndexIVFPQ</h2>
+<p>聚类+乘积量化</p>
+<p>超大规模数据/内存敏感</p>
+<h2 id="hnswhierarchical-navigable-small-world">HNSW（Hierarchical
+Navigable Small World）</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> faiss</span><br><span class="line"></span><br><span class="line">d = <span class="number">512</span>  <span class="comment"># 向量维度</span></span><br><span class="line">M = <span class="number">32</span>   <span class="comment"># 每层图的连接数（控制内存与精度）</span></span><br><span class="line">index = faiss.IndexHNSWFlat(d, M)</span><br><span class="line">index.add(data)  <span class="comment"># 添加数据</span></span><br><span class="line">index.hnsw.efSearch = <span class="number">100</span>  <span class="comment"># 动态调整搜索深度（增大可提高精度）</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>M</code></strong>‌：每层图的连接数，越大精度越高但内存消耗增加（建议16-64）。</li>
+<li>‌<strong><code>efSearch</code></strong>‌：搜索时维护的候选队列大小，直接影响查询时间与精度。</li>
+</ul>
 
       </div>
     </div>
@@ -235,23 +294,11 @@ alt="老传统" />
     
     <div class="post-nav">
   
-    <a class="post-nav-item-left" href="/2025/04/27/faiss%E8%AE%B0%E5%BD%95/">
-      <div class="text-align">
-        <svg t="1670570876164"
-             class="icon"
-             viewBox="0 0 1024 1024"
-             width="16"
-             height="16">
-          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
-        </svg>
-        <span class="text-small">上一篇</span>
-      </div>
-      <div>faiss记录</div>
-    </a>
+    <div class="post-nav-item-left"></div>
   
   <div class="vhr"></div>
   
-    <a class="post-nav-item-right" href="/2025/04/18/SpringBoot%E6%95%B4%E5%90%88MCP-JAVA%20AI%E8%B6%8B%E5%8A%BF%E8%B6%8A%E6%BC%94%E6%84%88%E7%83%88/">
+    <a class="post-nav-item-right" href="/2025/04/26/%E5%81%87%E6%9C%9F%E5%A6%82%E6%A2%A6/">
       <div class="text-align">
         <span class="text-small">下一篇</span>
         <svg t="1670570876164"
@@ -263,7 +310,7 @@ alt="老传统" />
           <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596" />
         </svg>
       </div>
-      【SpringBoot整合MCP】
+      假期如梦
     </a>
   
 </div>
