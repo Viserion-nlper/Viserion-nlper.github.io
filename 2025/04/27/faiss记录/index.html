@@ -175,7 +175,7 @@
       
         <aside class="toc-outer">
           <div class="toc-title">目录</div>
-          <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#indexflatl2"><span class="post-toc-text">IndexFlatL2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7"><span class="post-toc-text">1、核心特性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text">2、使用场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#indexivfflat"><span class="post-toc-text">IndexIVFFlat</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="post-toc-text">1、核心原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AE%8B%E5%B7%AE%E4%BC%98%E5%8C%96"><span class="post-toc-text">2、残差优化</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#indexivfpq"><span class="post-toc-text">IndexIVFPQ</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hnswhierarchical-navigable-small-world"><span class="post-toc-text">HNSW（Hierarchical
+          <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80indexflatl2"><span class="post-toc-text">一、IndexFlatL2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7"><span class="post-toc-text">1、核心特性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text">2、使用场景</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8Cindexivfflat"><span class="post-toc-text">二、IndexIVFFlat</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="post-toc-text">2.1 核心原理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%AE%8B%E5%B7%AE%E4%BC%98%E5%8C%96"><span class="post-toc-text">2.2 残差优化</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89indexivfpq"><span class="post-toc-text">三、IndexIVFPQ</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9Bhnswhierarchical-navigable-small-world"><span class="post-toc-text">四、HNSW（Hierarchical
 Navigable Small World）</span></a></li></ol>
           <a href="#" class="toc-top">回到顶部</a>
         </aside>
@@ -186,14 +186,14 @@ Navigable Small World）</span></a></li></ol>
             
           </div>
         
-        <h2 id="indexflatl2">IndexFlatL2</h2>
+        <h2 id="一indexflatl2">一、IndexFlatL2</h2>
 <h4 id="核心特性">1、核心特性</h4>
 <ul>
 <li><strong>暴力检索：</strong>遍历计算查询向量和索引中所有向量的欧氏距离，返回相似度最高的那个结果，确保结果精确度但效率较低。</li>
 <li><strong>无预处理优化：</strong>不进行聚类、量化或压缩等优化处理，直接存储原始向量数据，内存占用和存储成线性关系。</li>
 <li><strong>支持高维度：</strong>适用于任意维度的向量数据，例如文本嵌入、图像特征等</li>
 </ul>
-<h3 id="使用场景">2、使用场景</h3>
+<h4 id="使用场景">2、使用场景</h4>
 <ul>
 <li><strong>小规模数据集：</strong>数据量在百万级别以下的时候，计算开销可以接受。</li>
 <li><strong>精度优先任务：</strong>算法基准测试，召回率验证等需要精确结果场景。</li>
@@ -205,10 +205,10 @@ Navigable Small World）</span></a></li></ol>
 <li>混合检索，通过数据量灵活切换IndexIVFFlat或者IndexIVFPQ</li>
 <li>GPU进行加速，并行计算</li>
 </ol>
-<h2 id="indexivfflat">IndexIVFFlat</h2>
-<p>聚类+倒排索引</p>
-<p>中大规模数据</p>
-<h4 id="核心原理">1、核心原理</h4>
+<h2 id="二indexivfflat">二、IndexIVFFlat</h2>
+<p>​ 聚类+倒排索引</p>
+<p>​ 中大规模数据</p>
+<h4 id="核心原理">2.1 核心原理</h4>
 <ul>
 <li><h5 id="倒排索引结构">倒排索引结构</h5>
 <ul>
@@ -216,7 +216,7 @@ Navigable Small World）</span></a></li></ol>
 <li>查询时仅计算查询向量与最近nprobe个簇内的向量距离，大幅度减少计算量。</li>
 </ul></li>
 </ul>
-<h4 id="残差优化">2、残差优化</h4>
+<h4 id="残差优化">2.2 残差优化</h4>
 <p>​
 计算向量与中心节点的残差（即向量减去簇中心），存储残差相对位置而非原始向量。大幅度减少计算量。</p>
 <blockquote>
@@ -231,20 +231,21 @@ Navigable Small World）</span></a></li></ol>
 <p>3、查询时快速计算：</p>
 <p>​ 计算相对位置的差异比计算从原点开始开始算，减少重复计算。</p>
 </blockquote>
-<h5 id="为什么更快呢">为什么更快呢？</h5>
-<ol type="1">
+<h5 id="为什么更快呢"><strong>为什么更快呢？</strong></h5>
+<ul>
 <li>减少重复计算，查询时，大部分计算集中在簇中心和相对位置上，而不是所有原始数据。</li>
 <li>数值更小，计算更高效：残差通常比原始向量数值更小，计算时可能更快（尤其是涉及浮点运算时）。</li>
-</ol>
-<p>​ <strong>类比理解：</strong>‌ ​ 想象你在一个大型停车场找车：</p>
+</ul>
+<h5 id="类比理解"><strong>类比理解：</strong>‌</h5>
+<p>​ 想象你在一个大型停车场找车：</p>
 <ul>
 <li><p><strong>无残差优化</strong>‌：记住每辆车的绝对坐标（如“东经XXX，北纬XXX”），每次找车都要从地球原点开始算距离。</p></li>
 <li><p>‌<strong>残差优化</strong>‌：先记住你的车停在“A区”，然后记录它距离A区标志牌的位置（如“向北10米”）。找车时先定位到A区，再根据相对位置快速找到车。</p></li>
 </ul>
-<h2 id="indexivfpq">IndexIVFPQ</h2>
+<h2 id="三indexivfpq">三、IndexIVFPQ</h2>
 <p>聚类+乘积量化</p>
 <p>超大规模数据/内存敏感</p>
-<h2 id="hnswhierarchical-navigable-small-world">HNSW（Hierarchical
+<h2 id="四hnswhierarchical-navigable-small-world">四、HNSW（Hierarchical
 Navigable Small World）</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> faiss</span><br><span class="line"></span><br><span class="line">d = <span class="number">512</span>  <span class="comment"># 向量维度</span></span><br><span class="line">M = <span class="number">32</span>   <span class="comment"># 每层图的连接数（控制内存与精度）</span></span><br><span class="line">index = faiss.IndexHNSWFlat(d, M)</span><br><span class="line">index.add(data)  <span class="comment"># 添加数据</span></span><br><span class="line">index.hnsw.efSearch = <span class="number">100</span>  <span class="comment"># 动态调整搜索深度（增大可提高精度）</span></span><br></pre></td></tr></table></figure>
 <ul>
